@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class M_usuarios extends CI_Model
+class M_Usuarios extends CI_Model
 {
 	/**
 	 * @author :Manuel Antonio De La O Pérez

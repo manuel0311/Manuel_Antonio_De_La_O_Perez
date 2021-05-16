@@ -1,9 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_users extends CI_Controller
+class C_Users extends CI_Controller
 {
-
+	/**
+	 * @author :Manuel Antonio De La O Pérez
+	 */
 
 	/**
 	 * C_users constructor.
@@ -12,7 +14,7 @@ class C_users extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_usuarios','M_usuarios');
+		$this->load->model('M_usuarios','m_usuarios');
 	}
 
 
@@ -51,12 +53,12 @@ class C_users extends CI_Controller
 	 */
 	public function envioDatosTrabajador()
 	{
-	 $mensaje=$this->M_usuarios->addUsuarios();
+	 $mensaje=$this->m_usuarios->addUsuarios();
 
 
-		if($this->M_usuarios->comprobarDatosregistro())
+		if($this->m_usuarios->comprobarDatosregistro())
 		{
-			if($this->M_usuarios->addUsuarios()){
+			if($this->m_usuarios->addUsuarios()){
 
 				$this->formularioEmpleado('success');
 			}

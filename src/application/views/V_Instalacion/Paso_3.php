@@ -29,9 +29,8 @@ el panel de administración.</p>
     <label class="col-sm-2 col-form-label">Total Porcetaje</label>
     
     <div class="col-sm-10">
-      <input type="text" name="name" class="form-control" id="porcentaje" maxlength="60" placeholder="Introduce porcentaje" onblur="validarnombre()" required>
-      <p id="errorName"></p>
-    </div>
+      <input type="text" name="porcentaje" class="form-control" id="porcentaje" maxlength="60" placeholder="Introduce porcentaje" onblur="validarPorcentaje()" required>
+  		<p id="errorPorcentaje"></p>    </div>
   </div>
   
   

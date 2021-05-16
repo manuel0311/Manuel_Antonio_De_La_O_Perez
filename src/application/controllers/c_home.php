@@ -16,7 +16,7 @@ class C_Home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("M_usuarios","M_usuarios");
-		$this->load->model("M_Instalacion","M_Instalacion");
+		$this->load->model("M_Instalacion","m_instalacion");
 	}
 
 	/**
@@ -26,10 +26,8 @@ class C_Home extends CI_Controller
 	public function index()
 	{
 		/*Si la tabla Usuarios existe , llama a la vista Principal*/
-		if($this->M_Instalacion->comprobarTabla() == 1){
+		if($this->m_instalacion->comprobarTabla() == 1){
 			$this->Principal();
-		}else{
-
 		}
 
 	}
@@ -42,7 +40,7 @@ class C_Home extends CI_Controller
 	 */
 	public function Instalacion()
 	{
-		if($this->M_Instalacion->comprobarTabla() == 1){{
+		if($this->m_instalacion->comprobarTabla() == 1){{
 		}
 			$this->loginAdmin();
 		}else{
@@ -65,10 +63,25 @@ class C_Home extends CI_Controller
 	 */
 	public function CrearAdministrador()
 	{
-		if(isset($_GET["activo"])){
+		/*Comrpruebo que existen tablas en la bbdd.
+		1- tiene tablas
+		0- sin tablas
+		*/
+		if($this->m_instalacion->comprobarTabla() == 0){
+		/*Crea las tablas de la BBDD*/
+			$this->m_instalacion->importarScript();
+		/*lama a la vista con el formulario para el registro administrador*/
 			$this->load->view("V_Instalacion/Paso_2");
 		}else{
-			$this->Principal();
+			/*Compruebo que existe algun usuario ,
+			1 - Existe - LLamo a la vista Login Administrador
+			0 - LLama a la vista con el formulario para añadir al administrador*/
+			if($this->m_instalacion->comprobarAdministrador() == 1){
+				$this->loginAdmin();
+			}else{
+				$this->load->view("V_Instalacion/Paso_2");
+			}
+
 		}
 
 	}
@@ -79,18 +92,13 @@ class C_Home extends CI_Controller
 	 * Agrega la información del administrador
 	 * y mustra la vista con el paso 3 de la instalación
 	 */
-	public function addBBDD()
+	public function addDatosBBDD()
 	{
 
 		if(isset($_POST['enviar'])){
-			$this->M_Instalacion->importarScript();
-
-			if($this->M_Instalacion->registroAdministrador()>0){
-
 				$this->formularioIva();
-			}
 		}else{
-			$this->Principal();
+			$this->loginAdmin();
 		}
 
 
@@ -107,7 +115,8 @@ class C_Home extends CI_Controller
 	public function addIVA(){
 		if(isset($_POST['finalizar']))
 		{
-
+			$this->m_instalacion->addIVA();
+			$this->Principal();
 		}
 
 	}

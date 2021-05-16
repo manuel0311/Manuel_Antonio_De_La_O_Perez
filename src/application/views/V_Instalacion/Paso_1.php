@@ -37,7 +37,7 @@ echo'<!doctype html>
 
                    </p>
                      <p class="text-justify">
-						<button type="button" class="btn btn-light"><a href="paso_dos?activo=1" >Comenzar Instalación</a></button>
+						<button type="button" class="btn btn-light"><a href="paso_dos" >Comenzar Instalación</a></button>
                    </p>
                </div>
            </div>

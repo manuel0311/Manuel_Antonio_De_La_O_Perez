@@ -19,13 +19,13 @@ class M_Instalacion extends CI_Model
 		/*Cargar conexión BBDD -- datos en config/database.php*/
 		$this->load->dbforge();
 		$this->bd = $this->load->database('default', true);
-		$this->load->model("M_usuarios","M_usuarios");
+		$this->load->model("M_usuarios","m_usuarios");
 
 	}
 
 	/**
 	 * @return mixed
-	 * Comprueba que la esiste la tabla usuarios
+	 * Comprueba que la existe la tabla usuarios
 	 * devuelve 0 en caso negativo y 1 en caso afirmativo
 	 */
 	public function comprobarTabla()
@@ -34,6 +34,19 @@ class M_Instalacion extends CI_Model
 		$consulta=$this->bd->query($comprobartabla);
 		return $consulta->num_rows();
 	}
+
+	/**
+	 * @return mixed
+	 * Comprueba que la tabla usuarios dispone de
+	 * algun usuario .
+	 */
+	public function comprobarAdministrador()
+	{
+		$comprobarAdministrador="select * from usuarios'";
+		$consulta=$this->bd->query($comprobarAdministrador);
+		return $consulta->num_rows();
+	}
+
 
 	/**
 	 * 	Instalación tablas y contenidos principal de la BBDD.
@@ -128,13 +141,13 @@ class M_Instalacion extends CI_Model
 				'unsigned' => TRUE
 			),
 			'precioTotal' => array(
-				'type' => 'FLOAT(7,2)',
+				'type' => 'FLOAT(7,2)'
 			),
 			'IVA' => array(
-				'type' => 'TINYINT',
+				'type' => 'TINYINT'
 			),
 			'nota' => array(
-				'type' => 'MEDIUMTEXT',
+				'type' => 'MEDIUMTEXT'
 			),
 			'activo' => array(
 				'type' => 'BIT',
@@ -339,6 +352,17 @@ class M_Instalacion extends CI_Model
 										ON DELETE CASCADE');
 		$this->dbforge->create_table('PRUEBA_PACIENTE', $atributos);
 
+		/*Crear tabla IVA*/
+		$tablaIVA = array(
+			'PorcentajeIVA' => array(
+				'type' => 'TINYINT'
+			)
+
+		);
+		$this->dbforge->add_field($tablaIVA);
+		$this->dbforge->create_table('IVA', $atributos);
+
+
 		/*Insertar Piezas dentales*/
 		$datos='INSERT INTO piezas_dentales (numPiezaDental,nombrePiezaDental) VALUES
 	(11,"Incisivo Central"),
@@ -413,12 +437,23 @@ class M_Instalacion extends CI_Model
 			"tipo"=>'a'
 		);
 
-		$this->M_usuarios->insertarUsuarios($datos);
+		$this->m_usuarios->insertarUsuarios($datos);
 		$filasAfectadas=$this->bd->affected_rows();
 		return $filasAfectadas;
 
 	}
 
+	/**
+	 * Obtiene el valor introducido por el usuario
+	 * y lo añade la BBDD
+	 */
+	public function addIVA()
+	{
+
+		$IVA=$_POST['porcentaje'];
+		$this->bd->insert('IVA',$IVA);
+
+	}
 
 
 

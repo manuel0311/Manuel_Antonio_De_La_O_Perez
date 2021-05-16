@@ -195,5 +195,32 @@ function contraseniaValida()
 	}
 }
 
+/**
+ *
+ */
+function validarPorcentaje()
+{
+	porcentaje=document.getElementById("porcentaje").value;
 
+
+	if(nombre!=="")
+	{
+		//Solo admite nombre
+		var letras= new RegExp("/^[0-9]$/");
+		if (letras.test(porcentaje)) {
+
+			document.getElementById("errorPorcentaje").innerHTML = " ";
+
+		} else {
+			document.getElementById("porcentaje").focus();
+			document.getElementById("errorPorcentaje").innerHTML = "Este campo solo admite números,por favor,inténtelo de nuevo";
+
+		}
+
+
+	}else{
+		document.getElementById("porcentaje").focus();
+		document.getElementById("errorPorcentae").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
+	}
+}
 
