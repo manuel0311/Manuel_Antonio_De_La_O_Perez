@@ -8,7 +8,49 @@
 /**
  * Comprueba que el input name (Nombre) no este vacío
  */
-function validarnombre()
+var nombreValido=false;
+var apellidoValido=false;
+var telefonovalido=false;
+var DNIValido=false;
+var emailvalido=false;
+var contrasenaValida=false;
+var IVAValido=false;
+var numeroColegiadoValido=false;
+var porcentajeValido=false;
+
+/**
+ * Valida los campos registro formulario Administrador instalación
+ * si los datos son valido envia la informacion.
+ */
+function validarRegistroAdmin(){
+
+		if (nombreValido && apellidoValido && telefonovalido && DNIValido && emailvalido && contrasenaValida) {
+
+			document.getElementById("formularioAdministrador").submit();
+
+		} else {
+
+			alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+		}
+	}
+
+
+function validarAddPorcentaje(){
+	if (porcentajeValido) {
+
+		document.getElementById("formularioAdministrador").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
+
+/**
+ * Validar campo nombre Formulario
+ * no admite números solo letras y espacios
+ */
+function validarNombre()
 {
 	nombre=document.getElementById("name").value;
 
@@ -20,10 +62,12 @@ function validarnombre()
 		if (letras.test(nombre)) {
 
 			document.getElementById("name").style.backgroundColor="ddffb0";
+			nombreValido=true;
 			document.getElementById("errorName").innerHTML = " ";
 
 		} else {
 			document.getElementById("name").style.backgroundColor="ffb0b0";
+			nombreValido=false;
 			document.getElementById("name").focus();
 			document.getElementById("errorName").innerHTML = "Este campo solo admite letras,por favor,inténtelo de nuevo";
 
@@ -32,6 +76,7 @@ function validarnombre()
 
 	}else{
 		document.getElementById("name").style.backgroundColor="ffb0b0";
+		nombreValido=false;
 		document.getElementById("name").focus();
 		document.getElementById("errorName").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
 	}
@@ -39,9 +84,10 @@ function validarnombre()
 
 
 /**
- * Comrpueba que el input surname (Apellidos) no este vacio
+ * Validar campo apellido Formulario
+ * no admite números solo Letras y Espacios
  */
-function validarapellido()
+function validarApellido()
 {
 	apellidos=document.getElementById("surname").value;
 	if(apellidos!=="")
@@ -51,15 +97,18 @@ function validarapellido()
 		if (letras.test(apellidos)) {
 
 			document.getElementById("surname").style.backgroundColor = "ddffb0";
+			apellidoValido=true;
 			document.getElementById("errorSurname").innerHTML = " ";
 		} else {
 			document.getElementById("surname").style.backgroundColor = "ffb0b0";
+			apellidoValido=false;
 			document.getElementById("surname").focus();
 			document.getElementById("errorSurname").innerHTML = "Este campo solo admite letras,por favor,inténtelo de nuevo";
 
 		}
 	}else{
 		document.getElementById("surname").style.backgroundColor="ffb0b0";
+		apellidoValido=false;
 		document.getElementById("surname").focus();
 		document.getElementById("errorSurname").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
 	}
@@ -71,7 +120,7 @@ function validarapellido()
  * números validos comendazos en 6,7 o 9
  * longitud 9
  * */
-function telefonovalido()
+function validarTelefono()
 {
 
 	telefono=document.getElementById("phone").value;
@@ -79,13 +128,14 @@ function telefonovalido()
 	if(expresionregulartelefono.test(telefono))
 	{
 		document.getElementById("phone").style.backgroundColor="ddffb0";
-		tlf=1;
+		telefonovalido=true;
 		document.getElementById("errorTlf").innerHTML = " ";
 
 	}
 	else
 	{
 		document.getElementById("phone").style.backgroundColor="ffb0b0";
+		telefonovalido=false;
 		document.getElementById("phone").focus();
 		document.getElementById("errorTlf").innerHTML =  "Error dígitos incorrecto o vacío,por favor,intenteló de nuevo";
 	}
@@ -116,17 +166,21 @@ function validarDNI() {
 
 		if (letraDNI != letraCorrecta) {
 			document.getElementById("DNI").style.backgroundColor="ffb0b0";
+			DNIValido=false;
 			document.getElementById("DNI").focus();
 			document.getElementById("errorDNI").innerHTML =  "Letra incorrecta,por favor,inténtelo de nuevo";
 		} else {
 			document.getElementById("DNI").style.backgroundColor="ddffb0";
+			DNIValido=true;
 			document.getElementById("errorDNI").innerHTML = " ";
+
 
 		}
 	}
 	else
 	{
 		document.getElementById("DNI").style.backgroundColor="ffb0b0";
+		DNIValido=false;
 		document.getElementById("errorDNI").innerHTML =  "Error dígitos incorrecto o vacío,por favor,inténtelo de nuevo";
 		document.getElementById("DNI").focus();
 	}
@@ -143,30 +197,34 @@ function validarNumColegiado()
 	if(numColegiado!=="")
 	{
 		document.getElementById("colegiado").style.backgroundColor="ddffb0";
+		numeroColegiado=true;
 		document.getElementById("errorColegiado").innerHTML = " ";
 
 	}else{
 		document.getElementById("colegiado").style.backgroundColor="ffb0b0";
 		document.getElementById("colegiado").focus();
+		numeroColegiado=true;
 		document.getElementById("errorColegiado").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
 	}
 }
 
 /**
- * valida la estructura del correo introducido
+ * valida la estructura del correo introducido sea valido
  */
-function correovalido()
+function validarCorreo()
 {
 
 	var correo = document.getElementById("mail").value;
 	expresionregularcorreoelectronico = new RegExp(/^[^@]+@[^@]+\.[A-Za-z]{2,}$/);
 	if (expresionregularcorreoelectronico.test(correo)) {
 		document.getElementById("mail").style.backgroundColor = "ddffb0";
+		emailvalido=true;
 		document.getElementById("errorMail").innerHTML = " ";
 
 
 	} else {
 		document.getElementById("mail").style.backgroundColor = "ffb0b0";
+		emailvalido=false;
 		document.getElementById("mail").focus();
 		document.getElementById("errorMail").innerHTML = "El correo introducido no es válido,inténtelo de nuevo. ";
 	}
@@ -184,11 +242,14 @@ function contraseniaValida()
 	{
 		document.getElementById("password").style.backgroundColor = "ddffb0";
 		document.getElementById("password2").style.backgroundColor = "ddffb0";
+		contrasenaValida=true;
 		document.getElementById("errorContrasenia").innerHTML = " ";
+
 		psw=1;
 	}else{
 		document.getElementById("password").style.backgroundColor = "ffb0b0";
 		document.getElementById("password").focus();
+		contrasenaValida=false;
 		document.getElementById("password2").style.backgroundColor = "ffb0b0";
 		document.getElementById("errorContrasenia").innerHTML = "Las contraseñas no coinciden.";
 
@@ -196,23 +257,23 @@ function contraseniaValida()
 }
 
 /**
- *
+ *Valida el campo porcentae no admite letras solo enteros de 0 a 9
  */
 function validarPorcentaje()
 {
 	porcentaje=document.getElementById("porcentaje").value;
-
-
-	if(nombre!=="")
+	if(porcentaje!=="")
 	{
-		//Solo admite nombre
-		var letras= new RegExp("/^[0-9]$/");
-		if (letras.test(porcentaje)) {
+		//Solo admite numeros
+		var numeros= new RegExp("^[0-9,$]*$");
+		if (numeros.test(porcentaje)) {
 
 			document.getElementById("errorPorcentaje").innerHTML = " ";
+			porcentajeValido=true;
 
 		} else {
 			document.getElementById("porcentaje").focus();
+			porcentajeValido=false;
 			document.getElementById("errorPorcentaje").innerHTML = "Este campo solo admite números,por favor,inténtelo de nuevo";
 
 		}
@@ -220,7 +281,9 @@ function validarPorcentaje()
 
 	}else{
 		document.getElementById("porcentaje").focus();
-		document.getElementById("errorPorcentae").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
+		porcentajeValido=false;
+		document.getElementById("errorPorcentae").innerHTML = " IVA  campo vacío";
 	}
 }
+
 

@@ -37,16 +37,26 @@ class M_Instalacion extends CI_Model
 
 	/**
 	 * @return mixed
-	 * Comprueba que la tabla usuarios dispone de
-	 * algun usuario .
+	 * Comprueba que la tabla usuarios
+	 * contiene fila/as
 	 */
 	public function comprobarAdministrador()
 	{
-		$comprobarAdministrador="select * from usuarios'";
+		$comprobarAdministrador="select * from usuarios";
 		$consulta=$this->bd->query($comprobarAdministrador);
 		return $consulta->num_rows();
 	}
 
+	/**
+	 * @return mixed
+	 * Comprueba que la tabla IVA
+	 * contiene fila/as
+	 */
+	public function comprobarIVA(){
+		$comprobarIVA="select * from iva";
+		$consulta=$this->bd->query($comprobarIVA);
+		return $consulta->num_rows();
+	}
 
 	/**
 	 * 	Instalación tablas y contenidos principal de la BBDD.
@@ -93,7 +103,7 @@ class M_Instalacion extends CI_Model
 				'default' => 0,
 			),
 			'tipo' => array(
-				'type' => 'ENUM("a","e","p")',
+				'type' => 'ENUM("a","e","ea","p")',
 
 			),
 
@@ -450,7 +460,10 @@ class M_Instalacion extends CI_Model
 	public function addIVA()
 	{
 
-		$IVA=$_POST['porcentaje'];
+		$IVA=array(
+			"PorcentajeIVA"=>$this->input->POST('porcentaje')
+		);
+
 		$this->bd->insert('IVA',$IVA);
 
 	}

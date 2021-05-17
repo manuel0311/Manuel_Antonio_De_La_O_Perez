@@ -24,8 +24,8 @@ echo'
       </li>
     </ul>  
        <form class="form-inline">
-                    <input class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#entrar" type="button" value="Iniciar Sesión">
-                    <input class="btn btn-primary btn-sm" data-toggle="modal" data-target="#registro" type="button" value="Registro">
+                    <input class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#opciones" type="button" value="Opciones">
+                    <input class="btn btn-primary btn-sm" data-toggle="modal" data-target="#cerrarSesión" type="button" value="Cerrar Sesión">
                 </form>
   </div>  
      </nav>
@@ -34,7 +34,7 @@ echo'
 
 
 echo'
-<!-- VENTANA MODAL INICIO SESIÓN -->
+<!-- VENTANA OPCIONES -->
         <section class="modal" id="entrar">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -62,35 +62,9 @@ echo'
             </div>
         </section>
 
-        <!-- VENTANA MODAL DE REGISTRO -->
+        <!-- VENTANA Cerrar sesion -->
         <section class="modal" id="registro">
-            <div class="modal-dialog">
-                <form>
-                    <div class="modal-content">
-                        <div class="modal-header bg-primary text-white">
-                            <div class="modal-title">
-Registro de usuario
-</div>
-                            <span data-dismiss="modal">X</span>
-                        </div>
-                        <div class="modal-body">
-                            
-                            <div class="form-group">
-                                <label>Email:</label>
-                                <input type="email" class="form-control" placeholder="Introduce tu correo electrónico" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Contraseña:</label>
-                                <input type="password" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer text-right">
-                            <input type="submit" class="btn btn-primary" value="Registrar">
-                        </div>
-
-                    </div>
-                </form>
-            </div>
+            
         </section>';
 
 

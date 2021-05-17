@@ -7,8 +7,7 @@ class C_Home extends CI_Controller
 	 * @author :Manuel Antonio De La O Pérez
 	 */
 
-
-
+	
 	/**
 	 * C_Home constructor.
 	 */
@@ -27,7 +26,11 @@ class C_Home extends CI_Controller
 	{
 		/*Si la tabla Usuarios existe , llama a la vista Principal*/
 		if($this->m_instalacion->comprobarTabla() == 1){
-			$this->Principal();
+			if($this->m_instalacion->comprobarAdministrador()>0){
+				$this->Principal();
+			}
+
+
 		}
 
 	}
@@ -40,10 +43,13 @@ class C_Home extends CI_Controller
 	 */
 	public function Instalacion()
 	{
-		if($this->m_instalacion->comprobarTabla() == 1){{
-		}
-			$this->loginAdmin();
-		}else{
+		if($this->m_instalacion->comprobarTabla() == 1){
+			if($this->m_instalacion->comprobarAdministrador()>0){
+				$this->loginAdmin();
+			}else{
+				$this->CrearAdministrador();
+			}
+		} else{
 			/*Comprueba la conexión con el servidor antes de realizar  la instalación de la aplicación*/
 			if($this->db->db_pconnect()){
 				$this->load->view("V_Instalacion/Paso_1");
@@ -76,7 +82,7 @@ class C_Home extends CI_Controller
 			/*Compruebo que existe algun usuario ,
 			1 - Existe - LLamo a la vista Login Administrador
 			0 - LLama a la vista con el formulario para añadir al administrador*/
-			if($this->m_instalacion->comprobarAdministrador() == 1){
+			if($this->m_instalacion->comprobarAdministrador()>0 ){
 				$this->loginAdmin();
 			}else{
 				$this->load->view("V_Instalacion/Paso_2");
@@ -94,9 +100,14 @@ class C_Home extends CI_Controller
 	 */
 	public function addDatosBBDD()
 	{
+		if($this->m_instalacion->comprobarTabla()>0){
+				if($this->m_instalacion->comprobarAdministrador() == 0 ){
+					$this->m_instalacion->registroAdministrador();
+					$this->formularioIva();
+				}else{
+					$this->load->view("V_Instalacion/Paso_2");
+				}
 
-		if(isset($_POST['enviar'])){
-				$this->formularioIva();
 		}else{
 			$this->loginAdmin();
 		}
@@ -111,12 +122,24 @@ class C_Home extends CI_Controller
 
 	/**
 	 * Asignar Iva
+	 * Comprueba Que las tablas estén añadadidas a la tabla
+	 * comprueba que disponga de algun usuario registrado
+	 * si es todo correcto añade el porcentaje a la bbdd y muestra la página principal
 	 */
 	public function addIVA(){
-		if(isset($_POST['finalizar']))
-		{
-			$this->m_instalacion->addIVA();
-			$this->Principal();
+
+		if($this->m_instalacion->comprobarTabla()>0){
+			if($this->m_instalacion->comprobarAdministrador() == 0 ){
+				$this->CrearAdministrador();
+			}else{
+				if($this->m_instalacion-> comprobarIVA() == 0 ){
+					$this->m_instalacion->addIVA();
+					$this->Principal();
+				}
+			}
+
+		}else{
+			$this->loginAdmin();
 		}
 
 	}

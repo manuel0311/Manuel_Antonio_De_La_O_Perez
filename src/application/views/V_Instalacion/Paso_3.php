@@ -24,7 +24,7 @@ el panel de administración.</p>
 <div class="col">
 
 <!--Formulario-->
-<form action="AsignarAdministrador" id="formularioAdministrador" method="POST">
+<form action="completo" id="formularioAdministrador" method="POST">
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Total Porcetaje</label>
     
@@ -37,7 +37,7 @@ el panel de administración.</p>
  
   <div class="form-group row">
     <div class="col-sm-10">
-      <input type="submit" name="finalizar "value="finalizar" class="btn btn-primary " >
+      <input type="button" name="enviar" value="finalizar" class="btn btn-primary " onclick="validarAddPorcentaje()">
    
     </div>
   </div>

@@ -56,7 +56,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['Higea_Admin']='C_Home/loginAdmin';
 $route['Paso_tres']='C_Home/addDatosBBDD';
-$route['principal'] ='C_Home/V_Principal';
+$route['principal'] ='C_Home/Principal';
 $route['tratamientos']='C_Home/servicio';
 $route['Higea_nosotros']='C_Home/nosotros';
 $route['contacto']='C_Home/contacto';
@@ -69,6 +69,7 @@ $route['registroPaciente']='C_users/formularioPaciente';
 $route['envioDatosTrabajador']='C_users/envioDatosTrabajador';
 $route['Instalacion']='C_Home/Instalacion';
 $route['paso_dos']='C_Home/CrearAdministrador';
+$route['completo']='C_Home/addIVA';
 
 
 

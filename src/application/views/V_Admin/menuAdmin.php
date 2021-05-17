@@ -12,7 +12,7 @@ echo'
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Usuarios
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Registrar Trabajador</a>
           <a class="dropdown-item" href="#">Consultar Trabajador</a>
           <a class="dropdown-item" href="#">Eliminar Trabajador</a>
