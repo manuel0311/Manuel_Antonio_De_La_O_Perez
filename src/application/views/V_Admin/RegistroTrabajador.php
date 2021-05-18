@@ -22,13 +22,11 @@
 <div class="col">
 <h3>Formulario Registro Empleados</h3>';
 
-	if(isset($mensaje))
-	{
-		echo '
-		<div class="alert alert-warning" role="alert">'.$textoError.'
-	
-		</div>';
-	}
+if(isset($texto)){
+	echo'<div class="alert alert-secondary" role="alert">
+		'.$texto.'
+</div>';
+}
 	
 	
 echo '
@@ -38,7 +36,7 @@ echo '
     <label class="col-sm-2 col-form-label">Nombre</label>
     
     <div class="col-sm-10">
-      <input type="text" name="name" class="form-control" id="name" maxlength="60" placeholder="Introduce Nombre" onblur="validarnombre()" required>
+      <input type="text" name="name" class="form-control" id="name" maxlength="60" placeholder="Introduce Nombre" onblur="validarNombre()" required>
       <p id="errorName"></p>
     </div>
   </div>
@@ -46,7 +44,7 @@ echo '
    <div class="form-group row">
     <label class="col-sm-2 col-form-label">Apellidos</label>
      <div class="col-sm-10">
-      <input type="text" class="form-control" name="surname" id="surname" maxlength="60" placeholder="Introduce Apellido" onblur="validarapellido()" required>
+      <input type="text" class="form-control" name="surname" id="surname" maxlength="60" placeholder="Introduce Apellido" onblur="validarApellido()" required>
     	<p id="errorSurname"></p>
       </div>
    </div>
@@ -54,7 +52,7 @@ echo '
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Télefono</label>
     <div class="col-sm-10">
-      <input type="tel" name="phone" class="form-control" id="phone" placeholder="Introduce Teléfono (6XXXXXXXX)" onblur="telefonovalido()" required >
+      <input type="tel" name="phone" class="form-control" id="phone" placeholder="Introduce Teléfono (6XXXXXXXX)" onblur="validarTelefono()" required >
        <p id="errorTlf"></p>
     </div>
   </div>
@@ -78,7 +76,7 @@ echo '
    <div class="form-group row">
     <label class="col-sm-2 col-form-label">E-mail</label>
     <div class="col-sm-10">
-      <input type="mail" class="form-control" name="mail" maxlength="100"  id="mail" onblur="correovalido()" placeholder="Introduce correo Eléctronico" >
+      <input type="mail" class="form-control" name="mail" maxlength="100"  id="mail" onblur="validarCorreo()" placeholder="Introduce correo Eléctronico" >
       <p id="errorMail"></p>
     </div>
   </div>
@@ -100,7 +98,7 @@ echo '
  
   <div class="form-group row">
     <div class="col-sm-10">
-      <input type="submit" class="btn btn-primary " >
+      <input type="button" class="btn btn-primary" value="Añadir Trabajador" onclick="addEmpleado()" >
       <input type="reset" class="btn btn-primary" >
     </div>
   </div>

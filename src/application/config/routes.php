@@ -64,12 +64,15 @@ $route['Aviso_Legal']='C_Home/legal';
 $route['Politica_Privacidad']='C_Home/privacidad';
 $route['Politica_Cookies']='C_Home/Pcookies';
 $route['CI_Admin']='C_Config/instalar';
-$route['registroEmpleado']='C_users/formularioEmpleado';
-$route['registroPaciente']='C_users/formularioPaciente';
-$route['envioDatosTrabajador']='C_users/envioDatosTrabajador';
+$route['registroEmpleado']='C_Users/formularioEmpleado';
+$route['registroPaciente']='C_Users/formularioPaciente';
+$route['envioDatosTrabajador']='C_Users/envioDatosTrabajador';
+$route['envioDatosPaciente']='C_Users/envioDatosPaciente';
 $route['Instalacion']='C_Home/Instalacion';
 $route['paso_dos']='C_Home/CrearAdministrador';
 $route['completo']='C_Home/addIVA';
+$route['comprobarMail']='C_Users/comprobarCorreo';
+$route['comprobarDNI']='C_Users/comprobarDNI';
 
 
 

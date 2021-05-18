@@ -26,9 +26,6 @@ class M_Usuarios extends CI_Model
 	 */
 	public function addUsuarios()
 	{
-
-		if($this->comprobarDatosregistro())
-		{
 			if(isset($_POST['colegiado']))
 			{
 				$datos = array(
@@ -59,9 +56,27 @@ class M_Usuarios extends CI_Model
 
 				}
 
+			}else{
+
+				$datos = array(
+					"nombre"=>$this->input->POST('name'),
+					"apellidos"=>$this->input->POST('surname'),
+					"telefono"=>$this->input->POST('phone'),
+					"email"=>$this->input->POST('mail'),
+					"DNI"=>$this->input->POST('DNI'),
+					"contrasenia" => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+					"tipo"=>'p'
+				);
+
+				if($this->insertarUsuarios($datos))
+				{
+					return "Registro realizado correctamente!";
+				}else{
+					return "Fallo al registrar,intentelo más tarde";
+				}
 			}
 
-		}
+
 	}
 
 
@@ -79,7 +94,7 @@ class M_Usuarios extends CI_Model
 
 
 	/**
-	 * Registra Tipo de Usuario
+	 * Registra los datos a la tabla Usuario
 	 * @param $datos
 	 * @return mixed
 	 */
@@ -90,6 +105,11 @@ class M_Usuarios extends CI_Model
 		return $filasAfectadas;
 	}
 
+	/**
+	 * Registra los datos a la tabla Empleado
+	 * @param $datos
+	 * @return mixed
+	 */
 	public function insertarEmpleado($datos)
 	{
 		$this->bd->insert('empleado',$datos);
@@ -121,35 +141,6 @@ class M_Usuarios extends CI_Model
 
 	}
 
-	/**
-	 * @return bool|string
-	 */
-	public function comprobarDatosregistro()
-	{
-
-		if($this->comprobarDNIexistente()>0){
-			$formulario=0;
-		}else if($this->comprobarlMailexistente()>0){
-			$formulario=1;
-		}else{
-			$formulario=2;
-		}
-
-
-		switch ($formulario) {
-			case 0:
-				return false;
-				break;
-			case 1:
-				return false;
-				break;
-			case 2:
-				return true;
-
-		}
-
-
-	}
 
 	/**
 	 * Comprueba si el DNI introducido se encuentra en la BBDD

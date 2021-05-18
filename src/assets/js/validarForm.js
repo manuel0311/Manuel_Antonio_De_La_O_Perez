@@ -5,9 +5,7 @@
  */
 
 
-/**
- * Comprueba que el input name (Nombre) no este vacío
- */
+//Variables
 var nombreValido=false;
 var apellidoValido=false;
 var telefonovalido=false;
@@ -18,6 +16,7 @@ var IVAValido=false;
 var numeroColegiadoValido=false;
 var porcentajeValido=false;
 
+
 /**
  * Valida los campos registro formulario Administrador instalación
  * si los datos son valido envia la informacion.
@@ -25,8 +24,8 @@ var porcentajeValido=false;
 function validarRegistroAdmin(){
 
 		if (nombreValido && apellidoValido && telefonovalido && DNIValido && emailvalido && contrasenaValida) {
-
 			document.getElementById("formularioAdministrador").submit();
+
 
 		} else {
 
@@ -34,7 +33,37 @@ function validarRegistroAdmin(){
 		}
 	}
 
+/**
+ * Envia los dato del formulario registro Empleado al controlador.
+ */
+function addEmpleado(){
+	if (nombreValido && apellidoValido && telefonovalido && DNIValido && numeroColegiadoValido && emailvalido && contrasenaValida) {
 
+		document.getElementById("formularioTrabajador").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
+
+/**
+ * Envia los datos del formulario registro Paciente al controlador.
+ */
+function addPaciente(){
+	if (nombreValido && apellidoValido && telefonovalido && DNIValido  && emailvalido && contrasenaValida) {
+
+		document.getElementById("formularioPaciente").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
+
+/**
+ * Envia los datos del formulario Paso_3 al controlador.
+ */
 function validarAddPorcentaje(){
 	if (porcentajeValido) {
 
@@ -82,7 +111,6 @@ function validarNombre()
 	}
 }
 
-
 /**
  * Validar campo apellido Formulario
  * no admite números solo Letras y Espacios
@@ -113,7 +141,6 @@ function validarApellido()
 		document.getElementById("errorSurname").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
 	}
 }
-
 
 /**
  * Comprueba Campos vacios y digitos validos de telefonos
@@ -156,6 +183,7 @@ function validarDNI() {
 
 	if(expresionregulardni.test(dni))
 	{
+
 		//Se separan los números de la letra
 		var letraDNI = dni.substring(8, 9).toUpperCase();
 		var numDNI = parseInt(dni.substring(0, 8));
@@ -170,11 +198,7 @@ function validarDNI() {
 			document.getElementById("DNI").focus();
 			document.getElementById("errorDNI").innerHTML =  "Letra incorrecta,por favor,inténtelo de nuevo";
 		} else {
-			document.getElementById("DNI").style.backgroundColor="ddffb0";
-			DNIValido=true;
-			document.getElementById("errorDNI").innerHTML = " ";
-
-
+			compruebaDNI(dni);
 		}
 	}
 	else
@@ -196,14 +220,26 @@ function validarNumColegiado()
 	numColegiado=document.getElementById("colegiado").value;
 	if(numColegiado!=="")
 	{
-		document.getElementById("colegiado").style.backgroundColor="ddffb0";
-		numeroColegiado=true;
-		document.getElementById("errorColegiado").innerHTML = " ";
+		//Solo admite numeros
+		var numerosColegiado= new RegExp("^[0-9,$]*$");
+		if (numerosColegiado.test(numColegiado)) {
+
+			document.getElementById("colegiado").style.backgroundColor="ddffb0";
+			numeroColegiadoValido=true;
+			document.getElementById("errorColegiado").innerHTML = " ";
+
+		} else {
+			document.getElementById("colegiado").style.backgroundColor="ffb0b0";
+			document.getElementById("colegiado").focus();
+			numeroColegiadoValido=false;
+			document.getElementById("errorColegiado").innerHTML = "Este campo solo admite números,por favor,inténtelo de nuevo";
+
+		}
 
 	}else{
 		document.getElementById("colegiado").style.backgroundColor="ffb0b0";
 		document.getElementById("colegiado").focus();
-		numeroColegiado=true;
+		numeroColegiadoValido=false;
 		document.getElementById("errorColegiado").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
 	}
 }
@@ -215,19 +251,19 @@ function validarCorreo()
 {
 
 	var correo = document.getElementById("mail").value;
+
 	expresionregularcorreoelectronico = new RegExp(/^[^@]+@[^@]+\.[A-Za-z]{2,}$/);
-	if (expresionregularcorreoelectronico.test(correo)) {
-		document.getElementById("mail").style.backgroundColor = "ddffb0";
-		emailvalido=true;
-		document.getElementById("errorMail").innerHTML = " ";
+	if (expresionregularcorreoelectronico.test(correo))
+	 {
+		 compruebaEmail(correo);
 
-
-	} else {
+	 }else {
 		document.getElementById("mail").style.backgroundColor = "ffb0b0";
 		emailvalido=false;
 		document.getElementById("mail").focus();
 		document.getElementById("errorMail").innerHTML = "El correo introducido no es válido,inténtelo de nuevo. ";
-	}
+			}
+
 }
 
 /**
@@ -284,6 +320,65 @@ function validarPorcentaje()
 		porcentajeValido=false;
 		document.getElementById("errorPorcentae").innerHTML = " IVA  campo vacío";
 	}
+}
+
+/**
+ * LLama al controlador comprobarDNI() enviado el correo introducido
+ * obtiene 0 -> DNI disponible 1-> DNI ya registrado
+ * @param DNI
+ */
+function compruebaDNI(DNI){
+	$.ajax({
+		url: 'comprobarDNI',//ruta del archivo donte estara la consulta a la bd
+		type: 'POST',
+		cache: false,
+		data: "DNI=" + DNI,
+		success: function (resultado) {
+
+			if(resultado==0){
+				document.getElementById("DNI").style.backgroundColor="ddffb0";
+				DNIValido=true;
+				document.getElementById("errorDNI").innerHTML = " ";
+			}else{
+				document.getElementById("DNI").style.backgroundColor =  "ffb0b0";
+				DNIValido=false;
+				document.getElementById("DNI").focus();
+				document.getElementById("errorDNI").innerHTML = "Este DNI ya está registado!Por favor,introduce otro DNI. ";
+			}
+
+		}
+	});
+
+
+}
+
+/**
+ * LLama al controlador comprobarCorreo() enviado el correo introducido
+ * obtiene 0 -> correo disponible 1-> correo ya registrado
+ * @param correo
+ */
+function compruebaEmail(correo)
+{
+	$.ajax({
+		url: 'comprobarMail',//ruta del archivo donte estara la consulta a la bd
+		type: 'POST',
+		cache: false,
+		data: "mail=" + correo,
+		success: function (resultado) {
+
+			if(resultado==0){
+				document.getElementById("mail").style.backgroundColor = "ddffb0";
+				emailvalido = true;
+				document.getElementById("errorMail").innerHTML = " ";
+			}else{
+				document.getElementById("mail").style.backgroundColor = "ffb0b0";
+				emailvalido=false;
+				document.getElementById("mail").focus();
+				document.getElementById("errorMail").innerHTML = "Este correo ya está registado!Por favor,introduce otro correo ";
+			}
+
+		}
+	});
 }
 
 

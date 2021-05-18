@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 1.1.1">
-      <change afterPath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" afterDir="false" />
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 1.1 Instalación Completa.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_home.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/models/m_instalacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_instalacion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_3.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/models/m_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_usuarios.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/validarForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/validarForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +81,8 @@
       <workItem from="1621184612537" duration="15349000" />
       <workItem from="1621241720842" duration="836000" />
       <workItem from="1621243975978" duration="7757000" />
-      <workItem from="1621265328715" duration="7073000" />
+      <workItem from="1621265328715" duration="7347000" />
+      <workItem from="1621328616776" duration="24065000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -107,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621194916303</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="version 1.1 Instalación Completa.">
+      <created>1621274077771</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1621274077771</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,26 +143,33 @@
     <MESSAGE value="version 1" />
     <MESSAGE value="version 1.1" />
     <MESSAGE value="version 1.1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.1.1" />
+    <MESSAGE value="version 1.1 Instalación Completa." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.1 Instalación Completa." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>123</line>
+          <line>154</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>214</line>
-          <option name="timeStamp" value="2" />
+          <line>84</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>53</line>
+          <line>364</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
+          <line>222</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php</url>
