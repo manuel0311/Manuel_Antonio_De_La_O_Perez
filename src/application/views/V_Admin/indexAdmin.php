@@ -1,17 +1,16 @@
 <php?
 
-echo'<!doctype html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-	<title>Panel Administrador</title>
-</head>
+echo'<?php
+echo'
 <body>
-	<h1> hola Admin</h1>
-
-</body>
-</html>';
+<div class="container p-4">
+	<div class="row">
+		
+		<div class="col-12">
+			<h1>Bienvenid@ a  Higea</h1>	
+		</div>
+		<div class="col-12">
+			<img src="'.base_url("assets/Media/img/indexAdmin.jpg").'"  class="img-fluid" alt="Dentistastas atendiendo una consulta">
+		</div>
+	</div>	
+</div>';

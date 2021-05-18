@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 1.1 Instalación Completa.">
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 2.0 Registros - Paciente -Empleado.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/controllers/c_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/models/m_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_usuarios.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/indexAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/indexAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/validarForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/validarForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/indexTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/indexTrabajador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/footer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +85,7 @@
       <workItem from="1621241720842" duration="836000" />
       <workItem from="1621243975978" duration="7757000" />
       <workItem from="1621265328715" duration="7347000" />
-      <workItem from="1621328616776" duration="24065000" />
+      <workItem from="1621328616776" duration="28263000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -112,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621274077771</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="version 2.0 Registros - Paciente -Empleado.">
+      <created>1621377120177</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1621377120177</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,37 +154,61 @@
     <MESSAGE value="version 1.1" />
     <MESSAGE value="version 1.1.1" />
     <MESSAGE value="version 1.1 Instalación Completa." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.1 Instalación Completa." />
+    <MESSAGE value="version 2.0 Registros - Paciente -Empleado." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 2.0 Registros - Paciente -Empleado." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>154</line>
+          <line>150</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>84</line>
+          <line>82</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>364</line>
+          <line>360</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>222</line>
+          <line>218</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php</url>
-          <line>14</line>
+          <line>27</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/application/views/Index.php</url>
+          <line>3</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/src/application/controllers/c_home.php</url>
+          <line>24</line>
+          <properties>
+            <option name="className" value="\C_Home" />
+            <option name="methodName" value="index" />
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/src/application/controllers/c_home.php</url>
+          <line>228</line>
+          <properties>
+            <option name="className" value="\C_Home" />
+            <option name="methodName" value="legal" />
+          </properties>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

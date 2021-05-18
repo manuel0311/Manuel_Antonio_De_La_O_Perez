@@ -1,7 +1,20 @@
 <?php
-echo'
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+echo '<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Panel Administrador Higea</title>
+    <meta charset="utf-8">
+    <!--Estilos -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="'.base_url("assets/css/estilo.css").'"/>
+</head>
+
+<!-- Menú-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="'.base_url("principal").'" "><img class="" src="'.base_url("assets/Media/img/logo-clinica.png").'"/></a>
+  <a class="navbar-brand" href="administrador" "><img class="" src="'.base_url("assets/Media/img/logo-clinica.png").'"/></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,7 +26,7 @@ echo'
           Usuarios
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Registrar Trabajador</a>
+          <a class="dropdown-item" href="registroEmpleado">Registrar Trabajador</a>
           <a class="dropdown-item" href="#">Consultar Trabajador</a>
           <a class="dropdown-item" href="#">Eliminar Trabajador</a>
           <div class="dropdown-divider"></div>

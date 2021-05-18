@@ -71,6 +71,8 @@ $route['envioDatosPaciente']='C_Users/envioDatosPaciente';
 $route['Instalacion']='C_Home/Instalacion';
 $route['paso_dos']='C_Home/CrearAdministrador';
 $route['completo']='C_Home/addIVA';
+$route['empleados']='C_Users/principalEmpleado';
+$route['administrador']='C_Users/principalAdministrador';
 $route['comprobarMail']='C_Users/comprobarCorreo';
 $route['comprobarDNI']='C_Users/comprobarDNI';
 
