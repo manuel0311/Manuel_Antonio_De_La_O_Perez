@@ -3,21 +3,23 @@ echo'
 <body>
 <div class="container p-4">
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 .col-lg-7">
-			<img src="'.base_url("assets/Media/img/indexTrabajador.jpg").'"  class="img-fluid" alt="Dentistastas atendiendo una consulta">
+		<div class="col-xs-12 col-sm-8 col-lg-7">
+			<img src="'.base_url("assets/Media/img/indexPaciente1.jpg").'"  class="img-fluid" alt="Dentistastas atendiendo una consulta">
 		</div>
-	
-
-		<div class="col-xs-12 col-sm-6 .col-lg-5">
-			<h1>Panel Trabajadores Higea</h1>
-			<p>Conoce su panel de empleado , consulte el manual de usuario para cualquier consulta.</p>
-			<li>Consulte sus datos.</li>
-			<li>Elabore presupuestos.</li>
-			<li>Añada Usuarios</li>
+		
+		
+		<div class="col-xs-12 col-sm-4 col-lg-5">
+			<h1>Panel Pacientes Higea</h1>
+			<h2>Creando Sonrisas</h2>
+			<li>Información.</li>
+			<li>Seguimientos tratamientos .</li>
+			<li>Consulta sus presupuestos</li>
 			<p>Higea Dental. Salud e Innovación</p>
 		</div>
+		
+
 		<div class="col-12 py-3">
-			<img src="'.base_url("assets/Media/img/indexTrabajador2.jpg").'"  class="img-fluid" alt="Listado de servicio de la clínica dental">
+			<img src="'.base_url("assets/Media/img/indexPaciente2.jpg").'"  class="img-fluid" alt="Listado de servicio de la clínica dental">
 		</div>
 	</div>	
 </div>

@@ -73,6 +73,7 @@ $route['paso_dos']='C_Home/CrearAdministrador';
 $route['completo']='C_Home/addIVA';
 $route['empleados']='C_Users/principalEmpleado';
 $route['administrador']='C_Users/principalAdministrador';
+$route['pacientes']='C_Users/principalPacientes';
 $route['comprobarMail']='C_Users/comprobarCorreo';
 $route['comprobarDNI']='C_Users/comprobarDNI';
 $route['login']='C_Sesiones/Login';

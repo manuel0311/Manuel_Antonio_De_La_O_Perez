@@ -151,6 +151,25 @@ class C_Users extends CI_Controller
 
 	/*Gestión Paciente*/
 
+	public function principalPacientes()
+	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+				//carga el menu
+				$this->load->view('V_Paciente/menuPaciente');
+				//Carga la vista index
+				$this->load->view('V_Paciente/indexPaciente');
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
 	/*Comprobaciones*/
 
 	/**

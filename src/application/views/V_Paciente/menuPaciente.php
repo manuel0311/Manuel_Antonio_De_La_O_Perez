@@ -1,5 +1,14 @@
 <?php
 echo'
+<html>
+
+<head>
+    <title>Panel Paciente Higea</title>
+    <meta charset="utf-8">
+    <!--Estilos -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="'.base_url("assets/css/estilo.css").'"/>
+</head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"><img class="" src="'.base_url("assets/Media/img/logo-clinica.png").'"/></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +53,7 @@ echo'
           <a class="dropdown-item" href="#">Consultar</a>
       </li>
        <li class="nav-item dropdown">
-        <a class="nav-link" href="#"  role="button"  aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link" href="logout"  role="button"  aria-haspopup="true" aria-expanded="false">
          	Cerrar Sesión
         </a>
       </li>
