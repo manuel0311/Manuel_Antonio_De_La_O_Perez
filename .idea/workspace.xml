@@ -1,36 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 2.1 Registros - Paciente -Empleado.">
-      <change afterPath="$PROJECT_DIR$/src/application/views/pruebaLogin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_home.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_home.php" afterDir="false" />
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 3 Login -Sesiones">
       <change beforePath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/models/m_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_usuarios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/indexAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/indexAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Principal/Nosotros.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Principal/Nosotros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Principal/contacto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Principal/contacto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Principal/servicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Principal/servicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/indexTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/indexTrabajador.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/legal/aviso_legal.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/legal/aviso_legal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/legal/cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/legal/cookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/legal/privacidad.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/legal/privacidad.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/menu/menu_sesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/menu/menu_sesion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/tooltips.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/validarForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/validarForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +83,7 @@
       <workItem from="1621412799557" duration="15266000" />
       <workItem from="1621458278720" duration="10331000" />
       <workItem from="1621498908865" duration="7067000" />
-      <workItem from="1621528945068" duration="9499000" />
+      <workItem from="1621528945068" duration="9809000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -155,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621381934078</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="version 3 Login -Sesiones">
+      <created>1621550810293</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1621550810293</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +168,8 @@
     <MESSAGE value="version 1.1 Instalación Completa." />
     <MESSAGE value="version 2.0 Registros - Paciente -Empleado." />
     <MESSAGE value="version 2.1 Registros - Paciente -Empleado." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 2.1 Registros - Paciente -Empleado." />
+    <MESSAGE value="version 3 Login -Sesiones" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 3 Login -Sesiones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

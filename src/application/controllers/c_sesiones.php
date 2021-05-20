@@ -83,7 +83,7 @@ class C_Sesiones extends CI_Controller
 
 			}else{
 				$mensaje=array("texto"=>"Correo o contraseña incorrecta.");
-				//carga la vista Login
+				 //carga la vista Login
 				$this->load->view('V_Admin/Login',$mensaje);
 			}
 
