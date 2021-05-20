@@ -49,7 +49,7 @@ echo '<!DOCTYPE html>
           <a class="dropdown-item" href="#">Modificar Datos</a>
           <a class="dropdown-item" href="#">Cambiar Contraseña</a>
       </li>
-        <a class="nav-link" href="#"  role="button"  aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link" href="logout"  role="button"  aria-haspopup="true" aria-expanded="false">
          	Cerrar Sesión
         </a>
       </li>

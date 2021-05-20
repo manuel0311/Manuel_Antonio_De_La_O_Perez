@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 2.0 Registros - Paciente -Empleado.">
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 2.1 Registros - Paciente -Empleado.">
+      <change afterPath="$PROJECT_DIR$/src/application/views/pruebaLogin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_home.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/controllers/c_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/models/m_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_usuarios.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/Index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/Login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/RegistroTrabajador.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/indexAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/indexAdmin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Principal/Nosotros.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Principal/Nosotros.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Principal/contacto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Principal/contacto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Principal/servicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Principal/servicio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/RegistroPaciente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/indexTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/indexTrabajador.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/legal/aviso_legal.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/legal/aviso_legal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/legal/cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/legal/cookies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/legal/privacidad.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/legal/privacidad.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/menu/menu_sesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/menu/menu_sesion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/tooltips.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/validarForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/validarForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +61,7 @@
       </branch-storage>
     </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -68,7 +88,9 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -85,7 +107,11 @@
       <workItem from="1621241720842" duration="836000" />
       <workItem from="1621243975978" duration="7757000" />
       <workItem from="1621265328715" duration="7347000" />
-      <workItem from="1621328616776" duration="28263000" />
+      <workItem from="1621328616776" duration="28351000" />
+      <workItem from="1621412799557" duration="15266000" />
+      <workItem from="1621458278720" duration="10331000" />
+      <workItem from="1621498908865" duration="7067000" />
+      <workItem from="1621528945068" duration="9499000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -122,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621377120177</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="version 2.1 Registros - Paciente -Empleado.">
+      <created>1621381934078</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1621381934078</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,62 +188,41 @@
     <MESSAGE value="version 1.1.1" />
     <MESSAGE value="version 1.1 Instalación Completa." />
     <MESSAGE value="version 2.0 Registros - Paciente -Empleado." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 2.0 Registros - Paciente -Empleado." />
+    <MESSAGE value="version 2.1 Registros - Paciente -Empleado." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 2.1 Registros - Paciente -Empleado." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>150</line>
+          <line>153</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>82</line>
+          <line>85</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>360</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>218</line>
-          <properties lambdaOrdinal="-1" />
+          <line>222</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php</url>
-          <line>27</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/application/views/Index.php</url>
-          <line>3</line>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/src/application/controllers/c_users.php</url>
+          <line>55</line>
+          <properties>
+            <option name="className" value="\C_Users" />
+            <option name="methodName" value="formularioEmpleado" />
+          </properties>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/src/application/controllers/c_home.php</url>
-          <line>24</line>
-          <properties>
-            <option name="className" value="\C_Home" />
-            <option name="methodName" value="index" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/src/application/controllers/c_home.php</url>
-          <line>228</line>
-          <properties>
-            <option name="className" value="\C_Home" />
-            <option name="methodName" value="legal" />
-          </properties>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,17 +1,5 @@
 <?php
 echo'
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <title>Contacto</title>
-    <meta charset="utf-8">
-    <!--Estilos -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="'.base_url("assets/css/estilo.css").'"/>
-</head>
-
-<body>
 
     <class="container-fluid">
 
@@ -57,7 +45,7 @@ echo'
         </header>
 
         <!-- LIST GROUP COMO TAB-PANEL -->
-        <section class="row justify-content-center">
+        <section class="row justify-content-center py-4">
             <div class="col-md-5">
                 <div class="list-group">
                     <a class="list-group-item list-group-item-action active" data-toggle="list" data-target="#cita">Pedir Cita</a>
@@ -115,14 +103,14 @@ echo'
             </div>
         </section>
         
-    
-    <!--Script -->
-	<script src="`'.base_url("application/JavaScript/tooltips.js").'"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+         <!--Script -->
+   
+        <!--Script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 	<script src="'.base_url("assets/js/Login.js").'"></script>
 </body>
 
-</html>
 ';
 ?>

@@ -15,6 +15,8 @@ class C_Users extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_usuarios', 'm_usuarios');
+		// Carga la libreria session
+		$this->load->library('session');
 
 
 	}
@@ -24,13 +26,27 @@ class C_Users extends CI_Controller
 	/**
 	 * LLama a las vistas del index Administrador
 	 */
-	public function principalAdministrador(){
-		/*Vista Menu Empleado*/
-		$this->load->view("V_Admin/menuAdmin");
-		/*Vista index Trabajador*/
-		$this->load->view("V_Admin/indexAdmin");
-		/*Vista footer*/
-		$this->load->view("footer");
+	public function principalAdministrador()
+	{
+		/**
+		 * Si existe la sesión comprueba que el usuario es de tipo Administrador (a) o EmpleadoAdministrador(ea)
+		 * en caso contrario redirige al usuario a la pantalla principal.
+		 */
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] = 'a' || $_SESSION["tipo"] = 'ea') {
+				//carga el menu
+				$this->load->view('V_Admin/menuAdmin');
+				//Carga la vista index
+				$this->load->view("V_Admin/indexAdmin");
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
 	}
 
 
@@ -39,12 +55,20 @@ class C_Users extends CI_Controller
 	 */
 	public function formularioEmpleado()
 	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] = 'a' || $_SESSION["tipo"] = 'ea') {
 		//Carga el menu Administrador
 		$this->load->view('V_Admin/menuAdmin');
 		//Carga Formulario Registro
 		$this->load->view('V_Admin/RegistroTrabajador');
 		//Carga Footer
 		$this->load->view("footer");
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
 	}
 
 	/**
@@ -64,15 +88,29 @@ class C_Users extends CI_Controller
 
 	/*Gestión Empleado*/
 	/**
-	 * LLama a las vistas del index Empleado
+	 * LLama a las vistas del index Administrador
 	 */
-	public function principalEmpleado(){
-		/*Vista Menu Empleado*/
-		$this->load->view("V_Trabajador/menuTrabajador");
-		/*Vista index Trabajador*/
-		$this->load->view("V_Trabajador/indexTrabajador");
-		/*Vista footer*/
-		$this->load->view("footer");
+	public function principalEmpleado()
+	{
+		/**
+		 * Si existe la sesión comprueba que el usuario es de tipo Empleado(e) o EmpleadoAdministrador(ea)
+		 * en caso contrario redirige al usuario a la pantalla principal.
+		 */
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'e' || $_SESSION["tipo"] == 'ea') {
+				//carga el menu
+				$this->load->view('V_Trabajador/menuTrabajador');
+				//Carga la vista index
+				$this->load->view('V_Trabajador/indexTrabajador');
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
 	}
 
 	/**
@@ -80,12 +118,20 @@ class C_Users extends CI_Controller
 	 */
 	public function formularioPaciente()
 	{
-		//Carga el menu Administrador
-		$this->load->view('V_Trabajador/menuTrabajador');
-		//Carga Formulario Registro
-		$this->load->view('V_Trabajador/RegistroPaciente');
-		//Carga Footer
-		$this->load->view("footer");
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] = 'e' || $_SESSION["tipo"] = 'ea') {
+				//Carga el menu Administrador
+				$this->load->view('V_Trabajador/menuTrabajador');
+				//Carga Formulario Registro
+				$this->load->view('V_Trabajador/RegistroPaciente');
+				//Carga Footer
+				$this->load->view("footer");
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
 	}
 
 	/**
@@ -135,6 +181,8 @@ class C_Users extends CI_Controller
 			echo json_encode(0);
 		}
 	}
+
+
 
 
 }

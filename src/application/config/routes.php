@@ -75,7 +75,10 @@ $route['empleados']='C_Users/principalEmpleado';
 $route['administrador']='C_Users/principalAdministrador';
 $route['comprobarMail']='C_Users/comprobarCorreo';
 $route['comprobarDNI']='C_Users/comprobarDNI';
-
+$route['login']='C_Sesiones/Login';
+$route['loginAdmin']='C_Sesiones/LoginAdmin';
+$route['logout']='C_Sesiones/cerrarSesion';
+$route['opciones']='C_Sesiones/opcionesPanel';
 
 
 

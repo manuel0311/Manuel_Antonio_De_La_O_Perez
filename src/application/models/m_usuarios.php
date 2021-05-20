@@ -165,5 +165,14 @@ class M_Usuarios extends CI_Model
 	  $this->ejecutarConsulta($comprobarMail);
 	  return $this->bd->affected_rows();
 	}
+
+	public function datosUsuario(){
+		$consulta = $this->db->query("Select idUsuario,email,contrasenia,restablecerContrasenia,tipo  from usuarios where email='".$_POST["mail"]."';");
+
+		 return $consulta->row_array();
+
+	}
 }
+
+
 

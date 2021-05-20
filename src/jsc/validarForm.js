@@ -50,8 +50,7 @@ function addEmpleado(){
 /**
  * Envia los datos del formulario registro Paciente al controlador.
  */
-function addPaciente()
-{
+function addPaciente(){
 	if (nombreValido && apellidoValido && telefonovalido && DNIValido  && emailvalido && contrasenaValida) {
 
 		document.getElementById("formularioPaciente").submit();
@@ -62,12 +61,10 @@ function addPaciente()
 	}
 }
 
-
 /**
  * Envia los datos del formulario Paso_3 al controlador.
  */
-function validarAddPorcentaje()
-{
+function validarAddPorcentaje(){
 	if (porcentajeValido) {
 
 		document.getElementById("formularioAdministrador").submit();
@@ -179,8 +176,7 @@ function validarTelefono()
  * calcula el número introducido para obtener su letra
  * se compara las letras
  */
-function validarDNI()
-{
+function validarDNI() {
 
 	dni = document.getElementById("DNI").value.toUpperCase();
 	expresionregulardni=new RegExp(/^[0-9]{8}[A-Z]{1}$/);
@@ -331,8 +327,7 @@ function validarPorcentaje()
  * obtiene 0 -> DNI disponible 1-> DNI ya registrado
  * @param DNI
  */
-function compruebaDNI(DNI)
-{
+function compruebaDNI(DNI){
 	$.ajax({
 		url: 'comprobarDNI',//ruta del archivo donte estara la consulta a la bd
 		type: 'POST',

@@ -14,7 +14,11 @@ class C_Home extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		// Carga la libreria session
+		$this->load->library('session');
+		//Carga Modelo Usuarios
 		$this->load->model("M_usuarios","M_usuarios");
+		//Carga Modelo Instalación
 		$this->load->model("M_Instalacion","m_instalacion");
 	}
 
@@ -27,6 +31,7 @@ class C_Home extends CI_Controller
 		/*Si la tabla Usuarios existe , llama a la vista Principal*/
 		if($this->m_instalacion->comprobarTabla() == 1){
 			if($this->m_instalacion->comprobarAdministrador()>0){
+
 				$this->Principal();
 			}
 
@@ -151,17 +156,40 @@ class C_Home extends CI_Controller
 	 */
 	public function loginAdmin()
 	{
-		$this->load->view('V_Admin/Login');
+		if(isset($_SESSION["tipo"])){
+			if($_SESSION["tipo"]=='a' || $_SESSION["tipo"]=='ea'){
+				redirect("administrador");
+			}else{
+				redirect("principal");
+			}
+
+		}else{
+			$this->load->view('V_Admin/Login');
+		}
+
 
 	}
 	//Métodos Páginas Aplicación
+
+
+	/*Menu Principal*/
+	public function menuPrincipal(){
+		if(isset($_SESSION["tipo"])){
+			//carga el menu con sesión inicidada
+			$this->load->view('menu/menu_sesion');
+		}else{
+			//carga el menu sin sesión inicidada
+			$this->load->view('menu/menu_sinsesion');
+
+		}
+	}
+
 	/**
 	 * Página principal (Index con BBDD instalada)
 	 */
 	public function Principal()
 	{
-		//carga el menu
-		$this->load->view('menu/menu_sinsesion');
+		$this->menuPrincipal();
 		//Carga Alerta Cookies
 		$this->load->view('Alert_Cookies');
 		//Carga la vista index
@@ -178,7 +206,7 @@ class C_Home extends CI_Controller
 	public function servicio()
 	{
 		//carga el menu
-		$this->load->view('menu/menu_sinsesion');
+		$this->menuPrincipal();
 		//Carga Alerta Cookies
 		$this->load->view('Alert_Cookies');
 		//Carga la vista Servicio
@@ -195,7 +223,7 @@ class C_Home extends CI_Controller
 	public function nosotros()
 	{
 		//carga el menu
-		$this->load->view('menu/menu_Sinsesion');
+		$this->menuPrincipal();
 		//Carga Alerta Cookies
 		$this->load->view('Alert_Cookies');
 		//Carga la vista Nosotros
@@ -212,7 +240,7 @@ class C_Home extends CI_Controller
 	public function contacto()
 	{
 		//carga el menu
-		$this->load->view('menu/menu_Sinsesion');
+		$this->menuPrincipal();
 		//Carga Alerta Cookies
 		$this->load->view('Alert_Cookies');
 		//Carga la vista Contacto
@@ -229,7 +257,7 @@ class C_Home extends CI_Controller
 	public function legal()
 	{
 		//carga el menu
-		$this->load->view('menu/menu_Sinsesion');
+		$this->menuPrincipal();
 		//Carga la vista Contacto
 		$this->load->view('legal/aviso_legal');
 	}
@@ -238,7 +266,7 @@ class C_Home extends CI_Controller
 	public function privacidad()
 	{
 		//carga el menu
-		$this->load->view('menu/menu_Sinsesion');
+		$this->menuPrincipal();
 		//Carga la vista Contacto
 		$this->load->view('legal/privacidad');
 	}
@@ -247,7 +275,7 @@ class C_Home extends CI_Controller
 	public function Pcookies()
 	{
 		//carga el menu
-		$this->load->view('menu/menu_Sinsesion');
+		$this->menuPrincipal();
 		//Carga la vista Contacto
 		$this->load->view('legal/cookies');
 	}
