@@ -26,7 +26,7 @@ class C_Sesiones extends CI_Controller
 	public function Login(){
 		if($this->m_usuarios->comprobarlMailexistente()>0){
 			$datos=$this->m_usuarios->datosUsuario();
-			if($_POST["mail"] == $datos["email"] && password_verify($_POST["psw"],$datos["contrasenia"]))
+			if(strtolower($_POST["mail"]) == strtolower($datos["email"]) && password_verify($_POST["psw"],$datos["contrasenia"]))
 			{
 				$datos=array(
 					"id"=>$datos["idUsuario"],
@@ -70,7 +70,7 @@ class C_Sesiones extends CI_Controller
 	public function LoginAdmin(){
 		if($this->m_usuarios->comprobarlMailexistente()>0){
 			$datos=$this->m_usuarios->datosUsuario();
-			if($_POST["mail"] == $datos["email"] && password_verify($_POST["psw"],$datos["contrasenia"]))
+			if(strtolower($_POST["mail"]) == strtolower($datos["email"])  && password_verify($_POST["psw"],$datos["contrasenia"]))
 			{
 				$datos=array(
 					"id"=>$datos["idUsuario"],

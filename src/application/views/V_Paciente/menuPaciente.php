@@ -22,8 +22,10 @@ echo'
           Datos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Consultar Datos</a>
+          <a class="dropdown-item" href="verDatos">Consultar Datos</a>
+          <a class="dropdown-item" href="#">Modificar Datos</a>
           <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+          <a class="dropdown-item" href="#">Modificar Email</a>
           <a class="dropdown-item" href="#">Eliminar cuenta</a>
       </li>
      <li class="nav-item dropdown">
@@ -36,15 +38,7 @@ echo'
           <a class="dropdown-item" href="#">Descargar Presupuesto</a>
           <a class="dropdown-item" href="#">Eliminar Presupuesto</a>
       </li>
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         	Datos Usuario
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Consultar Datos</a>
-          <a class="dropdown-item" href="#">Modificar Datos</a>
-          <a class="dropdown-item" href="#">Cambiar Contraseña</a>
-      </li>
+     
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          	Tratamientos

@@ -45,9 +45,10 @@ echo '<!DOCTYPE html>
          	Datos Usuario
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Consultar Datos</a>
+          <a class="dropdown-item" href="verDatos">Consultar Datos</a>
           <a class="dropdown-item" href="#">Modificar Datos</a>
-          <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+         <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+           <a class="dropdown-item" href="#">Cambiar Email</a>
       </li>
         <a class="nav-link" href="logout"  role="button"  aria-haspopup="true" aria-expanded="false">
          	Cerrar Sesión

@@ -23,6 +23,8 @@ class C_Users extends CI_Controller
 
 
 	/*Gestión Administrador*/
+
+
 	/**
 	 * LLama a las vistas del index Administrador
 	 */
@@ -33,7 +35,8 @@ class C_Users extends CI_Controller
 		 * en caso contrario redirige al usuario a la pantalla principal.
 		 */
 		if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] = 'a' || $_SESSION["tipo"] = 'ea') {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+				print_r($_SESSION);
 				//carga el menu
 				$this->load->view('V_Admin/menuAdmin');
 				//Carga la vista index
@@ -49,14 +52,59 @@ class C_Users extends CI_Controller
 		}
 	}
 
+	/**
+	 * Formulario Para Enviar y buscar Empleado
+	 */
+	public function buscarEmpleado(){
+		/*if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+				//carga el menu
+				$this->load->view('V_Admin/menuAdmin');
+				//Carga la vista index
+				$this->load->view("V_Admin/BuscarTrabajadores");
+				//Carga Footer
+				$this->load->view("footer");
 
+		/*	} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}*/
+	}
+
+
+
+	/*Muestra los datos del usuario que inicio sesión*/
+	public function mostrarDatos(){
+		if(isset($_SESSION['tipo'])){
+			$datos=$this->m_usuarios->obtenerDatosUsuario();
+
+			//carga el menu
+			$this->selecionarMenu();
+			//Carga la vista index
+			if($_SESSION['tipo']=='a'){
+				$this->load->view("V_Admin/verDatosAdmin",$datos);
+			}else if($_SESSION['tipo']=='e'){
+				$this->load->view("V_Trabajador/verDatoEmpleado",$datos);
+			}else if($_SESSION['tipo']=='p'){
+				$this->load->view("V_Paciente/verDatosPaciente",$datos);
+			}
+			//Carga Footer
+			$this->load->view("footer");
+		}else{
+			redirect("principal");
+		}
+
+	}
 	/**
 	 * Funcion validar registros del formulario Empleado
 	 */
 	public function formularioEmpleado()
 	{
 		if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] = 'a' || $_SESSION["tipo"] = 'ea') {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
 		//Carga el menu Administrador
 		$this->load->view('V_Admin/menuAdmin');
 		//Carga Formulario Registro
@@ -87,6 +135,7 @@ class C_Users extends CI_Controller
 	}
 
 	/*Gestión Empleado*/
+
 	/**
 	 * LLama a las vistas del index Administrador
 	 */
@@ -201,7 +250,20 @@ class C_Users extends CI_Controller
 		}
 	}
 
-
+	/**
+	 * Cambia el menu del usuario dependiendo del tipo de Usuario
+	 */
+   public function selecionarMenu()
+   {
+		if($_SESSION['tipo']=='a'){
+			$this->load->view('V_Admin/menuAdmin');
+		}else if($_SESSION['tipo']=='e')
+		{
+			$this->load->view('V_Trabajador/menuTrabajador');
+		}else {
+			$this->load->view('V_Paciente/menuPaciente');
+		}
+   }
 
 
 }

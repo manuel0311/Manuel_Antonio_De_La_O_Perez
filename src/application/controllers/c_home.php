@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class C_Home
+ */
 class C_Home extends CI_Controller
 {
 	/**
@@ -121,6 +124,9 @@ class C_Home extends CI_Controller
 	}
 
 	/*Muestra Formulario Iva*/
+	/**
+	 *
+	 */
 	public function formularioIva(){
 		$this->load->view("V_Instalacion/Paso_3");
 	}

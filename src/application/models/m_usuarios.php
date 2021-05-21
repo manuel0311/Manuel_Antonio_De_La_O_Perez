@@ -79,7 +79,6 @@ class M_Usuarios extends CI_Model
 
 	}
 
-
 	/**
 	 * Ejecutar consultas SQL
 	 * @param $codigo
@@ -91,7 +90,6 @@ class M_Usuarios extends CI_Model
 		$consulta->free_result();
 		return $resultado;
 	}
-
 
 	/**
 	 * Registra los datos a la tabla Usuario
@@ -148,7 +146,7 @@ class M_Usuarios extends CI_Model
 	 */
 	public function comprobarDNIexistente()
 	{
-		$comprobarDNI="Select DNI from usuarios where DNI='".$_POST["DNI"]."';";
+		$comprobarDNI="SELECT DNI FROM usuarios WHERE DNI='".$_POST["DNI"]."';";
 		$this->ejecutarConsulta($comprobarDNI);
 		return $this->bd->affected_rows();
 
@@ -161,17 +159,54 @@ class M_Usuarios extends CI_Model
 	 */
 	public function comprobarlMailexistente()
 	{
-	  $comprobarMail="Select email from usuarios where email='".$_POST["mail"]."';";
+	  $comprobarMail="SELECT email FROM usuarios WHERE email='".$_POST["mail"]."';";
 	  $this->ejecutarConsulta($comprobarMail);
 	  return $this->bd->affected_rows();
 	}
 
+	/**
+	 * Realiza la consulta y obtiene las tablas del usuario
+	 * @return mixed
+	 * retorno los datos que se almacenan en la sesión
+	 *
+	 */
 	public function datosUsuario(){
-		$consulta = $this->db->query("Select idUsuario,email,contrasenia,restablecerContrasenia,tipo  from usuarios where email='".$_POST["mail"]."';");
+		$consulta = $this->db->query("SELECT idUsuario,email,contrasenia,restablecerContrasenia,tipo  FROM usuarios WHERE email='".$_POST["mail"]."';");
 
 		 return $consulta->row_array();
 
 	}
+
+	/**
+	 * Obtiene los datos del Usuario
+	 * @return mixed
+	 */
+	public function obtenerDatosUsuario(){
+
+			if($_SESSION['tipo']!='e' && $_SESSION['tipo']!='ea'){
+
+				$consulta = $this->db->query ("SELECT nombre,apellidos,telefono,email,DNI FROM usuarios WHERE idUsuario =".$_SESSION['id'].";");
+				return $consulta->row_array();
+			}else{
+				/*Consulta los datos del Usuario*/
+				$consulta = $this->db->query ("SELECT nombre,apellidos,telefono,email,DNI FROM usuarios WHERE idUsuario =".$_SESSION['id'].";");
+				/*Almacena los datos en un array*/
+				$datosUsuario=$consulta->row_array();
+
+				$ObtenerNumColegiado= $this->db->query("SELECT numColegiado FROM empleado WHERE idUsuario_Empleado =".$_SESSION['id'].";");
+
+				$datosEmpleado=$ObtenerNumColegiado->row_array();
+				return $datosCompleto=array(
+					'nombre'=>$datosUsuario['nombre'],
+					'apellidos'=>$datosUsuario['apellidos'],
+					'telefono'=>$datosUsuario['telefono'],
+					'email'=>$datosUsuario['email'],
+					'DNI'=>$datosUsuario['DNI'],
+					'numColegiado'=>$datosEmpleado['numColegiado']
+				);
+			}
+		}
+
 }
 
 
