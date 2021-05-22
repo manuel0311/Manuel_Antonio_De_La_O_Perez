@@ -54,34 +54,66 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'C_Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+/*Página Principal*/
 $route['Higea_Admin']='C_Home/loginAdmin';
-$route['Paso_tres']='C_Home/addDatosBBDD';
-$route['principal'] ='C_Home/Principal';
-$route['tratamientos']='C_Home/servicio';
-$route['Higea_nosotros']='C_Home/nosotros';
-$route['contacto']='C_Home/contacto';
-$route['Aviso_Legal']='C_Home/legal';
-$route['Politica_Privacidad']='C_Home/privacidad';
-$route['Politica_Cookies']='C_Home/Pcookies';
-$route['CI_Admin']='C_Config/instalar';
-$route['registroEmpleado']='C_Users/formularioEmpleado';
-$route['registroPaciente']='C_Users/formularioPaciente';
-$route['envioDatosTrabajador']='C_Users/envioDatosTrabajador';
-$route['envioDatosPaciente']='C_Users/envioDatosPaciente';
+/*Página instalación aplicación Web*/
 $route['Instalacion']='C_Home/Instalacion';
+/*Asigna Administrador*/
 $route['paso_dos']='C_Home/CrearAdministrador';
+/*Muestra formulario IVA*/
+$route['Paso_tres']='C_Home/addDatosBBDD';
+/*Finaliza la instalación*/
 $route['completo']='C_Home/addIVA';
-$route['empleados']='C_Users/principalEmpleado';
-$route['administrador']='C_Users/principalAdministrador';
-$route['pacientes']='C_Users/principalPacientes';
-$route['comprobarMail']='C_Users/comprobarCorreo';
-$route['comprobarDNI']='C_Users/comprobarDNI';
-$route['buscarEmpleado']='C_Users/buscarEmpleado';
-$route['verDatos']='C_Users/mostrarDatos';
+/*Página cambiar el IVA*/
+$route['modificarIVA']='C_Users/modificarIVA';
+/*Página principal tras la  instalación*/
+$route['principal'] ='C_Home/Principal';
+/*Pagina tratamientos de la clínica*/
+$route['tratamientos']='C_Home/servicio';
+/*Muestra la página Higra Dental*/
+$route['Higea_nosotros']='C_Home/nosotros';
+/*Página contacto clínica*/
+$route['contacto']='C_Home/contacto';
+/*Página Aviso legal*/
+$route['Aviso_Legal']='C_Home/legal';
+/*Página politica privacidad*/
+$route['Politica_Privacidad']='C_Home/privacidad';
+/*Página Politica de Cookies*/
+$route['Politica_Cookies']='C_Home/Pcookies';
+/*Aceso usuarios*/
 $route['login']='C_Sesiones/Login';
+/*Página Panel Administración*/
 $route['loginAdmin']='C_Sesiones/LoginAdmin';
+/*Finaliza la sesión*/
 $route['logout']='C_Sesiones/cerrarSesion';
+/*Asigna el menu correspondiente al tipo de Usuario*/
 $route['opciones']='C_Sesiones/opcionesPanel';
+/*Registro empleados*/
+$route['registroEmpleado']='C_Users/formularioEmpleado';
+/*Registra los datos Empleado*/
+$route['envioDatosTrabajador']='C_Users/envioDatosTrabajador';
+/*Registro Pacientes*/
+$route['registroPaciente']='C_Users/formularioPaciente';
+/*Registra los datos Paciente*/
+$route['envioDatosPaciente']='C_Users/envioDatosPaciente';
+/*Panel Principal Usuarios Empleados*/
+$route['empleados']='C_Users/principalEmpleado';
+/*Panel Principal Usuarios Administrado*/
+$route['administrador']='C_Users/principalAdministrador';
+/*Panel principal Usuarios Paciente*/
+$route['pacientes']='C_Users/principalPacientes';
+/*Comprueba el email introducido está en la BBDD*/
+$route['comprobarMail']='C_Users/comprobarCorreo';
+/*Compreba el DNI introducido está en la BBDD*/
+$route['comprobarDNI']='C_Users/comprobarDNI';
+/*Panel busqueda Empleado*/
+$route['buscarEmpleado']='C_Users/buscarEmpleado';
+/*Muestra los datos del Usuario*/
+$route['verDatos']='C_Users/mostrarDatos';
+/*Actualizar  Datos*/
+$route['actualizar']='C_Users/actualizarDatosUsuario';
+
+
 
 
 

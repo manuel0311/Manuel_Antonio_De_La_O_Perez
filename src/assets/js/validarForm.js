@@ -15,7 +15,7 @@ var contrasenaValida=false;
 var IVAValido=false;
 var numeroColegiadoValido=false;
 var porcentajeValido=false;
-
+var actualizar=0;
 
 /**
  * Valida los campos registro formulario Administrador instalación
@@ -79,6 +79,37 @@ function validarAddPorcentaje()
 }
 
 /**
+ * Envia el nuevo porcentaje
+ */
+function nuevoAddPorcentaje()
+{
+	if (porcentajeValido) {
+
+		document.getElementById("nuevoIva").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
+
+/**
+ * Actualiza los datos del usuario si los datos introducidos son correcto
+ */
+
+function actualizarDatosUsuario()
+{
+
+	if (actualizar>0) {
+
+		document.getElementById("updateUser").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
+/**
  * Validar campo nombre Formulario
  * no admite números solo letras y espacios
  */
@@ -90,11 +121,12 @@ function validarNombre()
 	if(nombre!=="")
 	{
 		//Solo letras y espacios
-		var letras= new RegExp("^[a-zA-Z ]+$");
+		var letras= new RegExp("^[a-zA-ZÁÉÍÓÚáéíóúñÑ ]*$");
 		if (letras.test(nombre)) {
 
 			document.getElementById("name").style.backgroundColor="ddffb0";
 			nombreValido=true;
+			actualizar=1;
 			document.getElementById("errorName").innerHTML = " ";
 
 		} else {
@@ -124,11 +156,12 @@ function validarApellido()
 	if(apellidos!=="")
 	{
 		//Solo letras y espacios
-		var letras = new RegExp("^[a-zA-Z ]+$");
+		var letras = new RegExp("^[a-zA-ZÁÉÍÓÚáéíóúñÑ ]*$");
 		if (letras.test(apellidos)) {
 
 			document.getElementById("surname").style.backgroundColor = "ddffb0";
 			apellidoValido=true;
+			actualizar=1;
 			document.getElementById("errorSurname").innerHTML = " ";
 		} else {
 			document.getElementById("surname").style.backgroundColor = "ffb0b0";
@@ -159,6 +192,7 @@ function validarTelefono()
 	{
 		document.getElementById("phone").style.backgroundColor="ddffb0";
 		telefonovalido=true;
+		actualizar=1;
 		document.getElementById("errorTlf").innerHTML = " ";
 
 	}
@@ -374,6 +408,7 @@ function compruebaEmail(correo)
 			if(resultado==0){
 				document.getElementById("mail").style.backgroundColor = "ddffb0";
 				emailvalido = true;
+				actualizar=1;
 				document.getElementById("errorMail").innerHTML = " ";
 			}else{
 				document.getElementById("mail").style.backgroundColor = "ffb0b0";

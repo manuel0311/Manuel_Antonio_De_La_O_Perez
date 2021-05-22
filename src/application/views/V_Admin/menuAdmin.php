@@ -48,7 +48,7 @@ echo '<!DOCTYPE html>
           <a class="dropdown-item" href="#">Consultar Prueba</a>
           <a class="dropdown-item" href="#">Eliminar Prueba</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Modificar IVA</a>
+          <a class="dropdown-item" href="modificarIVA">Modificar IVA</a>
         </div>
       </li>
        <li class="nav-item dropdown">

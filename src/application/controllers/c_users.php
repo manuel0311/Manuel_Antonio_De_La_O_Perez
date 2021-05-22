@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class C_Users
+ */
 class C_Users extends CI_Controller
 {
 	/**
@@ -36,7 +39,6 @@ class C_Users extends CI_Controller
 		 */
 		if (isset($_SESSION["tipo"])) {
 			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
-				print_r($_SESSION);
 				//carga el menu
 				$this->load->view('V_Admin/menuAdmin');
 				//Carga la vista index
@@ -74,10 +76,60 @@ class C_Users extends CI_Controller
 	}*/
 	}
 
+	/**
+	 * LLama a las vistas que forman la página Modificar IVA
+	 */
+	public function modificarIVA(){
+		/**
+		 * Si existe la sesión comprueba que el usuario es de tipo Administrador (a) o EmpleadoAdministrador(ea)
+		 * en caso contrario redirige al usuario a la pantalla principal.
+		 */
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+				if(isset($_POST['porcentaje'])){
+
+					$this->addNuevoIVA();
+				}else{
+
+					//carga el menu
+					$this->load->view('V_Admin/menuAdmin');
+					//Carga la vista index
+					$this->load->view("V_Admin/ModificarIVA");
+					//Carga Footer
+					$this->load->view("footer");
+				}
 
 
-	/*Muestra los datos del usuario que inicio sesión*/
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/*Añade el nuevo IVA a la BBDD*/
+	public function addNuevoIVA(){
+
+		if($this->m_usuarios->actualizarIVA()>0)
+		{
+			$mensaje=array('texto'=>"Cambio realizado con exito");
+			//carga el menu
+			$this->load->view('V_Admin/menuAdmin');
+			//Carga la vista index
+			$this->load->view("V_Admin/ModificarIVA",$mensaje);
+			//Carga Footer
+			$this->load->view("footer");
+
+		}
+
+	}
+
+	/**
+	 * Muestra los datos del usuario que inicio sesión
+	 */
 	public function mostrarDatos(){
+
 		if(isset($_SESSION['tipo'])){
 			$datos=$this->m_usuarios->obtenerDatosUsuario();
 
@@ -98,6 +150,23 @@ class C_Users extends CI_Controller
 		}
 
 	}
+
+	/**
+	 * Actualiza los datos enviados
+	 */
+	public function actualizarDatosUsuario()
+	{
+		if(isset($_SESSION['tipo']))
+		{
+			if ($this->m_usuarios->actualiarDatos() > 0) {
+				$this->mostrarDatos();
+			} else {
+				redirect("principal");
+			}
+		}
+	}
+
+
 	/**
 	 * Funcion validar registros del formulario Empleado
 	 */
@@ -200,6 +269,9 @@ class C_Users extends CI_Controller
 
 	/*Gestión Paciente*/
 
+	/**
+	 * LLlama a las vistas que forman la página principal de los pacientes
+	 */
 	public function principalPacientes()
 	{
 		if (isset($_SESSION["tipo"])) {

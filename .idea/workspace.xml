@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 3.1.1 Login -Sesiones">
-      <change afterPath="$PROJECT_DIR$/src/application/views/V_Admin/BuscarTrabajadores.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/views/V_Admin/verDatosAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/verDatosPaciente.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatoEmpleado.php" afterDir="false" />
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 4 Instalación,Registros,Login,Modificaciones">
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Admin/ModificarIVA.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_home.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/controllers/c_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_users.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/models/m_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_usuarios.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/verDatosAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/verDatosAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Paciente/verDatosPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/verDatosPaciente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatoEmpleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatoEmpleado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/pruebaLogin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/validarForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/validarForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,21 +66,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/application/views/V_Paciente" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/application/views/V_Admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Admin" />
       <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Paciente" />
       <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Trabajador" />
-      <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Admin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -104,7 +102,7 @@
       <workItem from="1621458278720" duration="10331000" />
       <workItem from="1621498908865" duration="7067000" />
       <workItem from="1621528945068" duration="12528000" />
-      <workItem from="1621589437755" duration="15943000" />
+      <workItem from="1621589437755" duration="31097000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -169,7 +167,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621554580677</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="version 4 Instalación,Registros,Login,Modificaciones">
+      <created>1621624731397</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621624731397</updated>
+    </task>
+    <task id="LOCAL-00011" summary="version 4 Instalación,Registros,Login,Modificaciones">
+      <created>1621624742798</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1621624742798</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,24 +218,20 @@
     <MESSAGE value="version 3 Login -Sesiones" />
     <MESSAGE value="version 3.1 Login -Sesiones" />
     <MESSAGE value="version 3.1.1 Login -Sesiones" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 3.1.1 Login -Sesiones" />
+    <MESSAGE value="version 4 Instalación,Registros,Login,Modificaciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 4 Instalación,Registros,Login,Modificaciones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>153</line>
+          <line>186</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>85</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
-          <line>222</line>
+          <line>256</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

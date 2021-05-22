@@ -207,6 +207,37 @@ class M_Usuarios extends CI_Model
 			}
 		}
 
+	/**
+	 * Obtiene el porcentaje del formulario
+	 * realiza la consulta
+	 * @return mixed devuelve 1 si se realizo correctamente
+	 */
+	public function actualizarIVA(){
+		$iva=array(
+			'PorcentajeIVA'=>$_POST['porcentaje']
+		);
+		$this->db->update('iva', $iva);
+		return $this->db->affected_rows();
+
+	}
+
+	/**
+	 * Actualiza los datos introducido por el usuario.
+	 * @return mixed
+	 */
+	public function actualiarDatos(){
+		$datos=array
+		(
+			'nombre'=>$_POST['name'],
+			'apellidos'=>$_POST['surname'],
+			'email'=>$_POST['mail'],
+			'telefono'=>$_POST['phone']
+		);
+		$this->db->where('idUsuario', $_SESSION['id']);
+		$this->db->update('usuarios',$datos);
+
+		return $this->db->affected_rows();
+	}
 }
 
 
