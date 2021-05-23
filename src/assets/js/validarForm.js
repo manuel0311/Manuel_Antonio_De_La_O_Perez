@@ -122,8 +122,8 @@ function addNuevoServicio()
 
 	}else{
 		tipoServicio=true;
-		if (validarNombre || validarTexto || validarPrecio || tipoServicio) {
-			alert("añadido");
+
+		if (nombreValido && textoValido && precioValido && tipoServicio) {
 			document.getElementById("addServicio").submit();
 
 		} else {
@@ -347,6 +347,7 @@ function validarTexto()
 	if(texto!=="")
 	{
 			textoValido=true;
+			document.getElementById("errorText").innerHTML = " ";
 			actualizar=1;
 
 	}else{

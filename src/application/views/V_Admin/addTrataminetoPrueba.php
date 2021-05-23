@@ -1,7 +1,4 @@
 <?php
-if(isset($_POST)){
-	print_r($_POST);
-}
 echo'
 <div class="container p-4">
 <h3>Añadir Tratamiento - Prueba</h3>
@@ -14,7 +11,7 @@ echo'
 ';
 
 if(isset($texto)){
-	echo'<div class="alert alert-secondary" role="alert">
+	echo'<div class="alert alert-success" role="alert">
 			'.$texto.'
 		</div>';
 }

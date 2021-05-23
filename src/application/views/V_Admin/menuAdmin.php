@@ -41,7 +41,7 @@ echo '<!DOCTYPE html>
           Servicios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Registrar Tratamiento/Prueba</a>
+          <a class="dropdown-item" href="nuevoServicio">Registrar Tratamiento/Prueba</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Consultar Tratamiento</a>
           <a class="dropdown-item" href="#">Eliminar Tratamiento</a>

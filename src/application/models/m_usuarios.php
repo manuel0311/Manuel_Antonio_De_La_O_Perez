@@ -123,15 +123,26 @@ class M_Usuarios extends CI_Model
 	 * @param $datos
 	 * @return mixed
 	 */
-	public function insertarServicios($datos){
+	public function insertarServicios(){
 
-		if(isset($_POST["tratamientos"]))
+		if($_POST["tipoServicio"]=='tratamientos')
 		{
+			$datos=array(
+				'nombreTratamiento'=>$_POST['name'],
+				'descripcionTratamiento'=>$_POST['texto'],
+				'precio'=>$_POST['price']
+			);
 			$this->bd->insert('tratamientos',$datos);
 			$filasAfectadas=$this->bd->affected_rows();
 			return $filasAfectadas;
 		}else
 			{
+				$datos=array(
+					'nombrePrueba'=>$_POST['name'],
+					'descripcionPrueba'=>$_POST['texto'],
+					'precio'=>$_POST['price']
+				);
+
 				$this->bd->insert('pruebas',$datos);
 				$filasAfectadas=$this->bd->affected_rows();
 				return $filasAfectadas;

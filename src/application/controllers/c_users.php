@@ -79,13 +79,14 @@ class C_Users extends CI_Controller
 	/**
 	 *
 	 */
-	public function addTratamientoPrueba(){
-		/*if (isset($_SESSION["tipo"])) {
+	public function addTratamientoPrueba()
+	{
+		if (isset($_SESSION["tipo"])) {
 			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
-				if(isset($_POST['porcentaje'])){
+				if (isset($_POST['tipoServicio'])) {
 
-					$this->addNuevoIVA();
-				}else{*/
+					$this->addServicios();
+				} else {
 
 					//carga el menu
 					$this->load->view('V_Admin/menuAdmin');
@@ -93,13 +94,14 @@ class C_Users extends CI_Controller
 					$this->load->view("V_Admin/addTrataminetoPrueba");
 					//Carga Footer
 					$this->load->view("footer");
-				/*}
+				}
 
 
 			} else {
 				redirect("principal");
-			}*/
+			}
 
+		}
 	}
 	/**
 	 * LLama a las vistas que forman la página Modificar IVA
@@ -150,6 +152,22 @@ class C_Users extends CI_Controller
 
 	}
 
+		/*Añade el servicio a la BBDD*/
+		public function addServicios(){
+
+			if($this->m_usuarios->insertarServicios()>0)
+			{
+				$mensaje=array('texto'=>"Cambio realizado con exito");
+				//carga el menu
+				$this->load->view('V_Admin/menuAdmin');
+				//Carga la vista index
+				$this->load->view("V_Admin/addTrataminetoPrueba",$mensaje);
+				//Carga Footer
+				$this->load->view("footer");
+
+			}
+
+		}
 	/**
 	 * Muestra los datos del usuario que inicio sesión
 	 */
