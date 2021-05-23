@@ -151,7 +151,8 @@ class M_Instalacion extends CI_Model
 				'unsigned' => TRUE
 			),
 			'precioTotal' => array(
-				'type' => 'FLOAT(7,2)'
+				'type' => 'DECIMAL(5,2)',
+				'unsigned' => TRUE
 			),
 			'IVA' => array(
 				'type' => 'TINYINT'
@@ -198,7 +199,8 @@ class M_Instalacion extends CI_Model
 
 			),
 				'precio' => array(
-				'type' => 'FLOAT(6,2)',
+					'type' => 'DECIMAL(5,2)',
+					'unsigned' => TRUE
 
 			),
 
@@ -224,7 +226,8 @@ class M_Instalacion extends CI_Model
 
 			),
 				'precioExtra' => array(
-				'type' => 'FLOAT(6,2)',
+					'type' => 'DECIMAL(5,2)',
+					'unsigned' => TRUE
 			),
 
 		);
@@ -319,7 +322,8 @@ class M_Instalacion extends CI_Model
 
 			),
 				'precio' => array(
-				'type' => 'FLOAT(6,2)'
+					'type' => 'DECIMAL(5,2)',
+					'unsigned' => TRUE
 
 			)
 
@@ -346,7 +350,8 @@ class M_Instalacion extends CI_Model
 				'unsigned' => TRUE
 			),
 				'precioExtra' => array(
-				'type' => 'FLOAT(6,2)'
+					'type' => 'DECIMAL(5,2)',
+					'unsigned' => TRUE
 
 			)
 

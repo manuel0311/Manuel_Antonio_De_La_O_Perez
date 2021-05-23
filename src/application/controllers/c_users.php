@@ -77,6 +77,31 @@ class C_Users extends CI_Controller
 	}
 
 	/**
+	 *
+	 */
+	public function addTratamientoPrueba(){
+		/*if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+				if(isset($_POST['porcentaje'])){
+
+					$this->addNuevoIVA();
+				}else{*/
+
+					//carga el menu
+					$this->load->view('V_Admin/menuAdmin');
+					//Carga la vista index
+					$this->load->view("V_Admin/addTrataminetoPrueba");
+					//Carga Footer
+					$this->load->view("footer");
+				/*}
+
+
+			} else {
+				redirect("principal");
+			}*/
+
+	}
+	/**
 	 * LLama a las vistas que forman la página Modificar IVA
 	 */
 	public function modificarIVA(){
@@ -237,7 +262,7 @@ class C_Users extends CI_Controller
 	public function formularioPaciente()
 	{
 		if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] = 'e' || $_SESSION["tipo"] = 'ea') {
+			if ($_SESSION["tipo"] =='e' || $_SESSION["tipo"] == 'ea') {
 				//Carga el menu Administrador
 				$this->load->view('V_Trabajador/menuTrabajador');
 				//Carga Formulario Registro

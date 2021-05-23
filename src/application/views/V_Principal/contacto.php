@@ -71,6 +71,10 @@ echo'
                             <div class="form-group">
                                 <label>Tu problema:</label>
                                 <textarea class="form-control" rows="6"></textarea>
+                                <div class="form-group">
+                              <input type="checkbox" required>Trataremos su información personal con total confidencialidad y conforme a lo establecido en nuestro <a href="Aviso_Legal">Aviso Legal</a> y  nuestra <a href="Politica_Privacidad">política de privacidad</a>.
+							  </input>
+                            </div>
                             </div>
                             <div class="text-right">
                                 <input type="submit" class="btn btn-primary" value="Enviar">
@@ -91,6 +95,10 @@ echo'
                             <div class="form-group">
                                 <label>Listado de productos o equipamientos :</label>
                                 <textarea class="form-control" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <input type="checkbox" required>Trataremos su información personal con total confidencialidad y conforme a lo establecido en nuestro <a href="Aviso_Legal">Aviso Legal</a> y  nuestra <a href="Politica_Privacidad">política de privacidad</a>.
+							  </input>
                             </div>
                             <div class="text-right">
                                 <input type="submit" class="btn btn-primary" value="Enviar">

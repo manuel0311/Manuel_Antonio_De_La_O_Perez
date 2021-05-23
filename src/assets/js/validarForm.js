@@ -15,6 +15,9 @@ var contrasenaValida=false;
 var IVAValido=false;
 var numeroColegiadoValido=false;
 var porcentajeValido=false;
+var textoValido=false;
+var precioValido=false;
+var tipoServicio=false;
 var actualizar=0;
 
 /**
@@ -62,7 +65,6 @@ function addPaciente()
 	}
 }
 
-
 /**
  * Envia los datos del formulario Paso_3 al controlador.
  */
@@ -96,7 +98,6 @@ function nuevoAddPorcentaje()
 /**
  * Actualiza los datos del usuario si los datos introducidos son correcto
  */
-
 function actualizarDatosUsuario()
 {
 
@@ -109,6 +110,31 @@ function actualizarDatosUsuario()
 		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
 	}
 }
+
+/**
+ * valida los datos para añadir un servicio a la bbdd
+ * Tipo Servicio Tratamiento / Prueba
+ */
+function addNuevoServicio()
+{
+	if(!document.querySelector('input[name="tipoServicio"]:checked')) {
+		alert('Selecione el tipo de Servicio');
+
+	}else{
+		tipoServicio=true;
+		if (validarNombre || validarTexto || validarPrecio || tipoServicio) {
+			alert("añadido");
+			document.getElementById("addServicio").submit();
+
+		} else {
+
+			alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+		}
+	}
+}
+
+
+
 /**
  * Validar campo nombre Formulario
  * no admite números solo letras y espacios
@@ -206,8 +232,35 @@ function validarTelefono()
 
 }
 
-/*Validar DNI introducido*/
 /**
+ * Comprueba si el campo esta vacio y el tipo de datos introducid
+ * números validos comendazos en 6,7 o 9
+ * longitud 9
+ * */
+function validarPrecio()
+{
+	precio=document.getElementById("price").value;
+	expresionRegularPrecio=new RegExp("^[0-9.]*$");
+	if(expresionRegularPrecio.test(precio))
+	{
+		document.getElementById("price").style.backgroundColor="ddffb0";
+		precioValido=true;
+		actualizar=1;
+		document.getElementById("errorPrice").innerHTML = " ";
+
+	}
+	else
+	{
+		precio=document.getElementById("price").value;
+		precioValido=false;
+		document.getElementById("price").focus();
+		document.getElementById("errorPrice").innerHTML =  "Error dígitos incorrecto o vacío,por favor,intenteló de nuevo";
+	}
+
+}
+
+/**
+ * Validar DNI introducido
  * comprueba campo DNI
  * comprueba longitud
  * calcula el número introducido para obtener su letra
@@ -279,6 +332,28 @@ function validarNumColegiado()
 		document.getElementById("colegiado").focus();
 		numeroColegiadoValido=false;
 		document.getElementById("errorColegiado").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
+	}
+}
+
+/**
+ * Validar campo Texto
+ * no admite campo vacio
+ */
+function validarTexto()
+{
+	texto=document.getElementById("texto").value;
+
+
+	if(texto!=="")
+	{
+			textoValido=true;
+			actualizar=1;
+
+	}else{
+		document.getElementById("texto").style.backgroundColor="ffb0b0";
+		textoValido=false;
+		document.getElementById("texto").focus();
+		document.getElementById("errorText").innerHTML = "Campo obligatorio,por favor,inténtelo de nuevo";
 	}
 }
 

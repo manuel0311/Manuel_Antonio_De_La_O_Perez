@@ -7,6 +7,7 @@ echo '<!DOCTYPE html>
 <head>
     <title>Panel Trabajadores Higea</title>
     <meta charset="utf-8">
+    <link  rel="icon"  href="'.base_url("assets/Media/img/logo.ico").'" type="image/ico" />
     <!--Estilos -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="'.base_url("assets/css/estilo.css").'"/>
@@ -46,9 +47,8 @@ echo '<!DOCTYPE html>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="verDatos">Consultar Datos</a>
-          <a class="dropdown-item" href="#">Modificar Datos</a>
          <a class="dropdown-item" href="#">Cambiar Contraseña</a>
-           <a class="dropdown-item" href="#">Cambiar Email</a>
+      
       </li>
         <a class="nav-link" href="logout"  role="button"  aria-haspopup="true" aria-expanded="false">
          	Cerrar Sesión

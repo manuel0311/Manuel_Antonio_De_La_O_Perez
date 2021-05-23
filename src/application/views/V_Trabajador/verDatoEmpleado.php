@@ -16,7 +16,7 @@ echo'
     
     <div class="col-12">
       <input type="text" name="name" class="form-control" id="name" maxlength="60" placeholder="Introduce Nombre" value="'.$nombre.'" onblur="validarNombre()">
-
+      <p id="errorName"></p>
     </div>
   </div>
   
@@ -24,7 +24,7 @@ echo'
     <label class="col-12 col-form-label">Apellidos</label>
      <div class="col-12">
       <input type="text" class="form-control" name="surname" id="surname" maxlength="60" placeholder="Introduce Apellido" value="'.$apellidos.'" onblur="validarApellido()">
-   
+       	<p id="errorSurname"></p>
       </div>
    </div>
    
@@ -32,7 +32,7 @@ echo'
     <label class="col-12 col-form-label">Télefono</label>
     <div class="col-12">
       <input type="tel" name="phone" class="form-control" id="phone" placeholder="Introduce Teléfono (6XXXXXXXX)" value="'.$telefono.'" onblur="validarTelefono()">
-
+      <p id="errorTlf"></p>
     </div>
   </div>
   
@@ -40,7 +40,6 @@ echo'
     <label  class="col-12 col-form-label">DNI</label>
     <div class="col-12">
       <input type="text" class="form-control" name="DNI" id="DNI" placeholder="Introduce DNI"  value="'.$DNI.'" disabled>
-
     </div>
   </div>
   
@@ -55,7 +54,7 @@ echo'
     <label class="col-12 col-form-label">E-mail</label>
     <div class="col-12">
       <input type="mail" class="form-control" name="mail" maxlength="100"  id="mail"  placeholder="Introduce correo Eléctronico" value="'.$email.'" onblur="validarCorreo()">
-
+      <p id="errorMail"></p>
     </div>
   </div>
   

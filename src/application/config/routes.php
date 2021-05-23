@@ -112,7 +112,8 @@ $route['buscarEmpleado']='C_Users/buscarEmpleado';
 $route['verDatos']='C_Users/mostrarDatos';
 /*Actualizar  Datos*/
 $route['actualizar']='C_Users/actualizarDatosUsuario';
-
+/*Añadir nuevo servicio (Tratamiento/Prueba)*/
+$route['nuevoServicio']='C_Users/addTratamientoPrueba';
 
 
 
