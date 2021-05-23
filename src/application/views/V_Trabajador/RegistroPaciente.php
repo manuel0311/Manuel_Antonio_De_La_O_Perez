@@ -35,7 +35,7 @@ echo'
    </div>
    
   <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Télefono</label>
+    <label class="col-sm-2 col-form-label">Teléfono</label>
     <div class="col-sm-10">
       <input type="tel" name="phone" class="form-control" id="phone" placeholder="Introduce Teléfono (6XXXXXXXX)" onblur="validarTelefono()" required >
        <p id="errorTlf"></p>

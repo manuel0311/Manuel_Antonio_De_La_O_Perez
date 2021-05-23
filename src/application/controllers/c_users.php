@@ -136,6 +136,9 @@ class C_Users extends CI_Controller
 	}
 
 	/*Añade el nuevo IVA a la BBDD*/
+	/**
+	 *
+	 */
 	public function addNuevoIVA(){
 
 		if($this->m_usuarios->actualizarIVA()>0)
@@ -153,11 +156,14 @@ class C_Users extends CI_Controller
 	}
 
 		/*Añade el servicio a la BBDD*/
-		public function addServicios(){
+	/**
+	 *
+	 */
+	public function addServicios(){
 
 			if($this->m_usuarios->insertarServicios()>0)
 			{
-				$mensaje=array('texto'=>"Cambio realizado con exito");
+				$mensaje=array('texto'=>"Servicio Añadido Correctamente");
 				//carga el menu
 				$this->load->view('V_Admin/menuAdmin');
 				//Carga la vista index
