@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 4 Instalación,Registros,Login,Modificaciones">
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="version 4.1 Instalación,Registros,Login,Modificaciones">
       <change afterPath="$PROJECT_DIR$/src/application/views/V_Admin/addTrataminetoPrueba.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
@@ -9,13 +9,16 @@
       <change beforePath="$PROJECT_DIR$/src/application/models/m_instalacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_instalacion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/verDatosAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/verDatosAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_3.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_3.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Paciente/verDatosPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/verDatosPaciente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Principal/contacto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Principal/contacto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatoEmpleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatoEmpleado.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/menu/menu_sesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/menu/menu_sesion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/menu/menu_sinsesion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/validarForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/validarForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +111,7 @@
       <workItem from="1621528945068" duration="12528000" />
       <workItem from="1621589437755" duration="31119000" />
       <workItem from="1621700221071" duration="13462000" />
-      <workItem from="1621728534190" duration="5287000" />
+      <workItem from="1621728534190" duration="5605000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -194,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621649494589</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="version 4.1 Instalación,Registros,Login,Modificaciones">
+      <created>1621734562398</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621734562398</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +242,8 @@
     <MESSAGE value="version 3.1 Login -Sesiones" />
     <MESSAGE value="version 3.1.1 Login -Sesiones" />
     <MESSAGE value="version 4 Instalación,Registros,Login,Modificaciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 4 Instalación,Registros,Login,Modificaciones" />
+    <MESSAGE value="version 4.1 Instalación,Registros,Login,Modificaciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 4.1 Instalación,Registros,Login,Modificaciones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
