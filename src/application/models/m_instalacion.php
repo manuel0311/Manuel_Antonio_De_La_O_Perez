@@ -380,6 +380,7 @@ class M_Instalacion extends CI_Model
 
 		/*Insertar Piezas dentales*/
 		$datos='INSERT INTO piezas_dentales (numPiezaDental,nombrePiezaDental) VALUES
+    (0,"Dentadura Completa"),                                                              
 	(11,"Incisivo Central"),
 	(12,"Incisivo Lateral"),
 	(13,"Canino"),
