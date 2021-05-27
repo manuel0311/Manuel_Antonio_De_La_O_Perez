@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="Versión 5 - Documentación.">
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Administrador/Añadir Tratamiento Prueba.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Administrador/IndexAdministrador.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Administrador/Modificar IVA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Administrador/Registro Empleado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Empleado/Consultar Datos.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Empleado/IndexEmpleado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Empleado/Registro Paciente.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Paciente/Consultar Datos.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Bocetos Higea/Proyecto/Paciente/IndexPaciente.png" afterDir="false" />
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="Versión 5.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/models/m_instalacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_instalacion.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622021937572</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Versión 5.1">
+      <created>1622025264411</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1622025264411</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +283,8 @@
     <MESSAGE value="version 4.1.1 Instalación,Registros,Login,Modificaciones,Documentación" />
     <MESSAGE value="version 4.1.1 Instalación,Registros,Login,Modificaciones,Documentación." />
     <MESSAGE value="Versión 5 - Documentación." />
-    <option name="LAST_COMMIT_MESSAGE" value="Versión 5 - Documentación." />
+    <MESSAGE value="Versión 5.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versión 5.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
