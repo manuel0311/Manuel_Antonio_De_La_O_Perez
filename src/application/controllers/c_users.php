@@ -135,8 +135,8 @@ class C_Users extends CI_Controller
 		}
 	}
 
-	/*Añade el nuevo IVA a la BBDD*/
-	/**
+	/*
+	 * Añade el nuevo IVA a la BBDD
 	 *
 	 */
 	public function addNuevoIVA(){
@@ -155,9 +155,9 @@ class C_Users extends CI_Controller
 
 	}
 
-		/*Añade el servicio a la BBDD*/
+
 	/**
-	 *
+	 *Registra el servicio a la BBDD y muestra el mensaje de añadido con exito
 	 */
 	public function addServicios(){
 
@@ -316,6 +316,109 @@ class C_Users extends CI_Controller
 		$this->load->view("footer");
 	}
 
+
+	public function comprobarPaciente(){
+		/*if (isset($_SESSION["tipo"])) {
+	  if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+
+				if(isset($_POST['DNI']))
+				{
+				  if($this->m_usuarios->obtenerIDPaciente()>0){
+
+				  $this->altaPresupuesto();
+
+				  }else{
+
+					  $mensaje=array("texto"=>"Usuario no encontrado");
+					  //Carga el menu Administrador
+				      $this->load->view('V_Trabajador/menuTrabajador');
+					  // $this->menuPrincipal();
+					  echo $this->m_usuarios->obtenerIDPaciente();
+					  $this->load->view('V_Trabajador/AltaPresupuesto1',$mensaje);
+					  $this->load->view('footer.php');
+				  }
+				}else{
+
+					$this->load->view('V_Trabajador/menuTrabajador');
+					$this->load->view('V_Trabajador/AltaPresupuesto1');
+					$this->load->view('footer.php');
+				}
+				/*} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+		*/
+
+	}
+
+	/**
+	 * Contiene la vista que crea el formulario que da alta al presupuesto
+	 * de los pacientes.
+	 */
+	public function altaPresupuesto(){
+		/*if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+				//Carga el menu Administrador
+				$this->load->view('V_Trabajador/menuTrabajador');
+				//Carga formulario Alta presupuesto
+				$this->load->view('V_Trabajador/AltaPresupuesto2');
+				//Carga Footer
+				$this->load->view("footer");
+			/*} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}*/
+	}
+
+	public function rellenarPresupuesto(){
+		/*if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+		//Carga el menu Administrador
+		$this->load->view('V_Trabajador/menuTrabajador');
+		//Carga formulario Alta presupuesto
+		$this->load->view('V_Trabajador/AltaPresupuesto2');
+		//Carga Footer
+		$this->load->view("footer");
+		/*} else {
+			redirect("principal");
+		}
+	}else{
+		redirect("principal");
+	}
+}*/
+	}
+
+	public function addServicioPresupuesto(){
+		/*if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+
+		$datos=array(
+			'ListaTratamientos'=>$this->m_usuarios->listarTratamientos(),
+			'ListaPruebas'=>$this->m_usuarios->listarPruebas(),
+			'dientes'=>$this->m_usuarios->listarPiezasDentales()
+	   );
+
+
+		$piezasDentales=array();
+		$this->load->view('V_Trabajador/menuTrabajador');
+		//Carga formulario Alta presupuesto
+		$this->load->view('V_Trabajador/AltaPresupuesto3',$datos);
+		//Carga Footer
+		$this->load->view("footer");
+		/*} else {
+			redirect("principal");
+		}
+	}else{
+		redirect("principal");
+	}
+}*/
+	}
+
 	/*Gestión Paciente*/
 
 	/**
@@ -341,6 +444,8 @@ class C_Users extends CI_Controller
 	}
 
 	/*Comprobaciones*/
+
+
 
 	/**
 	 * Comprueba el correo introducido y devuelve

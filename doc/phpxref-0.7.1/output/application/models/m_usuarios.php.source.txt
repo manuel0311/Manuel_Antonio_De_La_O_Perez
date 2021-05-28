@@ -176,6 +176,17 @@ class M_Usuarios extends CI_Model
 	}
 
 	/**
+	 * Busca el id del usuario con el DNI introducido
+	 * @return mixed
+	 *
+	 */
+	public function obtenerIDPaciente(){
+		$comprobarUsuario="SELECT idUsuario FROM usuarios WHERE DNI='".$_POST["dni"]."'";
+		$this->ejecutarConsulta($comprobarUsuario);
+		return $this->bd->affected_rows();
+
+	}
+	/**
 	 * Realiza la consulta y obtiene las tablas del usuario
 	 * @return mixed
 	 * retorno los datos que se almacenan en la sesión
@@ -248,6 +259,32 @@ class M_Usuarios extends CI_Model
 		$this->db->update('usuarios',$datos);
 
 		return $this->db->affected_rows();
+	}
+
+	/**
+	 * Obtiene todos los tratamientos registrados de la base de datos y los devuelve
+	 * @return mixed
+	 */
+	public function listarTratamientos(){
+	  $tratamientos='SELECT idTratamiento,nombreTratamiento,precio FROM tratamientos ';
+	  return $this->ejecutarConsulta($tratamientos);
+	}
+	/**
+	 * Obtiene todas las piezas dentales de la base de datos y los devuelve
+	 * @return mixed
+	 */
+	public function listarPiezasDentales(){
+		$piezasDentales='SELECT * FROM piezas_dentales;';
+		return $this->ejecutarConsulta($piezasDentales);
+	}
+
+	/**
+	 * Obtiene todas las pruebas registrados de la base de datos y los devuelve
+	 * @return mixed
+	 */
+	public function listarPruebas(){
+		$pruebas='SELECT idPrueba,nombrePrueba,precio FROM pruebas;';
+		return $this->ejecutarConsulta($pruebas);
 	}
 }
 

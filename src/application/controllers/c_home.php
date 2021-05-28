@@ -285,4 +285,6 @@ class C_Home extends CI_Controller
 		//Carga la vista Contacto
 		$this->load->view('legal/cookies');
 	}
+
+
 }

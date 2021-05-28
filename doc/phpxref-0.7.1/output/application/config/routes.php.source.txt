@@ -116,5 +116,7 @@ $route['actualizar']='C_Users/actualizarDatosUsuario';
 $route['nuevoServicio']='C_Users/addTratamientoPrueba';
 
 
+$route['prueba']='C_Home/prueba';
+
 
 

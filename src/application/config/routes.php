@@ -115,6 +115,11 @@ $route['actualizar']='C_Users/actualizarDatosUsuario';
 /*Añadir nuevo servicio (Tratamiento/Prueba)*/
 $route['nuevoServicio']='C_Users/addTratamientoPrueba';
 
+/*Buscar paciente presupuesto*/
+$route['seleccionarUsuario']='C_Users/comprobarPaciente';
+/*Dar alta presupuesto*/
+$route['altaPresupuesto']='C_Users/AltaPresupuesto';
 
+$route['AddServicioPresupuesto']='C_Users/addServicioPresupuesto';
 
 

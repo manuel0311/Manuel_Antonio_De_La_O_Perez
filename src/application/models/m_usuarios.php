@@ -15,6 +15,9 @@ class M_Usuarios extends CI_Model
 		parent::__construct();
 		/*Cargar conexión BBDD -- datos en config/database.php*/
 		$this->bd = $this->load->database('default', true);
+		// Carga la libreria session
+		$this->load->library('session');
+		$this->load->helper('url');
 
 	}
 
@@ -176,6 +179,30 @@ class M_Usuarios extends CI_Model
 	}
 
 	/**
+	 * Busca el id del usuario con el DNI introducido
+	 * @return mixed
+	 *
+	 */
+	public function obtenerIDPaciente(){
+
+
+		$this->db->select('idUsuario');
+		$this->db->where('DNI',$_POST["DNI"]);
+		$this->db->from('usuarios');
+		$datos = $this->db->get();
+		if($datos->num_rows() > 0){
+			$resultado=$datos->result_array();
+
+			$this->session->set_userdata($resultado);
+			return 1;
+			//redirect("altaPresupuesto");
+		}else{
+			return 0;
+		}
+
+	}
+
+	/**
 	 * Realiza la consulta y obtiene las tablas del usuario
 	 * @return mixed
 	 * retorno los datos que se almacenan en la sesión
@@ -248,6 +275,32 @@ class M_Usuarios extends CI_Model
 		$this->db->update('usuarios',$datos);
 
 		return $this->db->affected_rows();
+	}
+
+	/**
+	 * Obtiene todos los tratamientos registrados de la base de datos y los devuelve
+	 * @return mixed
+	 */
+	public function listarTratamientos(){
+	  $tratamientos='SELECT idTratamiento,nombreTratamiento,precio FROM tratamientos ';
+	  return $this->ejecutarConsulta($tratamientos);
+	}
+	/**
+	 * Obtiene todas las piezas dentales de la base de datos y los devuelve
+	 * @return mixed
+	 */
+	public function listarPiezasDentales(){
+		$piezasDentales='SELECT * FROM piezas_dentales;';
+		return $this->ejecutarConsulta($piezasDentales);
+	}
+
+	/**
+	 * Obtiene todas las pruebas registrados de la base de datos y los devuelve
+	 * @return mixed
+	 */
+	public function listarPruebas(){
+		$pruebas='SELECT idPrueba,nombrePrueba,precio FROM pruebas;';
+		return $this->ejecutarConsulta($pruebas);
 	}
 }
 

@@ -265,6 +265,7 @@ function validarPrecio()
  * comprueba longitud
  * calcula el número introducido para obtener su letra
  * se compara las letras
+ * Si todo es correcto comprueba si el DNI está ya registrado en la BBDD
  */
 function validarDNI()
 {
@@ -302,7 +303,50 @@ function validarDNI()
 
 
 }
+/**
+ * Validar DNI introducido
+ * comprueba campo DNI
+ * comprueba longitud
+ * calcula el número introducido para obtener su letra
+ * se compara las letras
+ */
+function validarYComprobarDNI()
+{
 
+	dni = document.getElementById("DNI").value.toUpperCase();
+	expresionregulardni=new RegExp(/^[0-9]{8}[A-Z]{1}$/);
+
+	if(expresionregulardni.test(dni))
+	{
+
+		//Se separan los números de la letra
+		var letraDNI = dni.substring(8, 9).toUpperCase();
+		var numDNI = parseInt(dni.substring(0, 8));
+
+		//Se calcula la letra correspondiente al número
+		var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+		var letraCorrecta = letras[numDNI % 23];
+
+		if (letraDNI != letraCorrecta) {
+			document.getElementById("DNI").style.backgroundColor="ffb0b0";
+			DNIValido=false;
+			document.getElementById("DNI").focus();
+			document.getElementById("errorDNI").innerHTML =  "Letra incorrecta,por favor,inténtelo de nuevo";
+		} else {
+			document.getElementById("errorDNI").innerHTML =  " ";
+			DNIValido=true;
+		}
+	}
+	else
+	{
+		document.getElementById("DNI").style.backgroundColor="ffb0b0";
+		DNIValido=false;
+		document.getElementById("errorDNI").innerHTML =  "Error dígitos incorrecto o vacío,por favor,inténtelo de nuevo";
+		document.getElementById("DNI").focus();
+	}
+
+
+}
 /**
  * Valida que el input colegiado no este vacío
  */

@@ -285,4 +285,10 @@ class C_Home extends CI_Controller
 		//Carga la vista Contacto
 		$this->load->view('legal/cookies');
 	}
+
+	public function prueba(){
+		$query=array('Tratamientos'=>$this->m_usuarios->listarPiezasDentales());
+		$this->menuPrincipal();
+		$this->load->view('V_Trabajador/AltaPresupuesto1',$query);
+	}
 }
