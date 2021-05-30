@@ -18,8 +18,12 @@ class C_Users extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_usuarios', 'm_usuarios');
+		/*Helper cookie*/
+		$this->load->helper('cookie');
 		// Carga la libreria session
 		$this->load->library('session');
+		$this->load->helper('url');
+
 
 
 	}
@@ -316,40 +320,44 @@ class C_Users extends CI_Controller
 		$this->load->view("footer");
 	}
 
-
+	/*
+	 * Comprueba que el DNI introducido pertenece a algun paciente
+	 * registrado en la clínica
+	 */
 	public function comprobarPaciente(){
-		/*if (isset($_SESSION["tipo"])) {
-	  if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+		if (isset($_SESSION["tipo"])) {
+	  		if ($_SESSION["tipo"]=="e" || $_SESSION["tipo"]=="ea")
+	  		{
 
 				if(isset($_POST['DNI']))
 				{
-				  if($this->m_usuarios->obtenerIDPaciente()>0){
+					  if($this->m_usuarios->obtenerIDPaciente()>0)
+					  {
 
-				  $this->altaPresupuesto();
+					  $this->altaPresupuesto();
 
-				  }else{
+					  }else{
 
-					  $mensaje=array("texto"=>"Usuario no encontrado");
-					  //Carga el menu Administrador
-				      $this->load->view('V_Trabajador/menuTrabajador');
-					  // $this->menuPrincipal();
-					  echo $this->m_usuarios->obtenerIDPaciente();
-					  $this->load->view('V_Trabajador/AltaPresupuesto1',$mensaje);
-					  $this->load->view('footer.php');
-				  }
+						  $mensaje=array("texto"=>"Usuario no encontrado");
+						  //Carga el menu Administrador
+						  $this->load->view('V_Trabajador/menuTrabajador');
+						  $this->load->view('V_Trabajador/AltaPresupuesto1',$mensaje);
+						  $this->load->view('footer.php');
+					  }
 				}else{
 
-					$this->load->view('V_Trabajador/menuTrabajador');
-					$this->load->view('V_Trabajador/AltaPresupuesto1');
-					$this->load->view('footer.php');
-				}
-				/*} else {
-				redirect("principal");
-			}
+						$this->load->view('V_Trabajador/menuTrabajador');
+						$this->load->view('V_Trabajador/AltaPresupuesto1');
+						$this->load->view('footer.php');
+						}
+
+	  		} else {
+						redirect("principal");
+					   }
 		}else{
 			redirect("principal");
 		}
-		*/
+
 
 	}
 
@@ -357,66 +365,91 @@ class C_Users extends CI_Controller
 	 * Contiene la vista que crea el formulario que da alta al presupuesto
 	 * de los pacientes.
 	 */
-	public function altaPresupuesto(){
-		/*if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+	public function altaPresupuesto()
+	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"]=='e' || $_SESSION["tipo"]=='ea') {
 				//Carga el menu Administrador
-				$this->load->view('V_Trabajador/menuTrabajador');
-				//Carga formulario Alta presupuesto
-				$this->load->view('V_Trabajador/AltaPresupuesto2');
-				//Carga Footer
-				$this->load->view("footer");
-			/*} else {
+		if(isset($_POST['name'])){
+			/*Crea el presupuesto ,borra el dato del paciente de las sesiones y almacena la ID del presupuesto realizado*/
+			$this->m_usuarios->altaPresupuesto();
+		    $this->addServicioPresupuesto();
+		}else{
+			$this->load->view('V_Trabajador/menuTrabajador');
+			//Carga formulario Alta presupuesto
+			$this->load->view('V_Trabajador/AltaPresupuesto2');
+			//Carga Footer
+			$this->load->view("footer");
+		}
+
+			} else {
 				redirect("principal");
 			}
 		}else{
 			redirect("principal");
 		}
-	}*/
 	}
 
-	public function rellenarPresupuesto(){
-		/*if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+
+	public function rellenarPresupuesto()
+	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'e' || $_SESSION["tipo"] == 'ea') {
 		//Carga el menu Administrador
 		$this->load->view('V_Trabajador/menuTrabajador');
 		//Carga formulario Alta presupuesto
 		$this->load->view('V_Trabajador/AltaPresupuesto2');
 		//Carga Footer
 		$this->load->view("footer");
-		/*} else {
+		} else {
 			redirect("principal");
 		}
 	}else{
-		redirect("principal");
-	}
-}*/
-	}
-
-	public function addServicioPresupuesto(){
-		/*if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
-
-		$datos=array(
-			'ListaTratamientos'=>$this->m_usuarios->listarTratamientos(),
-			'ListaPruebas'=>$this->m_usuarios->listarPruebas(),
-			'dientes'=>$this->m_usuarios->listarPiezasDentales()
-	   );
-
-
-		$piezasDentales=array();
-		$this->load->view('V_Trabajador/menuTrabajador');
-		//Carga formulario Alta presupuesto
-		$this->load->view('V_Trabajador/AltaPresupuesto3',$datos);
-		//Carga Footer
-		$this->load->view("footer");
-		/*} else {
 			redirect("principal");
 		}
-	}else{
-		redirect("principal");
 	}
-}*/
+
+	public function addServicioPresupuesto()
+	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"]=='e' || $_SESSION["tipo"]=='ea')
+			{
+				$datos = array(
+					'ListaTratamientos' => $this->m_usuarios->listarTratamientos(),
+					'ListaPruebas' => $this->m_usuarios->listarPruebas(),
+					'dientes' => $this->m_usuarios->listarPiezasDentales()
+				);
+
+				if (isset($_POST['tipoServicio'])) {
+					$this->m_usuarios->addTratamientoPacientePresupuesto();
+					$this->m_usuarios->totalPresupuesto();
+
+					$this->load->view('V_Trabajador/menuTrabajador');
+					//Carga formulario Alta presupuesto
+					$this->load->view('V_Trabajador/AltaPresupuesto3', $datos);
+					//Carga Footer
+					$this->load->view("footer");
+				} else {
+
+					$this->load->view('V_Trabajador/menuTrabajador');
+					//Carga formulario Alta presupuesto
+					$this->load->view('V_Trabajador/AltaPresupuesto3', $datos);
+					//Carga Footer
+					$this->load->view("footer");
+				}
+
+			}else {
+					redirect("principal");
+				}
+		}else{
+			redirect("principal");
+			}
+	}
+
+
+	public function finPresupuesto()
+	{
+		$this->m_usuarios->finalizarPresupuesto();
 	}
 
 	/*Gestión Paciente*/
@@ -444,8 +477,6 @@ class C_Users extends CI_Controller
 	}
 
 	/*Comprobaciones*/
-
-
 
 	/**
 	 * Comprueba el correo introducido y devuelve

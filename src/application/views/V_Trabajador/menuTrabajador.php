@@ -36,7 +36,7 @@ echo '<!DOCTYPE html>
           Presupuestos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Crear Presupuesto</a>
+          <a class="dropdown-item" href="seleccionarUsuario">Crear Presupuesto</a>
           <a class="dropdown-item" href="#">Consultar Presupuesto</a>
           <a class="dropdown-item" href="#">Activar Presupuesto</a>
           <a class="dropdown-item" href="#">Eliminar Presupuesto</a>
@@ -46,7 +46,7 @@ echo '<!DOCTYPE html>
          	Datos Usuario
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="verDatos">Consultar Datos</a>
+          <a class="dropdown-item" href="verDatos">Consultar/Modificar Datos</a>
          <a class="dropdown-item" href="#">Cambiar Contraseña</a>
       
       </li>

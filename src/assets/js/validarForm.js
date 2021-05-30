@@ -19,6 +19,8 @@ var textoValido=false;
 var precioValido=false;
 var tipoServicio=false;
 var actualizar=0;
+var tratamiento=true;
+var dientes=true;
 
 /**
  * Valida los campos registro formulario Administrador instalación
@@ -133,7 +135,33 @@ function addNuevoServicio()
 	}
 }
 
+function completarPresupuesto()
+{
+	if(!document.querySelector('input[name="tipoServicio"]:checked')) {
+		alert('Selecione el tipo de Servicio');
 
+	}else if(!document.querySelector('option[name="tratamientos"]:checked')){
+		alert('Seleccione el Tratamiento');
+	}else if(!document.querySelector('input[name="dientes_lista[]"]:checked')){
+		alert('Seleccione la/las piezas dentales ');
+	}else{
+		tipoServicio=true;
+		tratamiento=true;
+		dientes=true;
+
+		if(tipoServicio && tratamiento && dientes && precioValido)
+		{
+			document.getElementById('finalizar').style.display='-webkit-box';
+			alert("todo ok");
+		}else{
+			alert("Comprueba todo los campos")
+		}
+
+
+	}
+
+
+}
 
 /**
  * Validar campo nombre Formulario
@@ -303,6 +331,7 @@ function validarDNI()
 
 
 }
+
 /**
  * Validar DNI introducido
  * comprueba campo DNI
@@ -347,6 +376,7 @@ function validarYComprobarDNI()
 
 
 }
+
 /**
  * Valida que el input colegiado no este vacío
  */
@@ -541,4 +571,53 @@ function compruebaEmail(correo)
 	});
 }
 
+/*Presupuesto*/
+/**
+ * Comprueba que el dato introducido es valido y si es correcto
+ * envia la información del formulario
+ */
+function localizarIDPaciente(){
+	if (DNIValido) {
 
+		document.getElementById("seleccionarUsuario").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
+
+function altaPresupuesto(){
+	if (nombreValido && textoValido) {
+
+		document.getElementById("AltaPresupuesto").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
+/**
+ * Muestra el panel con las pruebas para asignar al presupuesto
+ * si el usuario selecciona el tipo prueba a la hora de dar de alta
+ * al presupuesto.
+ */
+function mostrarOpcionesPruebas()
+{
+	document.getElementById('listadoPruebas').style.display='-webkit-box';
+	document.getElementById('listadoTratamiento').style.display='none';
+	document.getElementById('piezaDental').style.display='none';
+
+}
+
+/**
+ * Muestra el panel con las opciones de tratamientos y las piezas dentales
+ * donde se realiza el tratamiento a la hora de realizar el presupuesto.
+ */
+function mostrarOpcionesTratamientos()
+{
+	document.getElementById('listadoPruebas').style.display='none';
+	document.getElementById('listadoTratamiento').style.display='-webkit-box';
+	document.getElementById('piezaDental').style.display='-webkit-box';
+
+}

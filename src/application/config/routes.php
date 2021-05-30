@@ -122,4 +122,5 @@ $route['altaPresupuesto']='C_Users/AltaPresupuesto';
 
 $route['AddServicioPresupuesto']='C_Users/addServicioPresupuesto';
 
+$route['finPresupuesto']='C_Users/finPresupuesto';
 

@@ -20,6 +20,12 @@ class M_Instalacion extends CI_Model
 		$this->load->dbforge();
 		$this->bd = $this->load->database('default', true);
 		$this->load->model("M_usuarios","m_usuarios");
+		/*Helper cookie*/
+		$this->load->helper('cookie');
+		// Carga la libreria session
+		$this->load->library('session');
+		$this->load->helper('url');
+
 
 	}
 

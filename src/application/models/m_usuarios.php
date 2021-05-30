@@ -15,12 +15,13 @@ class M_Usuarios extends CI_Model
 		parent::__construct();
 		/*Cargar conexión BBDD -- datos en config/database.php*/
 		$this->bd = $this->load->database('default', true);
+		/*Helper cookie*/
+		$this->load->helper('cookie');
 		// Carga la libreria session
 		$this->load->library('session');
 		$this->load->helper('url');
 
 	}
-
 
 	/**
 	 * Comprueba el campo colegiado , si se encuentra ,realiza el registro de Administrador/Empleado.
@@ -82,6 +83,15 @@ class M_Usuarios extends CI_Model
 
 	}
 
+	public function obtenerIVA(){
+
+		$this->db->select('PorcentajeIVA');
+		$this->db->from('iva');
+		$datos = $this->db->get();
+		$resultado=$datos->result_array();
+		return $resultado[0]['PorcentajeIVA'];
+
+	}
 	/**
 	 * Ejecutar consultas SQL
 	 * @param $codigo
@@ -118,8 +128,6 @@ class M_Usuarios extends CI_Model
 		return $filasAfectadas;
 	}
 
-
-
 	/**
 	 * Comprueba el tipo de servicio que el usuario marcó en el formulario
 	 * y realiza la correspondiente sentencia.
@@ -153,7 +161,6 @@ class M_Usuarios extends CI_Model
 
 	}
 
-
 	/**
 	 * Comprueba si el DNI introducido se encuentra en la BBDD
 	 * @return mixed
@@ -165,7 +172,6 @@ class M_Usuarios extends CI_Model
 		return $this->bd->affected_rows();
 
 	}
-
 
 	/**
 	 * Comprueba si el Correo Introducido se encuentra en la  BBDD
@@ -185,17 +191,14 @@ class M_Usuarios extends CI_Model
 	 */
 	public function obtenerIDPaciente(){
 
-
 		$this->db->select('idUsuario');
 		$this->db->where('DNI',$_POST["DNI"]);
 		$this->db->from('usuarios');
 		$datos = $this->db->get();
 		if($datos->num_rows() > 0){
 			$resultado=$datos->result_array();
-
-			$this->session->set_userdata($resultado);
+			$this->session->set_userdata('idPaciente',$resultado[0]['idUsuario']);
 			return 1;
-			//redirect("altaPresupuesto");
 		}else{
 			return 0;
 		}
@@ -278,6 +281,47 @@ class M_Usuarios extends CI_Model
 	}
 
 	/**
+	 * Da de alta el presupuesto en la BBDD
+	 * almecena su id en la sesión y elimina la
+	 * id del usuario al que se le asgina el presupuesto
+	 */
+	public function altaPresupuesto(){
+		$datos=array(
+			'idUsuario_Empleado'=>$_SESSION['id'],
+			'idUsuario_Paciente'=>$_SESSION['idPaciente'],
+			'nombrePresupuesto'=>$_POST['name'],
+			'IVA'=>$this->obtenerIVA(),
+			'nota'=>$_POST['texto']
+		);
+		$this->bd->insert('presupuesto',$datos);
+		$idPresupuesto=$this->bd->insert_id();
+		$this->session->unset_userdata('idPaciente');
+		$this->session->set_userdata('idPresupuesto',$idPresupuesto);
+
+	}
+
+	public function addTratamientoPacientePresupuesto()
+	{
+
+		/*Inserta tratamiento_Paciente */
+		$datosTratamientosPaciente=array
+			(
+				'idTratamiento'=>$_POST['tratamientos'],
+				'idPresupuesto'=>$_SESSION['idPresupuesto'],
+				'precioExtra'=>$_POST['price']
+			);
+		$this->bd->insert('tratamiento_paciente',$datosTratamientosPaciente);
+		$idPresupuesto=$this->bd->insert_id();
+		/*Insertar Afecta*/
+
+	foreach ($_POST['dientes_lista'] as $pieza){
+			$insertarAfecto="INSERT INTO afecta (idTratamientoPaciente,numPiezaDental) VALUES (".$idPresupuesto.",".$pieza.")";
+			$this->bd->query($insertarAfecto);
+			print_r($insertarAfecto);
+		}
+		print_r($_POST['dientes_lista']);
+	}
+	/**
 	 * Obtiene todos los tratamientos registrados de la base de datos y los devuelve
 	 * @return mixed
 	 */
@@ -285,6 +329,7 @@ class M_Usuarios extends CI_Model
 	  $tratamientos='SELECT idTratamiento,nombreTratamiento,precio FROM tratamientos ';
 	  return $this->ejecutarConsulta($tratamientos);
 	}
+
 	/**
 	 * Obtiene todas las piezas dentales de la base de datos y los devuelve
 	 * @return mixed
@@ -301,6 +346,40 @@ class M_Usuarios extends CI_Model
 	public function listarPruebas(){
 		$pruebas='SELECT idPrueba,nombrePrueba,precio FROM pruebas;';
 		return $this->ejecutarConsulta($pruebas);
+	}
+
+	/**
+	 * Calcula el total de precios del presupuesto
+	 * y devuelve el importe sin IVA y con IVA
+	 * @return array
+	 */
+	public function totalPresupuesto(){
+		$totalPresupuesto="SELECT TP.idTratamientoPaciente,T.idTratamiento,idPresupuesto,sum(precio+precioExtra) as Total
+						   FROM tratamientos  T
+						   LEFT JOIN tratamiento_paciente TP
+						   ON TP.idTratamiento = T.idTratamiento
+						   RIGHT JOIN afecta A
+						   ON TP.idTratamientoPaciente=A.idTratamientoPaciente
+						   WHERE idPresupuesto=".$_SESSION['idPresupuesto'].";";
+		$obtenerDatos=$this->db->query($totalPresupuesto);
+		$datos=$obtenerDatos->row_array();
+		$iva=$this->obtenerIVA();
+		$totalSinIva=$datos['Total'];
+		$totalIva= $totalSinIva+($totalSinIva*$iva/100);
+
+		$precios=array(
+			'totalSinIVA'=>$totalSinIva,
+			'totalIVA'=>$totalIva
+						);
+		return $precios;
+
+
+	}
+
+	public function finalizarPresupuesto(){
+		$datos=$this->totalPresupuesto();
+		$actualizarPrecio="UPDATE presupuesto SET precioTotal=".$datos['totalIVA']." WHERE idPresupuesto=".$_SESSION['idPresupuesto'].";";
+		$this->db->query($actualizarPrecio);
 	}
 }
 

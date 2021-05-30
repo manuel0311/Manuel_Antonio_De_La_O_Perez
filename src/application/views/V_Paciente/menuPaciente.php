@@ -23,8 +23,8 @@ echo'
           Datos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="verDatos">Consultar Datos</a>
-          <a class="dropdown-item" href="#">Eliminar cuenta</a>
+          <a class="dropdown-item" href="verDatos">Consultar/Modificar Datos</a>
+		  <!--<a class="dropdown-item" href="#">Eliminar cuenta</a>-->
       </li>
      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

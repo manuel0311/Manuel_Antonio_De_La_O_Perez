@@ -16,9 +16,12 @@ class C_Sesiones extends CI_Controller
 
 		//Carga el modelo Usuarios
 		$this->load->model('M_usuarios', 'm_usuarios');
+		/*Helper cookie*/
+		$this->load->helper('cookie');
 		// Carga la libreria session
 		$this->load->library('session');
 		$this->load->helper('url');
+
 
 
 	}

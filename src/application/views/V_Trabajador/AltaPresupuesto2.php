@@ -1,5 +1,4 @@
 <?php
-print_r($_SESSION);
 echo'
 <div class="container p-4">
 	<div class="row">
@@ -8,10 +7,9 @@ echo'
 </div>
 
 <div class="col">
-<p>Introduce nombre de presupuesto y nota para dicho presupuesto en caso de querer dejar alguna anotación importante
-para el paciente.</p>
+<p>Introduce nombre de presupuesto y nota para dicho presupuesto.</p>
 <!--Formulario-->
-<form action="" id="" method="POST">
+<form action="altaPresupuesto" id="AltaPresupuesto" method="POST">
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Nombre Presupuesto</label>
     
@@ -32,7 +30,7 @@ para el paciente.</p>
  
   <div class="form-group row">
     <div class="col-sm-10">
-      <input type="button" class="btn btn-primary" value="Continuar"  >
+      <input type="button" class="btn btn-primary" value="Continuar"  onclick="altaPresupuesto()">
    
     </div>
   </div>

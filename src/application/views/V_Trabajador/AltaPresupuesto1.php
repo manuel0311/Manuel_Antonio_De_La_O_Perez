@@ -12,16 +12,14 @@ if(isset($texto)){
 }
 echo'
 <!--Formulario-->
-<form action="seleccionarUsuario" method="post">
+<form action="seleccionarUsuario" method="post" id="seleccionarUsuario">
 <label>Introuce DNI:</label>
 <input type="text" placeholder="DNI del paciente" name="DNI" id="DNI" onblur="validarYComprobarDNI()" required >
 <p id="errorDNI"></p>
-<input type="submit" onclick="">
+<input type="button" value="Buscar Paciente" onclick="localizarIDPaciente()">
 </form>
 </div>
 </div>
-
-<!--Script -->
 
         <!--Script -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
