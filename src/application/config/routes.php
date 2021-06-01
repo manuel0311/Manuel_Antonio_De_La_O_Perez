@@ -114,13 +114,17 @@ $route['verDatos']='C_Users/mostrarDatos';
 $route['actualizar']='C_Users/actualizarDatosUsuario';
 /*Añadir nuevo servicio (Tratamiento/Prueba)*/
 $route['nuevoServicio']='C_Users/addTratamientoPrueba';
-
 /*Buscar paciente presupuesto*/
 $route['seleccionarUsuario']='C_Users/comprobarPaciente';
 /*Dar alta presupuesto*/
 $route['altaPresupuesto']='C_Users/AltaPresupuesto';
-
+/*Añade los servicios seleccionado del paciente a su presupuesto*/
 $route['AddServicioPresupuesto']='C_Users/addServicioPresupuesto';
-
+/*Calcula el total del presupuesto y finalia el presupuesto creado*/
 $route['finPresupuesto']='C_Users/finPresupuesto';
+
+/**/
+$route['consultarPresupuesto']='C_Users/comprobarPresupuestoPaciente';
+
+$route['presupuestosPaciente']='C_Users/presupuestosPaciente';
 

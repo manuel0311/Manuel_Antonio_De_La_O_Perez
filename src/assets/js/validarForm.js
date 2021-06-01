@@ -151,8 +151,8 @@ function completarPresupuesto()
 
 		if(tipoServicio && tratamiento && dientes && precioValido)
 		{
-			document.getElementById('finalizar').style.display='-webkit-box';
-			alert("todo ok");
+			document.getElementById("altaPresupuesto").submit();
+
 		}else{
 			alert("Comprueba todo los campos")
 		}

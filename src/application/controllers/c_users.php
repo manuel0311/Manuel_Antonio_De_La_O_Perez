@@ -390,7 +390,11 @@ class C_Users extends CI_Controller
 		}
 	}
 
-
+	/**
+	 * Solicita el nombre y nota del Presupuesto
+	 * Asgina el presupuesto al cliente seleccionado
+	 * y guarda la ID del presupuesto generado
+	 */
 	public function rellenarPresupuesto()
 	{
 		if (isset($_SESSION["tipo"])) {
@@ -409,6 +413,10 @@ class C_Users extends CI_Controller
 		}
 	}
 
+	/**
+	 * Añadir el servicio asignado al placciente ,en el  presupuesto
+	 * selecionado.
+	 */
 	public function addServicioPresupuesto()
 	{
 		if (isset($_SESSION["tipo"])) {
@@ -446,10 +454,17 @@ class C_Users extends CI_Controller
 			}
 	}
 
-
+	/**
+	 * Calcula el total del presupuesto
+	 * borra la id del presupuesto de la sesión
+	 * vuelve al principio (Crear Presupuesto)
+	 */
 	public function finPresupuesto()
 	{
 		$this->m_usuarios->finalizarPresupuesto();
+		$this->session->unset_userdata('idPresupuesto');
+		$this->session->unset_userdata('anadir');
+		$this->comprobarPaciente();
 	}
 
 	/*Gestión Paciente*/
@@ -476,6 +491,66 @@ class C_Users extends CI_Controller
 		}
 	}
 
+	/**
+	 * Localiza al paciente y muestra el total de sus presupuesto
+	 */
+	/*
+	 * Comprueba que el DNI introducido pertenece a algun paciente
+	 * registrado en la clínica
+	 */
+	public function comprobarPresupuestoPaciente(){
+		/*if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"]=="e" || $_SESSION["tipo"]=="ea")
+			{*/
+
+				if(isset($_POST['DNI']))
+				{
+					if($this->m_usuarios->obtenerIDPaciente()>0)
+					{
+
+						$this->presupuestosPaciente();
+
+					}else{
+
+						$mensaje=array("texto"=>"Usuario no encontrado");
+						//Carga el menu Administrador
+						$this->load->view('V_Trabajador/menuTrabajador');
+						$this->load->view('V_Trabajador/consutarPresupuestos',$mensaje);
+						$this->load->view('footer.php');
+					}
+				}else{
+
+					$this->load->view('V_Trabajador/menuTrabajador');
+					$this->load->view('V_Trabajador/consutarPresupuestos');
+					$this->load->view('footer.php');
+				}
+
+		/*	} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}*/
+
+
+	}
+	public function presupuestosPaciente(){
+		$datos=array('presupuesto'=>$this->m_usuarios->ObtenerPresupuestosPaciente());
+		if(isset($_POST['presupuesto'])){
+			$this->m_usuarios->activarDesactivarPresupuesto();
+			$this->presupuestoActivarDesactivar();
+		}else {
+			$this->load->view('V_Trabajador/menuTrabajador');
+			$this->load->view('V_Trabajador/presupuestosPaciente', $datos);
+			$this->load->view('footer.php');
+		}
+	}
+	public function presupuestoActivarDesactivar(){
+		$datos=array('presupuesto'=>$this->m_usuarios->ObtenerPresupuestosPaciente());
+		$this->load->view('V_Trabajador/menuTrabajador');
+		$this->load->view('V_Trabajador/presupuestosPaciente',$datos);
+		$this->load->view('footer.php');
+	}
 	/*Comprobaciones*/
 
 	/**

@@ -206,6 +206,34 @@ class M_Usuarios extends CI_Model
 	}
 
 	/**
+	 *
+	 */
+	public function ObtenerPresupuestosPaciente(){
+
+		$presupuestos='SELECT `idPresupuesto`,`idUsuario_Paciente`, `nombrePresupuesto`, `precioTotal`,`activo`,`fechaPresupuesto` 
+					   FROM `presupuesto` WHERE `idUsuario_Paciente` ='.$_SESSION['idPaciente'];
+		$datos=$this->db->query($presupuestos);
+		return $datos->result_array();
+	}
+
+	public function activarDesactivarPresupuesto(){
+		$this->db->select('activo');
+		$this->db->where('idPresupuesto',$_POST["presupuesto"]);
+		$this->db->from('presupuesto');
+		$datos = $this->db->get();
+		$resultado=$datos->result_array();
+
+		if($resultado[0]['activo']=='0'){
+
+			$activar="UPDATE presupuesto SET activo = 1 WHERE idPresupuesto ='".$_POST["presupuesto"]."';";
+			$this->db->query($activar);
+		}else{
+
+			$desactivar="UPDATE presupuesto SET activo = 0 WHERE idPresupuesto ='".$_POST["presupuesto"]."';";
+			$this->db->query($desactivar);
+		}
+	}
+	/**
 	 * Realiza la consulta y obtiene las tablas del usuario
 	 * @return mixed
 	 * retorno los datos que se almacenan en la sesión
@@ -300,9 +328,12 @@ class M_Usuarios extends CI_Model
 
 	}
 
+	/**
+	 *
+	 */
 	public function addTratamientoPacientePresupuesto()
 	{
-
+		$this->session->set_userdata('anadir',true);
 		/*Inserta tratamiento_Paciente */
 		$datosTratamientosPaciente=array
 			(
@@ -317,9 +348,9 @@ class M_Usuarios extends CI_Model
 	foreach ($_POST['dientes_lista'] as $pieza){
 			$insertarAfecto="INSERT INTO afecta (idTratamientoPaciente,numPiezaDental) VALUES (".$idPresupuesto.",".$pieza.")";
 			$this->bd->query($insertarAfecto);
-			print_r($insertarAfecto);
+
 		}
-		print_r($_POST['dientes_lista']);
+
 	}
 	/**
 	 * Obtiene todos los tratamientos registrados de la base de datos y los devuelve

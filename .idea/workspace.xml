@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="Versión 5.1.2 Alta Presupuesto">
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="Versión 5.2 Alta Presupuesto">
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/consutarPresupuestos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/eliminarPresupuestosPaciente.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/presupuestosPaciente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/autoload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_home.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_sesiones.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/controllers/c_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_users.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/models/m_instalacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_instalacion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/models/m_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_usuarios.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/menuAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/AltaPresupuesto1.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/AltaPresupuesto1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/AltaPresupuesto2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/AltaPresupuesto2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/AltaPresupuesto3.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/AltaPresupuesto3.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/menuTrabajador.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/validarForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/validarForm.js" afterDir="false" />
@@ -116,6 +113,8 @@
       <workItem from="1621977041908" duration="2053000" />
       <workItem from="1622134621602" duration="43549000" />
       <workItem from="1622284906271" duration="19505000" />
+      <workItem from="1622383359972" duration="20926000" />
+      <workItem from="1622535766339" duration="1320000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -285,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622163772906</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Versión 5.2 Alta Presupuesto">
+      <created>1622383491364</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1622383491364</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +336,8 @@
     <MESSAGE value="Versión 5.1" />
     <MESSAGE value="Versión 5.1.1" />
     <MESSAGE value="Versión 5.1.2 Alta Presupuesto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versión 5.1.2 Alta Presupuesto" />
+    <MESSAGE value="Versión 5.2 Alta Presupuesto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versión 5.2 Alta Presupuesto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -344,10 +351,18 @@
           </properties>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/src/application/models/m_usuarios.php</url>
+          <line>218</line>
+          <properties>
+            <option name="className" value="\M_Usuarios" />
+            <option name="methodName" value="activarDesactivarPresupuesto" />
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/assets/js/validarForm.js</url>
           <line>137</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>

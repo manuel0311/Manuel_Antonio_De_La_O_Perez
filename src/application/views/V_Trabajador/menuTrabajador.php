@@ -37,8 +37,7 @@ echo '<!DOCTYPE html>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="seleccionarUsuario">Crear Presupuesto</a>
-          <a class="dropdown-item" href="#">Consultar Presupuesto</a>
-          <a class="dropdown-item" href="#">Activar Presupuesto</a>
+          <a class="dropdown-item" href="consultarPresupuesto">Consultar /Activar - Desactivar Presupuesto</a>
           <a class="dropdown-item" href="#">Eliminar Presupuesto</a>
       </li>
        <li class="nav-item dropdown">

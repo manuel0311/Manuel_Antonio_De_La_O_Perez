@@ -1,7 +1,4 @@
 <?php
-print_r($_POST);
-
-
 echo '
 <div class="container p-4" xmlns="http://www.w3.org/1999/html">
 <h3>Añadir Servicio</h3>
@@ -14,7 +11,7 @@ echo '
 <div class="col">
 
 <!--Formulario-->
-<form action="AddServicioPresupuesto" id="" method="POST">
+<form action="AddServicioPresupuesto" id="altaPresupuesto" method="POST">
   <div class="form-group row">
 		<label class="col-sm-2 col-form-label">tipo</label>
 		<div class="col-sm-10">
@@ -72,25 +69,26 @@ echo '
   </div> 
   
 	  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Precio</label>
+    <label class="col-sm-2 col-form-label">Precio Extra</label>
     <div class="col-sm-10">
-      <input type="tel" name="price" class="form-control" id="price" placeholder="Introduce coste servicio " onblur="validarPrecio()" required >
+      <input type="tel" name="price" class="form-control" id="price" placeholder="Precio extra ó 0.0 si no incrementa. " onblur="validarPrecio()"  >
        <p id="errorPrice"></p>
     </div>
   </div>
 
   <div class="form-group row">
     <div class="col-sm-10">
-      <input type="button" class="btn btn-primary" value="Añadir" onclick="completarPresupuesto()" >
-      <button class="btn btn-primary" id="finalizar" style="display: none;><a href="finPresupuesto" style="color:white" id="finalizar" >Finalizar</a></button>
-    </div>
+      <input type="button" class="btn btn-primary" name="enviar" value="Añadir" onclick="completarPresupuesto()" >';
+      if(isset($_SESSION['anadir'])){
+		  echo' <button class="btn btn-primary" id="finalizar"><a href="finPresupuesto" style="color:white" id="finalizar" >Finalizar</a></button>';
+
+	  }
+ echo'   </div>
   </div>
 </form>
 </div>
 </div>
 </div>
-
-
 
         <!--Script -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>

@@ -239,7 +239,7 @@ class M_Instalacion extends CI_Model
 		);
 		$this->dbforge->add_field($tablaTratamientos_Paciente);
 		$this->dbforge->add_key('idTratamientoPaciente', TRUE);
-		$this->dbforge->add_field('fechaPresupuesto date NOT NULL DEFAULT current_timestamp()');
+		$this->dbforge->add_field('fechaRealizado date NULL DEFAULT NULL');
 		$this->dbforge->add_field('FOREIGN KEY (idTratamiento) REFERENCES TRATAMIENTOS(idTratamiento)
 								    ON UPDATE CASCADE
 									ON DELETE CASCADE,
@@ -363,7 +363,7 @@ class M_Instalacion extends CI_Model
 
 		);
 		$this->dbforge->add_field($tablaPruebaPaciente);
-		$this->dbforge->add_field('fechaRealizado date NOT NULL DEFAULT current_timestamp()');
+		$this->dbforge->add_field('fechaRealizado date NULL DEFAULT NULL');
 		$this->dbforge->add_key('idPruebaPaciente', TRUE);
 		$this->dbforge->add_field('FOREIGN KEY (idPrueba) REFERENCES PRUEBAS(idPrueba)
 										ON UPDATE CASCADE
