@@ -122,9 +122,17 @@ $route['altaPresupuesto']='C_Users/AltaPresupuesto';
 $route['AddServicioPresupuesto']='C_Users/addServicioPresupuesto';
 /*Calcula el total del presupuesto y finalia el presupuesto creado*/
 $route['finPresupuesto']='C_Users/finPresupuesto';
-
-/**/
+/*Solicita el DNI del paciente que desea consultar sus presupuestos.*/
 $route['consultarPresupuesto']='C_Users/comprobarPresupuestoPaciente';
-
+/*Activar/desactivar presupuesto paciente*/
 $route['presupuestosPaciente']='C_Users/presupuestosPaciente';
-
+/*Consulta el paciente para Eliminar presupuesto paciente*/
+$route['ConsultarPresupuestoEliminar']='C_Users/eliminarPresupuestoPaciente';
+/*Listado los presupuesto del paciente disponibles para eliminar*/
+$route['eliminarPresupuesto']='C_Users/deletepresupuestosPaciente';
+/*Consulta los datos del paciente desde el menú empleado*/
+$route['consultarPaciente']='C_Users/consultarPaciente';
+/*Modifica los datos del paciente desde el menu Empleado*/
+$route['actualizarDatosUsuarios']='C_Users/actualizarDatosUsuarios';
+/*Elimina los datos del Paciente*/
+$route['eliminarPaciente']='C_Users/eliminarPaciente';

@@ -3,7 +3,9 @@ echo'
 <div class="container p-4" class="contenedor">
 
 <div class="col" style="text-align: center">
-<h3>Introduce el DNI del Paciente que desea consultar sus Presupuestos.</h3>';
+<h3>Para eliminar el presupuesto ,por favor,Introduce el DNI del Paciente.</h3>
+';
+
 
 if(isset($texto)){
 	echo'<div class="alert alert-secondary" role="alert">
@@ -12,7 +14,7 @@ if(isset($texto)){
 }
 echo'
 <!--Formulario-->
-<form action="consultarPresupuesto" method="post" id="seleccionarUsuario">
+<form action="ConsultarPresupuestoEliminar" method="post" id="seleccionarUsuario">
 <label>Introuce DNI:</label>
 <input type="text" placeholder="DNI del paciente" name="DNI" id="DNI" onblur="validarYComprobarDNI()" required >
 <p id="errorDNI"></p>

@@ -17,12 +17,16 @@ class C_Home extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		// Carga la libreria session
-		$this->load->library('session');
 		//Carga Modelo Usuarios
 		$this->load->model("M_usuarios","M_usuarios");
 		//Carga Modelo Instalación
 		$this->load->model("M_Instalacion","m_instalacion");
+		/*Helper cookie*/
+		$this->load->helper('cookie');
+		// Carga la libreria session
+		$this->load->library('session');
+		$this->load->helper('url');
+
 	}
 
 	/**
@@ -286,9 +290,5 @@ class C_Home extends CI_Controller
 		$this->load->view('legal/cookies');
 	}
 
-	public function prueba(){
-		$query=array('Tratamientos'=>$this->m_usuarios->listarPiezasDentales());
-		$this->menuPrincipal();
-		$this->load->view('V_Trabajador/AltaPresupuesto1',$query);
-	}
+
 }

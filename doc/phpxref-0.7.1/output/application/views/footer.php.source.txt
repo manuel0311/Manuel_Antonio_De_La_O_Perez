@@ -2,7 +2,7 @@
 echo'
  
 <!-- PIE DE PÁGINA  -->
-                    <footer class="row" class="footer">
+                    <footer class="row m-0" class="footer">
                         <div class="col-md-6 col-xs-12 ">
                             <!--Resumen Clinica-->
                             <div class="footer-pad">
@@ -16,7 +16,7 @@ Higea Dental ofrece un extenso catálogo de servicios bucodentales especializado
 
                         <div class="col-md-3  col-xs-12">
                            
-                            
+                       
                             <div class="footer-pad">
                             <!--Columna 2 Ubicación-->
                                 <ul class="list-unstyled pt-4">

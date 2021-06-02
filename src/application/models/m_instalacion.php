@@ -9,7 +9,6 @@ class M_Instalacion extends CI_Model
 	 */
 
 
-
 	/**
 	 * M_Instalacion constructor.
 	 */
@@ -30,9 +29,9 @@ class M_Instalacion extends CI_Model
 	}
 
 	/**
-	 * @return mixed
-	 * Comprueba que la existe la tabla usuarios
+	 *	 * Comprueba que la existe la tabla usuarios
 	 * devuelve 0 en caso negativo y 1 en caso afirmativo
+	 * @return mixed
 	 */
 	public function comprobarTabla()
 	{
@@ -42,9 +41,9 @@ class M_Instalacion extends CI_Model
 	}
 
 	/**
-	 * @return mixed
 	 * Comprueba que la tabla usuarios
 	 * contiene fila/as
+	 * @return mixed
 	 */
 	public function comprobarAdministrador()
 	{
@@ -54,9 +53,9 @@ class M_Instalacion extends CI_Model
 	}
 
 	/**
-	 * @return mixed
 	 * Comprueba que la tabla IVA
 	 * contiene fila/as
+	 * @return mixed
 	 */
 	public function comprobarIVA(){
 		$comprobarIVA="select * from iva";
@@ -443,6 +442,7 @@ class M_Instalacion extends CI_Model
 		$this->bd->query($datos);
 
 	}
+
 	/**
 	 * Añade los datos del Administrador V_Principal
 	 * de la aplicacción

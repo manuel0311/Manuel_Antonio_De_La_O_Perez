@@ -29,7 +29,7 @@ class C_Users extends CI_Controller
 	}
 
 
-	/*Gestión Administrador*/
+	/*Opciones Administrador*/
 
 
 	/**
@@ -81,7 +81,8 @@ class C_Users extends CI_Controller
 	}
 
 	/**
-	 *
+	 *Registra  el tupo  servicio seleccionado y su información
+	 *  a la base de datos.
 	 */
 	public function addTratamientoPrueba()
 	{
@@ -107,6 +108,7 @@ class C_Users extends CI_Controller
 
 		}
 	}
+
 	/**
 	 * LLama a las vistas que forman la página Modificar IVA
 	 */
@@ -139,9 +141,8 @@ class C_Users extends CI_Controller
 		}
 	}
 
-	/*
+	/**
 	 * Añade el nuevo IVA a la BBDD
-	 *
 	 */
 	public function addNuevoIVA(){
 
@@ -158,7 +159,6 @@ class C_Users extends CI_Controller
 		}
 
 	}
-
 
 	/**
 	 *Registra el servicio a la BBDD y muestra el mensaje de añadido con exito
@@ -178,6 +178,7 @@ class C_Users extends CI_Controller
 			}
 
 		}
+
 	/**
 	 * Muestra los datos del usuario que inicio sesión
 	 */
@@ -219,7 +220,6 @@ class C_Users extends CI_Controller
 		}
 	}
 
-
 	/**
 	 * Funcion validar registros del formulario Empleado
 	 */
@@ -256,7 +256,7 @@ class C_Users extends CI_Controller
 		$this->load->view("footer");
 	}
 
-	/*Gestión Empleado*/
+	/*Opciones Empleado*/
 
 	/**
 	 * LLama a las vistas del index Administrador
@@ -320,7 +320,47 @@ class C_Users extends CI_Controller
 		$this->load->view("footer");
 	}
 
-	/*
+	/**
+	 * Muestra el formulario para localizar el paciente
+	*/
+	public function consultarPaciente(){
+			if (isset($_SESSION["tipo"])) {
+				if ($_SESSION["tipo"]=="e" || $_SESSION["tipo"]=="ea")
+				{
+
+					if(isset($_POST['DNI']))
+					{
+						if($this->m_usuarios->obtenerIDPaciente()>0)
+						{
+							$this->session->unset_userdata('modificado');
+							$this->opcionesPacientes();
+
+						}else{
+
+							$mensaje=array("texto"=>"Usuario no encontrado");
+							//Carga el menu Administrador
+							$this->load->view('V_Trabajador/menuTrabajador');
+							$this->load->view('V_Trabajador/buscarPaciente',$mensaje);
+							$this->load->view('footer.php');
+						}
+					}else{
+
+						$this->load->view('V_Trabajador/menuTrabajador');
+						$this->load->view('V_Trabajador/buscarPaciente');
+						$this->load->view('footer.php');
+					}
+
+				} else {
+					redirect("principal");
+				}
+			}else{
+				redirect("principal");
+			}
+
+
+		}
+
+	/**
 	 * Comprueba que el DNI introducido pertenece a algun paciente
 	 * registrado en la clínica
 	 */
@@ -467,41 +507,14 @@ class C_Users extends CI_Controller
 		$this->comprobarPaciente();
 	}
 
-	/*Gestión Paciente*/
-
 	/**
-	 * LLlama a las vistas que forman la página principal de los pacientes
-	 */
-	public function principalPacientes()
-	{
-		if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] == 'p') {
-				//carga el menu
-				$this->load->view('V_Paciente/menuPaciente');
-				//Carga la vista index
-				$this->load->view('V_Paciente/indexPaciente');
-				//Carga Footer
-				$this->load->view("footer");
-
-			} else {
-				redirect("principal");
-			}
-		}else{
-			redirect("principal");
-		}
-	}
-
-	/**
-	 * Localiza al paciente y muestra el total de sus presupuesto
-	 */
-	/*
 	 * Comprueba que el DNI introducido pertenece a algun paciente
 	 * registrado en la clínica
 	 */
 	public function comprobarPresupuestoPaciente(){
-		/*if (isset($_SESSION["tipo"])) {
+		if (isset($_SESSION["tipo"])) {
 			if ($_SESSION["tipo"]=="e" || $_SESSION["tipo"]=="ea")
-			{*/
+			{
 
 				if(isset($_POST['DNI']))
 				{
@@ -525,15 +538,20 @@ class C_Users extends CI_Controller
 					$this->load->view('footer.php');
 				}
 
-		/*	} else {
+			} else {
 				redirect("principal");
 			}
 		}else{
 			redirect("principal");
-		}*/
+		}
 
 
 	}
+
+	/**
+	 * Muestra los presupuestos Asociados al paciente
+	 * obtenido.
+	 */
 	public function presupuestosPaciente(){
 		$datos=array('presupuesto'=>$this->m_usuarios->ObtenerPresupuestosPaciente());
 		if(isset($_POST['presupuesto'])){
@@ -545,12 +563,157 @@ class C_Users extends CI_Controller
 			$this->load->view('footer.php');
 		}
 	}
+
+	/**
+	 * Activa o Desactiva el presupuesto seleccionado
+	 */
 	public function presupuestoActivarDesactivar(){
 		$datos=array('presupuesto'=>$this->m_usuarios->ObtenerPresupuestosPaciente());
 		$this->load->view('V_Trabajador/menuTrabajador');
 		$this->load->view('V_Trabajador/presupuestosPaciente',$datos);
 		$this->load->view('footer.php');
 	}
+
+	/**
+	 * Comprueba que el DNI introducido pertenece a algun paciente
+	 * registrado en la clínica y envia al panel de eliminar presupuesto.
+	 */
+	public function eliminarPresupuestoPaciente(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"]=="e" || $_SESSION["tipo"]=="ea")
+			{
+
+				if(isset($_POST['DNI']))
+				{
+					if($this->m_usuarios->obtenerIDPaciente()>0)
+					{
+
+						$this->deletepresupuestosPaciente();
+
+					}else{
+
+						$mensaje=array("texto"=>"Usuario no encontrado");
+						//Carga el menu Administrador
+						$this->load->view('V_Trabajador/menuTrabajador');
+						$this->load->view('V_Trabajador/eliminarPresupuestosPaciente',$mensaje);
+						$this->load->view('footer.php');
+					}
+				}else{
+
+					$this->load->view('V_Trabajador/menuTrabajador');
+					$this->load->view('V_Trabajador/eliminarPresupuestosPaciente');
+					$this->load->view('footer.php');
+				}
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+
+
+	}
+
+	/**
+	 * Muestra los presupuestos Asociados al paciente
+	 * obtenido.
+	 */
+	public function deletepresupuestosPaciente(){
+		$datos=array('presupuesto'=>$this->m_usuarios->ObtenerPresupuestosPaciente());
+		if(isset($_POST['presupuesto'])){
+			$this->m_usuarios->eliminarPresupuesto();
+			$this->vistaEliminarPresupuesto();
+		}else {
+			$this->load->view('V_Trabajador/menuTrabajador');
+			$this->load->view('V_Trabajador/PanelEliminarpresupuestosPaciente', $datos);
+			$this->load->view('footer.php');
+		}
+	}
+
+	/**
+	 * Carga las vistas con el Panel de presupuestos elimninados actualizado
+	 */
+	public function vistaEliminarPresupuesto(){
+		$datos=array('presupuesto'=>$this->m_usuarios->ObtenerPresupuestosPaciente());
+		$this->load->view('V_Trabajador/menuTrabajador');
+		$this->load->view('V_Trabajador/PanelEliminarpresupuestosPaciente',$datos);
+		$this->load->view('footer.php');
+	}
+
+
+	/*Vista opciones Panel Paciente*/
+	public function opcionesPacientes(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'e' || $_SESSION["tipo"] == 'ea') {
+				$datos=$this->m_usuarios->obtenerDatosPacientes();
+				//carga el menu
+				$this->load->view('V_Trabajador/menuTrabajador');
+				//Carga la vista index
+				$this->load->view('V_Trabajador/verDatosPaciente',$datos);
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Modifica los datos del paciente
+	 */
+	public function actualizarDatosUsuarios(){
+		if(isset($_SESSION['tipo']))
+		{
+
+			$this->session->set_userdata('modificado', 'Actualizado con exito!');
+			if ($this->m_usuarios->actualiarDatosPaciente()> 0) {
+				$this->opcionesPacientes();
+			} else {
+				redirect("principal");
+			}
+		}
+	}
+
+	/**
+	 * Elimina los datos del usuario y vuelve al buscador de usuarios
+	 */
+	public function eliminarPaciente(){
+		$this->m_usuarios->eliminarPaciente();
+		$this->consultarPaciente();
+	}
+
+
+
+
+	/*Opciones Paciente*/
+
+	/**
+	 * LLlama a las vistas que forman la página principal de los pacientes
+	 */
+	public function principalPacientes()
+	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+				//carga el menu
+				$this->load->view('V_Paciente/menuPaciente');
+				//Carga la vista index
+				$this->load->view('V_Paciente/indexPaciente');
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+
 	/*Comprobaciones*/
 
 	/**

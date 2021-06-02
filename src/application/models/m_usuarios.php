@@ -83,6 +83,11 @@ class M_Usuarios extends CI_Model
 
 	}
 
+	/**
+	 * Consulta el porcentaje de IVA introducido en la instalación
+	 * y devuelve el valor.
+	 * @return mixed
+	 */
 	public function obtenerIVA(){
 
 		$this->db->select('PorcentajeIVA');
@@ -92,6 +97,7 @@ class M_Usuarios extends CI_Model
 		return $resultado[0]['PorcentajeIVA'];
 
 	}
+
 	/**
 	 * Ejecutar consultas SQL
 	 * @param $codigo
@@ -206,7 +212,8 @@ class M_Usuarios extends CI_Model
 	}
 
 	/**
-	 *
+	 * Obtiene los presupuestos del usuario introducido y los devuelve.
+	 * @return $datos
 	 */
 	public function ObtenerPresupuestosPaciente(){
 
@@ -216,6 +223,9 @@ class M_Usuarios extends CI_Model
 		return $datos->result_array();
 	}
 
+	/**
+	 * Cambia el valor de activo la tabla presupuesto.
+	 */
 	public function activarDesactivarPresupuesto(){
 		$this->db->select('activo');
 		$this->db->where('idPresupuesto',$_POST["presupuesto"]);
@@ -233,6 +243,18 @@ class M_Usuarios extends CI_Model
 			$this->db->query($desactivar);
 		}
 	}
+
+	/**
+	 * Elimina el tratamiento asociado a la id
+	 *
+	 */
+	public function eliminarPresupuesto(){
+
+			$eliminar="DELETE FROM presupuesto WHERE idPresupuesto ='".$_POST["presupuesto"]."';";
+			$this->db->query($eliminar);
+
+	}
+
 	/**
 	 * Realiza la consulta y obtiene las tablas del usuario
 	 * @return mixed
@@ -276,6 +298,20 @@ class M_Usuarios extends CI_Model
 			}
 		}
 
+	/*Obtiene los datos del Paciente desde el menu Empleado*/
+	public function obtenerDatosPacientes(){
+			$consulta = $this->db->query ("SELECT nombre,apellidos,telefono,email,DNI FROM usuarios WHERE idUsuario ='".$_SESSION['idPaciente']."';");
+			return $consulta->row_array();
+	}
+
+	/**
+	 * Elimina los datos del paciente seleccionado
+	 */
+	public function eliminarPaciente(){
+		$EliminarPaciente='DELETE FROM usuarios WHERE idUsuario ='.$_SESSION['idPaciente'].';';
+		$this->db->query($EliminarPaciente);
+		$this->session->unset_userdata('idPaciente');
+	}
 	/**
 	 * Obtiene el porcentaje del formulario
 	 * realiza la consulta
@@ -308,6 +344,21 @@ class M_Usuarios extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	/*Actualiza los datos del paciente desde el menu Empleado*/
+	public function actualiarDatosPaciente(){
+		$datos=array
+		(
+			'nombre'=>$_POST['name'],
+			'apellidos'=>$_POST['surname'],
+			'email'=>$_POST['mail'],
+			'telefono'=>$_POST['phone']
+		);
+		$this->db->where('idUsuario', $_SESSION['idPaciente']);
+		$this->db->update('usuarios',$datos);
+
+		return $this->db->affected_rows();
+	}
+
 	/**
 	 * Da de alta el presupuesto en la BBDD
 	 * almecena su id en la sesión y elimina la
@@ -329,7 +380,8 @@ class M_Usuarios extends CI_Model
 	}
 
 	/**
-	 *
+	 *Añade un servicio al presupuesto del paciente
+	 * seleccionado.
 	 */
 	public function addTratamientoPacientePresupuesto()
 	{
@@ -352,6 +404,7 @@ class M_Usuarios extends CI_Model
 		}
 
 	}
+
 	/**
 	 * Obtiene todos los tratamientos registrados de la base de datos y los devuelve
 	 * @return mixed
@@ -407,6 +460,10 @@ class M_Usuarios extends CI_Model
 
 	}
 
+	/**
+	 * Calcula el total de los servicios asociados al ID de presupuesto
+	 * y actualiza el total del presupuesto .
+	 */
 	public function finalizarPresupuesto(){
 		$datos=$this->totalPresupuesto();
 		$actualizarPrecio="UPDATE presupuesto SET precioTotal=".$datos['totalIVA']." WHERE idPresupuesto=".$_SESSION['idPresupuesto'].";";

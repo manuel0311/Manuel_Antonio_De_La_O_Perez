@@ -51,5 +51,8 @@ echo'
         </a>
       </li>
     </ul>
+    <form class="form-inline">
+                    <p><a href="principal" class="btn btn-primary btn-sm">Volver Pantalla Principal</a></p>       
+        </form>
   </div>
 </nav>';
