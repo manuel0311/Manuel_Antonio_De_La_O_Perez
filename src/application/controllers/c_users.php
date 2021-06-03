@@ -641,7 +641,6 @@ class C_Users extends CI_Controller
 		$this->load->view('footer.php');
 	}
 
-
 	/*Vista opciones Panel Paciente*/
 	public function opcionesPacientes(){
 		if (isset($_SESSION["tipo"])) {
@@ -676,6 +675,46 @@ class C_Users extends CI_Controller
 				redirect("principal");
 			}
 		}
+	}
+
+	/**Consultar historial del paciente */
+	public function historialPaciente(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'e' || $_SESSION["tipo"] == 'ea') {
+			$datos=array('historial'=>$this->m_usuarios->obtenerHistorial());
+				if(isset($_POST['idTratamientoPaciente'])){
+					$this->fechaActualizada();
+				}else {
+					//carga el menu
+					$this->load->view('V_Trabajador/menuTrabajador');
+					//Carga la vista index
+					$this->load->view('V_Trabajador/Historial', $datos);
+					//Carga Footer
+					$this->load->view("footer");
+				}
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Recarga la vista con la fecha nueva asginada al paciente
+	 */
+	public function fechaActualizada(){
+		$this->m_usuarios->asignarFechaServicio();
+
+		$datos=array('historial'=>$this->m_usuarios->obtenerHistorial());
+
+				//carga el menu
+				$this->load->view('V_Trabajador/menuTrabajador');
+				//Carga la vista index
+				$this->load->view('V_Trabajador/Historial',$datos);
+				//Carga Footer
+				$this->load->view("footer");
 	}
 
 	/**

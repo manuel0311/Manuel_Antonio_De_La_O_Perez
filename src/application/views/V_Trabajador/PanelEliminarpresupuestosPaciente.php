@@ -8,10 +8,9 @@ echo'
 </div>
 
 <div class="col">
-<p>Marque el presupuesto que desea eliminar.</p>
-<p>Nota: Los presupuestos eliminados no se pueden recuperar.</p>
+<h5>Eliminar Presupuestos</h5>
 <!--Formulario-->
-<form action="eliminarPresupuesto"  method="POST">
+<form action="eliminarPresupuesto" method="POST">
   <div class="form-group row">
   </div>
  <table class="table">
@@ -34,10 +33,36 @@ echo'
 </table>
   <div class="form-group row">
     <div class="col-sm-10">
-      <input type="submit" class="btn btn-primary" value="Eliminar"  ">
-   
+     <input class="btn btn-primary" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar Presupuesto">
     </div>
   </div>
+  <!-- Alerta! Borrado -->
+        <section class="modal" id="eliminar">
+            <div class="modal-dialog">
+                <form>
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <div class="modal-title">
+								Eliminar Presupuesto
+							</div>
+                            <span data-dismiss="modal">X</span>
+                        </div>
+                       <div class="modal-footer text-center">
+                       <h5>¿Desea eliminar el presupuesto seleccionado?</h5>
+                       </div>
+                       
+                       <div class="alert alert-warning" role="alert">
+						 Al pulsar Si, se eliminarán los datos .
+						  Esta Información no se podrá recuperar .
+					   </div>
+                     	 <div class="modal-footer text-right">
+						<input type="submit" class="btn btn-primary" name="borrar" value="Sí">                    	  
+						 <span data-dismiss="modal"><input type="button" class="btn btn-primary" value="NO"></span>
+					</div>
+                    </div>
+                </form>
+            </div>
+        </section>
 </form>
 </div>
 </div>

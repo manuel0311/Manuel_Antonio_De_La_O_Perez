@@ -59,7 +59,7 @@ echo '
 </div>
 <div class="col-xs-12 col-sm-5 .col-lg-6">
  <input type="button" class="btn btn-primary" value="Actualizar" onclick="actualizarDatosUsuario()" >
- <input type="button" class="btn btn-primary" value="Historial"  >
+ <button class="btn btn-primary" ><a href="verHistorial" style="color:white">Consultar Historial</a></button>   
  <input class="btn btn-primary" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar Paciente">
  <img src="'.base_url("assets/Media/img/LOGO.jpg").'"  class="img-fluid" alt="Logo clínica dental Higea">
 </div>

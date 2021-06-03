@@ -250,7 +250,7 @@ class M_Usuarios extends CI_Model
 	 */
 	public function eliminarPresupuesto(){
 
-			$eliminar="DELETE FROM presupuesto WHERE idPresupuesto ='".$_POST["presupuesto"]."';";
+			$eliminar="DELETE FROM presupuesto WHERE idPresupuesto =".$_POST["presupuesto"].";";
 			$this->db->query($eliminar);
 
 	}
@@ -405,6 +405,36 @@ class M_Usuarios extends CI_Model
 
 	}
 
+	/**
+	 * Obtiene el historial del paciente seleccionado
+	 * @return mixed
+	 *
+	 */
+	public function obtenerHistorial(){
+		$consultar='SELECT TP.idTratamientoPaciente,nombreTratamiento ,numPiezaDental,fechaRealizado
+		FROM presupuesto P 
+		RIGHT JOIN tratamiento_paciente TP
+		ON P.idPresupuesto = TP.idPresupuesto
+		RIGHT JOIN tratamientos T 
+		ON T.idTratamiento= TP.idTratamiento
+		LEFT JOIN afecta A 
+		ON TP.idTratamientoPaciente = A.idTratamientoPaciente
+		where idUsuario_Paciente ='.$_SESSION['idPaciente'].';';
+
+		$resultado=$this->db->query($consultar);
+
+		return $resultado->result_array();
+
+	}
+
+	/**
+	 * Modifica el campo fechaRealizado de los servicios asignado al tratamiento
+	 *indica la fecha en la que se realiza el servicio.
+	 */
+	public function asignarFechaServicio(){
+		$actualizarFecha='UPDATE tratamiento_paciente SET fechaRealizado ="'.$_POST['fecha'].'" WHERE idTratamientoPaciente ='.$_POST['idTratamientoPaciente'].';';
+		$this->db->query($actualizarFecha);
+	}
 	/**
 	 * Obtiene todos los tratamientos registrados de la base de datos y los devuelve
 	 * @return mixed

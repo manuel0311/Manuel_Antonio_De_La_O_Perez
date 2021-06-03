@@ -136,3 +136,5 @@ $route['consultarPaciente']='C_Users/consultarPaciente';
 $route['actualizarDatosUsuarios']='C_Users/actualizarDatosUsuarios';
 /*Elimina los datos del Paciente*/
 $route['eliminarPaciente']='C_Users/eliminarPaciente';
+
+$route['verHistorial']='C_Users/historialPaciente';
