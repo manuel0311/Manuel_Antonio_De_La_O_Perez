@@ -499,6 +499,104 @@ class M_Usuarios extends CI_Model
 		$actualizarPrecio="UPDATE presupuesto SET precioTotal=".$datos['totalIVA']." WHERE idPresupuesto=".$_SESSION['idPresupuesto'].";";
 		$this->db->query($actualizarPrecio);
 	}
+
+	/**
+	 * Obtiene todos los presupuestos asociados al paciente que no estén archivados y estén activados para el paciente
+	 * @return mixed
+	 */
+	public function listarPresupuestosPaciente(){
+
+		$listar='SELECT idPresupuesto, idUsuario_Paciente,nombrePresupuesto,precioTotal, IVA, activo, archivado, fechaPresupuesto
+				 FROM presupuesto 
+				 WHERE idUsuario_Paciente='.$_SESSION['id'].' and archivado=0 and activo=1;';
+
+		$datos=$this->db->query($listar);
+
+		return $datos->result_array();
+
+	}
+
+	/**
+	 * Obtiene todos los presupuestos asociados al paciente que estén archivados y estén activados para el paciente
+	 * @return mixed
+	 */
+	public function listarPresupuestosPacienteDesactivados(){
+
+		$listar='SELECT idPresupuesto, idUsuario_Paciente,nombrePresupuesto,precioTotal, IVA, activo, archivado, fechaPresupuesto
+				 FROM presupuesto 
+				 WHERE idUsuario_Paciente='.$_SESSION['id'].' and archivado=1 and activo=1;';
+
+		$datos=$this->db->query($listar);
+
+		return $datos->result_array();
+
+	}
+
+	/**
+	 * Obtiene toda la información del presupuesto selecionado del paciente
+	 * @return mixed
+	 */
+	public function datosPresupuesto(){
+		$datosPresupuesto='SELECT P.idPresupuesto, P.fechaPresupuesto,nombreTratamiento,precio,precioExtra ,numPiezaDental,iva,precioTotal
+							FROM presupuesto P 
+							RIGHT JOIN tratamiento_paciente TP
+							ON P.idPresupuesto = TP.idPresupuesto
+							RIGHT JOIN tratamientos T 
+							ON T.idTratamiento= TP.idTratamiento
+							LEFT JOIN afecta A 
+							ON TP.idTratamientoPaciente = A.idTratamientoPaciente
+							where idUsuario_Paciente ='.$_SESSION['id'].' AND P.idPresupuesto='.$_POST['presupuesto'].';';
+
+		$datos=$this->db->query($datosPresupuesto);
+		return $datos->result_array();
+	}
+
+	/**
+	 * Obtiene la información personal  del paciente
+	 * @return mixed
+	 */
+	public function usuarioPresupuesto(){
+		$datosUsuario='SELECT  nombre, apellidos, telefono, email, DNI 
+					   FROM usuarios
+					   WHERE idUsuario='.$_SESSION['id'].';';
+
+		$resultado=$this->db->query($datosUsuario);
+		return $resultado->result_array();
+	}
+
+	public function miHistorial(){
+		$historial='SELECT nombreTratamiento ,numPiezaDental,fechaRealizado
+					FROM presupuesto P 
+					RIGHT JOIN tratamiento_paciente TP
+					ON P.idPresupuesto = TP.idPresupuesto
+					RIGHT JOIN tratamientos T 
+					ON T.idTratamiento= TP.idTratamiento
+					LEFT JOIN afecta A 
+					ON TP.idTratamientoPaciente = A.idTratamientoPaciente
+					where idUsuario_Paciente ='.$_SESSION['id'].' AND fechaRealizado IS NOT NULL';
+
+		$resultado=$this->db->query($historial);
+		return $resultado->result_array();
+
+	}
+
+	public function archivarPresupuesto(){
+		$archivar='UPDATE presupuesto SET archivado=1 WHERE idPresupuesto='.$_POST['presupuesto'].';';
+
+		$this->db->query($archivar);
+	}
+
+	public function listarPresupuestosArchivados(){
+
+	}
+
+	public function desarchivarPresupuesto(){
+			$archivar='UPDATE presupuesto SET archivado=0 WHERE idPresupuesto='.$_POST['presupuesto'].';';
+
+			$this->db->query($archivar);
+
+	}
+
 }
 
 

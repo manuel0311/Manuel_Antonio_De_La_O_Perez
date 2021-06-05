@@ -455,6 +455,7 @@ class M_Instalacion extends CI_Model
 			"telefono"=>$this->input->POST('phone'),
 			"email"=>$this->input->POST('mail'),
 			"DNI"=>$this->input->POST('DNI'),
+			"restablecerContrasenia"=>1,
 			"contrasenia" => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 			"tipo"=>'a'
 		);

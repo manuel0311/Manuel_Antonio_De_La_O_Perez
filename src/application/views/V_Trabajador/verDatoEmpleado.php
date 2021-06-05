@@ -7,8 +7,13 @@ echo'
 <h3>Datos Usuario</h3>
 <img src="'.base_url("assets/Media/img/actualizarDato.jpg").'"  class="img-fluid" alt="dentista">
 </div>
-<div class="col-12">
-
+<div class="col-12">';
+if(isset($_SESSION['DatosModificados'])){
+	echo'<div class="alert alert-success" role="alert">
+		'.$_SESSION['DatosModificados'].'
+</div>';
+}
+echo'
 <!--Formulario-->
 <form action="actualizar" id="updateUser" method="POST">
   <div class="form-group row">

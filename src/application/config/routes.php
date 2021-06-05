@@ -136,5 +136,14 @@ $route['consultarPaciente']='C_Users/consultarPaciente';
 $route['actualizarDatosUsuarios']='C_Users/actualizarDatosUsuarios';
 /*Elimina los datos del Paciente*/
 $route['eliminarPaciente']='C_Users/eliminarPaciente';
-
+/*Lista los servicios asociados al paciente y su estado (pendiente o fecha de realizado)*/
 $route['verHistorial']='C_Users/historialPaciente';
+/*Lista los presupuestos disponibless del paciente*/
+$route['misPresupuestos']='C_Users/listadoPresupuestosPaciente';
+/*Lista los presupuesto disponibles para Descargar*/
+$route['opcionesPresupuesto']='C_Users/opcionesPresupuestoPaciente';
+
+$route['desarchivar']='C_Users/desarchivarPaciente';
+$route['archivados']='C_Users/listadoPresupuestosPacienteArchivados';
+/*Muestra el historial del paciente */
+$route['Historial']='C_Users/Historial';

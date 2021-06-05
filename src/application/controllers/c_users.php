@@ -22,15 +22,14 @@ class C_Users extends CI_Controller
 		$this->load->helper('cookie');
 		// Carga la libreria session
 		$this->load->library('session');
+		//Devuelve la URL de su sitio, como se especifica en su archivo de configuración
 		$this->load->helper('url');
 
 
 
 	}
 
-
 	/*Opciones Administrador*/
-
 
 	/**
 	 * LLama a las vistas del index Administrador
@@ -212,6 +211,7 @@ class C_Users extends CI_Controller
 	{
 		if(isset($_SESSION['tipo']))
 		{
+			$this->session->set_userdata('DatosModificados', 'Actualizado con exito!');
 			if ($this->m_usuarios->actualiarDatos() > 0) {
 				$this->mostrarDatos();
 			} else {
@@ -725,9 +725,6 @@ class C_Users extends CI_Controller
 		$this->consultarPaciente();
 	}
 
-
-
-
 	/*Opciones Paciente*/
 
 	/**
@@ -752,6 +749,187 @@ class C_Users extends CI_Controller
 		}
 	}
 
+	/**
+	 * Lista todos los servicios realizados al paciente
+	 */
+	public function Historial(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+				$datos=array('Historial'=> $this->m_usuarios->miHistorial());
+				//carga el menu
+				$this->load->view('V_Paciente/menuPaciente');
+				//Carga la vista index
+				$this->load->view('V_Paciente/historialPaciente.php',$datos);
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Lista los presupuestos asociados del paciente actual
+	 */
+	public function listadoPresupuestosPaciente(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+		       $datos=array('listado'=> $this->m_usuarios->listarPresupuestosPaciente());
+				//carga el menu
+				$this->load->view('V_Paciente/menuPaciente');
+				//Carga la vista index
+				$this->load->view('V_Paciente/presupuestosPaciente',$datos);
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Lista los presupuestos archivados por el paciente
+	 */
+	public function listadoPresupuestosPacienteArchivados(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+				$datos=array('listado'=> $this->m_usuarios->listarPresupuestosPacienteDesactivados());
+				//carga el menu
+				$this->load->view('V_Paciente/menuPaciente');
+				//Carga la vista index
+				$this->load->view('V_Paciente/presupuestosArchivados',$datos);
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Lista los servicios asociados al presupuesto del paciente actual
+	 */
+	public function listadoPresupuestosParaDescargar(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+				$datos=array('listado'=> $this->m_usuarios->listarPresupuestosPaciente());
+				//carga el menu
+				$this->load->view('V_Paciente/menuPaciente');
+				//Carga la vista index
+				$this->load->view('V_Paciente/descargarPresupuestosPaciente',$datos);
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * LLeva al usuario a la funcion que seleccione en el panel
+	 * puede ser consultar, archivar o descargar presupuesto
+	 */
+	public function opcionesPresupuestoPaciente()
+	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+				if(!isset($_POST['presupuesto'])){
+					$this->session->set_userdata('mensaje','Seleccine un presupuesto');
+					$this->listadoPresupuestosPaciente();
+				}else if(isset($_POST['consultar'])){
+					$this->session->unset_userdata('mensaje');
+					$this->vistaFactura();
+				}else if(isset($_POST['archivar'])) {
+					$this->session->unset_userdata('mensaje');
+					$this->archivarPaciente();
+				} else if(isset($_POST['descargar'])){
+					$this->session->unset_userdata('mensaje');
+					$this->facturaPDF();
+					$this->listadoPresupuestosPaciente();
+				}
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Muestra la vista con la información y el servicio asociado a dicho presupuesto y paciente
+	 */
+	public function vistaFactura(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+		$datos=array(
+			'servicios'=>$this->m_usuarios->datosPresupuesto(),
+			'Paciente'=>$this->m_usuarios->usuarioPresupuesto()
+		);
+		$this->load->view('V_Paciente/menuFactura');
+		$this->load->view('V_Paciente/factura',$datos);
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+
+	}
+
+	public function archivarPaciente(){
+		$this->m_usuarios->archivarPresupuesto();
+		$this->listadoPresupuestosPaciente();
+
+	}
+
+	public function desarchivarPaciente(){
+		$this->m_usuarios->desarchivarPresupuesto();
+		$this->listadoPresupuestosPacienteArchivados();
+
+	}
+	/**
+	 * Genera un pdf con el presupuesto y los datos del paciente
+	 * @throws \Mpdf\MpdfException
+	 */
+	public function facturaPDF(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+
+				$datos=array(
+					'servicios'=>$this->m_usuarios->datosPresupuesto(),
+					'Paciente'=>$this->m_usuarios->usuarioPresupuesto()
+				);
+
+				$mpdf = new \Mpdf\Mpdf();
+			//	$mpdf->showWatermarkText = true;
+
+			$mpdf->WriteHTML('<watermarktext content="DRAFT" alpha="0.2" />');
+
+			//	$mpdf->SetFooter('Document Title');
+				$html=$this->load->view('V_Paciente/factura',$datos,true);
+				$mpdf->WriteHTML($html);
+			//  $mpdf->Output();
+			    $mpdf->Output('FacturaHigea.pdf','D');
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+
+	}
 
 	/*Comprobaciones*/
 

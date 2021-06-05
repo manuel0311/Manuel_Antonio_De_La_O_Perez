@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="Versión 6.6 PANEL EMPLEADO COMPLETO">
-      <change afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/Historial.php" afterDir="false" />
+    <list default="true" id="0d464fa4-9b32-484e-a830-2e1e5db61809" name="Default Changelist" comment="Versión 6.1.6 PANEL EMPLEADO COMPLETO">
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/cambiarContraseña.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/descargarPresupuestosPaciente.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/factura.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/historialPaciente.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/menuFactura.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/presupuestosArchivados.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/presupuestosPaciente.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/cambiarContraseña.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/config/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/controllers/c_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controllers/c_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/models/m_instalacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_instalacion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/models/m_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/models/m_usuarios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/PanelEliminarpresupuestosPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/PanelEliminarpresupuestosPaciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatosPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatosPaciente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Admin/verDatosAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Admin/verDatosAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Instalacion/Paso_1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/menuPaciente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Paciente/verDatosPaciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Paciente/verDatosPaciente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatoEmpleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/views/V_Trabajador/verDatoEmpleado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/phpDocumentor.phar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +66,16 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/src/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/src/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/src/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/src/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/src/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/src/vendor/composer" />
+    </include_path>
+  </component>
   <component name="ProjectId" id="1saS5YWF4lwqtbWCqrtCJQHJk2f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -75,8 +101,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Trabajador" />
-      <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Admin" />
       <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Paciente" />
+      <recent name="C:\xampp\htdocs\Higea\src\application\views\V_Admin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -110,7 +136,8 @@
       <workItem from="1622284906271" duration="19505000" />
       <workItem from="1622383359972" duration="20926000" />
       <workItem from="1622535766339" duration="33474000" />
-      <workItem from="1622733982277" duration="10913000" />
+      <workItem from="1622733982277" duration="47421000" />
+      <workItem from="1622914447626" duration="10618000" />
     </task>
     <task id="LOCAL-00001" summary="version 1">
       <created>1621114504727</created>
@@ -315,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622671784095</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Versión 6.1.6 PANEL EMPLEADO COMPLETO">
+      <created>1622762434011</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1622762434011</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,14 +397,15 @@
     <MESSAGE value="Versión 5.2 Alta Presupuesto" />
     <MESSAGE value="Versión 5.5 Gestión Presupuesto" />
     <MESSAGE value="Versión 6.6 PANEL EMPLEADO COMPLETO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versión 6.6 PANEL EMPLEADO COMPLETO" />
+    <MESSAGE value="Versión 6.1.6 PANEL EMPLEADO COMPLETO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versión 6.1.6 PANEL EMPLEADO COMPLETO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/src/application/controllers/c_users.php</url>
-          <line>63</line>
+          <line>62</line>
           <properties>
             <option name="className" value="\C_Users" />
             <option name="methodName" value="buscarEmpleado" />
