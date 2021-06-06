@@ -84,26 +84,17 @@ echo '<!DOCTYPE html>
                     <div class="modal-content">
                         <div class="modal-header bg-primary text-white">
                             <div class="modal-title">
-								Registro de usuario
+								Obtener Datos de Acceso
 							</div>
                             <span data-dismiss="modal">X</span>
                         </div>
-                        <div class="modal-body">
-                             <div class="form-group">
-                                <label>DNI:</label>
-                                <input type="name"  name="DNI"class="form-control" placeholder="Introuce tu DNI" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Email:</label>
-                                <input type="email" name="mail" id="mail" class="form-control" placeholder="Introduce tu correo electrónico" required>
-                            </div>
-                           
-                        </div>
-                        <div class="modal-footer text-right">
-                            <input type="submit" class="btn btn-primary" value="Registrar">
-                        </div>
-
+                       <h5 style="text-align: center">INFORMACIÓN PARA LOS PACIENTES Y NUEVOS PACIENTES</h5>
+                     	 <ul> 
+                      		<li>Si eres paciente de nuestra clínica y desea obtener sus datos
+                       			de acceso, puede solicitarlo en recepción de nuestra clínica.</li>
+                       		<li>Para nuevos pacientes, visítanos en clínica o <a href="contacto">solicite una cita</a></li>	
+                       
+						</ul>
                     </div>
                 </form>
             </div>

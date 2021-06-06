@@ -6,7 +6,13 @@ echo'<!doctype html>
 <div class="col-xs-12 col-sm-5 .col-lg-6">
 <img src="'.base_url("assets/Media/img/Datos.png").'"  class="img-fluid" alt="dentista">
 </div>
-<div class="col">
+<div class="col">';
+if(isset($_SESSION['DatosModificados'])){
+	echo'<div class="alert alert-success" role="alert">
+	'.$_SESSION['DatosModificados'].'
+</div>';
+}
+echo'
 <h3>Datos Usuario</h3>
 <!--Formulario-->
 <form action="actualizar" id="updateUser" method="POST">

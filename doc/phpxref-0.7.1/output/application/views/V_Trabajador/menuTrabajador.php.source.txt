@@ -28,8 +28,7 @@ echo '<!DOCTYPE html>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="registroPaciente">Registrar Paciente</a>
-          <a class="dropdown-item" href="#">Consultar Paciente</a>
-          <a class="dropdown-item" href="#">Eliminar Paciente</a>
+          <a class="dropdown-item" href="consultarPaciente">Consultar Paciente</a>
       </li>
      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,7 +37,7 @@ echo '<!DOCTYPE html>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="seleccionarUsuario">Crear Presupuesto</a>
           <a class="dropdown-item" href="consultarPresupuesto">Consultar /Activar - Desactivar Presupuesto</a>
-          <a class="dropdown-item" href="#">Eliminar Presupuesto</a>
+          <a class="dropdown-item" href="ConsultarPresupuestoEliminar">Eliminar Presupuesto</a>
       </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,6 +52,10 @@ echo '<!DOCTYPE html>
          	Cerrar Sesión
         </a>
       </li>
+       
     </ul>
+    	<form class="form-inline">
+                    <p><a href="principal" class="btn btn-primary btn-sm">Volver Pantalla Principal</a></p>       
+        </form>
   </div>
 </nav>';

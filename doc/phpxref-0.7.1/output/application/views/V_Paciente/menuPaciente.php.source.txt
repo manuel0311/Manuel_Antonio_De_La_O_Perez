@@ -31,10 +31,9 @@ echo'
           Presupuestos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Consultar</a>
-          <a class="dropdown-item" href="#">Presupuestos Archivados</a>
-          <a class="dropdown-item" href="#">Descargar Presupuesto</a>
-          <a class="dropdown-item" href="#">Eliminar Presupuesto</a>
+          <a class="dropdown-item" href="Historial">Historial Clínica Higea</a>
+          <a class="dropdown-item" href="misPresupuestos">Consultar Presupuesto</a>
+          <a class="dropdown-item" href="archivados">Consultar Presupuestos Archivados</a>       
       </li>
      
        <li class="nav-item dropdown">
@@ -51,5 +50,8 @@ echo'
         </a>
       </li>
     </ul>
+    <form class="form-inline">
+                    <p><a href="principal" class="btn btn-primary btn-sm">Volver Pantalla Principal</a></p>       
+        </form>
   </div>
 </nav>';

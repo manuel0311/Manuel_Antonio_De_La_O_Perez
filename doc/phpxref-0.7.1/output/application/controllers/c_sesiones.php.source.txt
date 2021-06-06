@@ -38,8 +38,8 @@ class C_Sesiones extends CI_Controller
 					);
 
 				$this->session->set_userdata($datos);
-
-				redirect("principal");
+				$this->opcionesPanel();
+				//redirect("principal");
 			}else{
 				$mensaje=array("texto"=>"Correo o contraseña incorrecta.");
 				//carga el menu
@@ -161,11 +161,6 @@ class C_Sesiones extends CI_Controller
 		}
 	}
 
-	/**
-	 * Vista Pane Paciente
-	 */
-	public function panelPaciente(){
 
-	}
 
 }

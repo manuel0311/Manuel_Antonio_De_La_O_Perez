@@ -33,7 +33,7 @@ echo'<!doctype html>
 						Recomendamos al usuario para una instalación correcta:
 						<li>Consulte el manual del usuario antes de comenzar la instalación.</li>
 						<li>Siga las indicaciones incluidas en el manual</li>
-						<li>Si necesita información adicional <a href="mailto:contacto@higea.com">contáctanos</a>.</li>
+						<li>Si necesita información adicional <a href="mailto:contacto@higea-dental.com">contáctanos</a>.</li>
 						
 
                    </p>
