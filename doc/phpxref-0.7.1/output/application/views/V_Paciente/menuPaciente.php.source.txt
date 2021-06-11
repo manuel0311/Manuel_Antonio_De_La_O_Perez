@@ -32,6 +32,7 @@ echo'
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="Historial">Historial Clínica Higea</a>
+          <a class="dropdown-item" href="presupuestosPendientes">Presupuesto Pendientes Confirmar</a>
           <a class="dropdown-item" href="misPresupuestos">Consultar Presupuesto</a>
           <a class="dropdown-item" href="archivados">Consultar Presupuestos Archivados</a>       
       </li>
@@ -41,7 +42,7 @@ echo'
          	Datos De Acceso
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+        <a class="dropdown-item" href="cambiarPsw">Cambiar Contraseña</a>
 
       </li>
        <li class="nav-item dropdown">

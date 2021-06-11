@@ -217,7 +217,7 @@ class M_Usuarios extends CI_Model
 	 */
 	public function ObtenerPresupuestosPaciente(){
 
-		$presupuestos='SELECT `idPresupuesto`,`idUsuario_Paciente`, `nombrePresupuesto`, `precioTotal`,`activo`,`fechaPresupuesto` 
+		$presupuestos='SELECT `idPresupuesto`,`idUsuario_Paciente`, `nombrePresupuesto`, `precioTotal`,`activo`,`confirmado`,`fechaPresupuesto` 
 					   FROM `presupuesto` WHERE `idUsuario_Paciente` ='.$_SESSION['idPaciente'];
 		$datos=$this->db->query($presupuestos);
 		return $datos->result_array();
@@ -235,7 +235,7 @@ class M_Usuarios extends CI_Model
 
 		if($resultado[0]['activo']=='0'){
 
-			$activar="UPDATE presupuesto SET activo = 1 WHERE idPresupuesto ='".$_POST["presupuesto"]."';";
+			$activar="UPDATE presupuesto SET activo = 1 ,confirmado = NULL WHERE idPresupuesto ='".$_POST["presupuesto"]."';";
 			$this->db->query($activar);
 		}else{
 
@@ -298,7 +298,9 @@ class M_Usuarios extends CI_Model
 			}
 		}
 
-	/*Obtiene los datos del Paciente desde el menu Empleado*/
+	/**
+	 * Obtiene los datos del Paciente desde el menu Empleado
+	 */
 	public function obtenerDatosPacientes(){
 			$consulta = $this->db->query ("SELECT nombre,apellidos,telefono,email,DNI FROM usuarios WHERE idUsuario ='".$_SESSION['idPaciente']."';");
 			return $consulta->row_array();
@@ -312,6 +314,7 @@ class M_Usuarios extends CI_Model
 		$this->db->query($EliminarPaciente);
 		$this->session->unset_userdata('idPaciente');
 	}
+
 	/**
 	 * Obtiene el porcentaje del formulario
 	 * realiza la consulta
@@ -344,6 +347,7 @@ class M_Usuarios extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+
 	/*Actualiza los datos del paciente desde el menu Empleado*/
 	public function actualiarDatosPaciente(){
 		$datos=array
@@ -358,6 +362,7 @@ class M_Usuarios extends CI_Model
 
 		return $this->db->affected_rows();
 	}
+
 
 	/**
 	 * Da de alta el presupuesto en la BBDD
@@ -398,11 +403,100 @@ class M_Usuarios extends CI_Model
 		/*Insertar Afecta*/
 
 	foreach ($_POST['dientes_lista'] as $pieza){
-			$insertarAfecto="INSERT INTO afecta (idTratamientoPaciente,numPiezaDental) VALUES (".$idPresupuesto.",".$pieza.")";
+			$insertarAfecto="INSERT INTO afecta (idTratamientoPaciente,numPiezaDental) 
+			VALUES (".$idPresupuesto.",".$pieza.")";
 			$this->bd->query($insertarAfecto);
 
 		}
 
+	}
+
+	/**
+	 * Obtiene los tratamientos registrados que ofrece la clínica
+	 * @return mixed
+	 */
+	public function listaTratamiento(){
+		$tratamientos='SELECT * FROM tratamientos;';
+		$datos=$this->db->query($tratamientos);
+		return $datos->result_array();
+	}
+
+	/**
+	 * 	Muestra los datos del tratamiento con la id asignada
+	 * @return mixed
+	 */
+	public function datosTratamiento(){
+		$tratamientos='SELECT * FROM tratamientos where idTratamiento='.$_POST['tratamiento'].';';
+		$datos=$this->db->query($tratamientos);
+		return $datos->result_array();
+	}
+
+	/**
+	 * 	Actualiza el tratamiento con la id  seleccionada
+	 */
+	public function actualizarTratamiento(){
+		$datos=array
+		(
+			'nombreTratamiento'=>$_POST['name'],
+			'descripcionTratamiento'=>$_POST['texto'],
+			'precio'=>$_POST['price']
+		);
+		$this->db->where('idTratamiento ', $_SESSION['tratamiento']);
+		$this->db->update('tratamientos',$datos);
+
+		$this->session->unset_userdata('tratamiento');
+	}
+
+	/**
+	 * Elimina el tratamiento con la id asignada
+	 */
+	public function eliminarTratamiento(){
+		$eliminar='DELETE FROM tratamientos WHERE idTratamiento ='.$_POST['tratamiento'].';';
+		$this->db->query($eliminar);
+	}
+
+	/**
+	 * Obtiene las pruebas registradas que ofrece la clínica
+	 * @return mixed
+	 */
+	public function listaPrueba(){
+		$pruebas='SELECT * FROM pruebas;';
+		$datos=$this->db->query($pruebas);
+		return $datos->result_array();
+	}
+
+	/**
+	 * Muestra los datos de la prueba con el id asignada
+	 * @return mixed
+	 */
+	public function datosPrueba(){
+		$pruebas='SELECT * FROM pruebas where idPrueba ='.$_POST['prueba'].';';
+		$datos=$this->db->query($pruebas);
+		return $datos->result_array();
+	}
+
+	/**
+	 * Actualiza los datos de la prueba con la id asignada
+	 */
+	public function actualizarPrueba(){
+		$datos=array
+		(
+			'nombrePrueba '=>$_POST['name'],
+			'descripcionPrueba'=>$_POST['texto'],
+			'precio'=>$_POST['price']
+		);
+		$this->db->where('idPrueba  ', $_SESSION['prueba']);
+		$this->db->update('pruebas',$datos);
+
+		$this->session->unset_userdata('prueba');
+	}
+
+	/**
+	 * Elimina los datos de la prueba con la id asignada
+	 */
+	public function eliminarPrueba(){
+		$eliminar='DELETE FROM pruebas WHERE idPrueba ='.$_POST['prueba'].';';
+		$this->db->query($eliminar);
 	}
 
 	/**
@@ -419,7 +513,8 @@ class M_Usuarios extends CI_Model
 		ON T.idTratamiento= TP.idTratamiento
 		LEFT JOIN afecta A 
 		ON TP.idTratamientoPaciente = A.idTratamientoPaciente
-		where idUsuario_Paciente ='.$_SESSION['idPaciente'].';';
+		where idUsuario_Paciente ='.$_SESSION['idPaciente'].' 
+		ORDER BY TP.fechaRealizado DESC;';
 
 		$resultado=$this->db->query($consultar);
 
@@ -432,9 +527,11 @@ class M_Usuarios extends CI_Model
 	 *indica la fecha en la que se realiza el servicio.
 	 */
 	public function asignarFechaServicio(){
-		$actualizarFecha='UPDATE tratamiento_paciente SET fechaRealizado ="'.$_POST['fecha'].'" WHERE idTratamientoPaciente ='.$_POST['idTratamientoPaciente'].';';
+		$actualizarFecha='UPDATE tratamiento_paciente SET fechaRealizado ="'.$_POST['fecha'].'" 
+		WHERE idTratamientoPaciente ='.$_POST['idTratamientoPaciente'].';';
 		$this->db->query($actualizarFecha);
 	}
+
 	/**
 	 * Obtiene todos los tratamientos registrados de la base de datos y los devuelve
 	 * @return mixed
@@ -506,9 +603,12 @@ class M_Usuarios extends CI_Model
 	 */
 	public function listarPresupuestosPaciente(){
 
-		$listar='SELECT idPresupuesto, idUsuario_Paciente,nombrePresupuesto,precioTotal, IVA, activo, archivado, fechaPresupuesto
+		$listar='SELECT idPresupuesto, idUsuario_Paciente,nombrePresupuesto,precioTotal, IVA, activo, archivado,confirmado, fechaPresupuesto
 				 FROM presupuesto 
-				 WHERE idUsuario_Paciente='.$_SESSION['id'].' and archivado=0 and activo=1;';
+				 WHERE idUsuario_Paciente='.$_SESSION['id'].' 
+				 AND archivado=0 
+				 AND activo=1 
+				 AND confirmado=1;';
 
 		$datos=$this->db->query($listar);
 
@@ -517,14 +617,50 @@ class M_Usuarios extends CI_Model
 	}
 
 	/**
+	 * Lista los presupuestos asignados al paciente y pendientes de aprobar o rechazar
+	 * @return mixed
+	 */
+	public function listarPresupuestosPendientes(){
+
+		$listar='SELECT idPresupuesto, idUsuario_Paciente,nombrePresupuesto,precioTotal, IVA, activo, archivado,confirmado, fechaPresupuesto
+				 FROM presupuesto 
+				 WHERE idUsuario_Paciente='.$_SESSION['id'].' AND archivado=0 AND activo=1 AND confirmado IS NULL;';
+
+		$datos=$this->db->query($listar);
+
+		return $datos->result_array();
+
+	}
+
+	/**
+	 * Actualiza el dato confirmado a 1 (Presupuesto Aceptado por el paciente)
+	 */
+	public function aceptarPresupuesto(){
+		$aceptar='UPDATE presupuesto SET confirmado=1 WHERE idPresupuesto='.$_POST['presupuesto'].';';
+		$this->db->query($aceptar);
+	}
+
+	/**
+	 * Actualiza los datos confirmados y activo a 0
+	 * Rechaza el presupuesto y el presupuesto se desactiva.
+	 */
+	public function rechazarYDesactivarPresupuesto(){
+		$rechazar='UPDATE presupuesto SET activo=0,confirmado=0 WHERE idPresupuesto='.$_POST['presupuesto'].';';
+		$this->db->query($rechazar);
+	}
+
+	/**
 	 * Obtiene todos los presupuestos asociados al paciente que estén archivados y estén activados para el paciente
 	 * @return mixed
 	 */
-	public function listarPresupuestosPacienteDesactivados(){
+	public function listarPresupuestosPacienteArchivados(){
 
-		$listar='SELECT idPresupuesto, idUsuario_Paciente,nombrePresupuesto,precioTotal, IVA, activo, archivado, fechaPresupuesto
+		$listar='SELECT idPresupuesto, idUsuario_Paciente,nombrePresupuesto,precioTotal, IVA, activo, archivado, confirmado,fechaPresupuesto
 				 FROM presupuesto 
-				 WHERE idUsuario_Paciente='.$_SESSION['id'].' and archivado=1 and activo=1;';
+				 WHERE idUsuario_Paciente='.$_SESSION['id'].' 
+				 AND archivado=1 
+                 AND activo=1 
+                 AND confirmado=1;';
 
 		$datos=$this->db->query($listar);
 
@@ -564,6 +700,10 @@ class M_Usuarios extends CI_Model
 		return $resultado->result_array();
 	}
 
+	/**
+	 * Lista los servicios realizados al paciente
+	 * @return mixed
+	 */
 	public function miHistorial(){
 		$historial='SELECT nombreTratamiento ,numPiezaDental,fechaRealizado
 					FROM presupuesto P 
@@ -573,27 +713,90 @@ class M_Usuarios extends CI_Model
 					ON T.idTratamiento= TP.idTratamiento
 					LEFT JOIN afecta A 
 					ON TP.idTratamientoPaciente = A.idTratamientoPaciente
-					where idUsuario_Paciente ='.$_SESSION['id'].' AND fechaRealizado IS NOT NULL';
+					WHERE idUsuario_Paciente ='.$_SESSION['id'].'
+					ORDER BY `TP`.`fechaRealizado`  DESC
+					;';
 
 		$resultado=$this->db->query($historial);
 		return $resultado->result_array();
 
 	}
 
+	/**
+	 * Actualiza el campo archivad0 a 1 (Archivadoç9
+	 */
 	public function archivarPresupuesto(){
 		$archivar='UPDATE presupuesto SET archivado=1 WHERE idPresupuesto='.$_POST['presupuesto'].';';
 
 		$this->db->query($archivar);
 	}
 
-	public function listarPresupuestosArchivados(){
-
-	}
-
+	/**
+	 * Actualia el campo archivado a 0 (No archivado)
+	 */
 	public function desarchivarPresupuesto(){
 			$archivar='UPDATE presupuesto SET archivado=0 WHERE idPresupuesto='.$_POST['presupuesto'].';';
 
 			$this->db->query($archivar);
+
+	}
+
+	/**
+	 * 	Lista los empleados registrados en la clínica
+	 * @return mixed
+	 */
+	public function listadoEmpleados(){
+		$LlistaEmpleados='SELECT U.idUsuario,nombre,apellidos,telefono ,email ,DNI ,numColegiado
+							FROM usuarios U 
+							RIGHT JOIN empleado E
+							ON U.idUsuario = E.idUsuario_Empleado';
+		$datos=$this->db->query($LlistaEmpleados);
+
+		return $datos->result_array();
+	}
+
+
+	/**
+	 * Obtiene la información del empleado deseado
+	 * @return mixed
+	 */
+	public function dataEmpleado(){
+		$Empleados='SELECT U.idUsuario,nombre,apellidos,telefono ,email ,DNI ,numColegiado
+							FROM usuarios U 
+							RIGHT JOIN empleado E
+							ON U.idUsuario = E.idUsuario_Empleado
+							WHERE E.idUsuario_Empleado ='.$_POST['empleado'].';';
+		$datos=$this->db->query($Empleados);
+		$this->session->set_userdata('idEmpleado',$_POST['empleado']);
+
+		return $datos->result_array();
+
+	}
+
+	/**
+	 * Actualiza los datos del paciente desde el menu Empleado
+	 * @return mixed
+	 */
+	public function actualiarDatosEmpleado(){
+		$datos=array
+		(
+			'nombre'=>$_POST['name'],
+			'apellidos'=>$_POST['surname'],
+			'email'=>$_POST['mail'],
+			'telefono'=>$_POST['phone']
+		);
+		$this->db->where('idUsuario', $_SESSION['idEmpleado']);
+		$this->db->update('usuarios',$datos);
+
+		return $this->db->affected_rows();
+	}
+
+	/**
+	 * Elimina los datos del Empleado desde el panel Administrador
+	 */
+	public function eliminarDatosEmpleado(){
+		$eliminarEmpleado='DELETE FROM usuarios WHERE idUsuario='.$_POST['empleado'].';';
+		$this->db->query($eliminarEmpleado);
 
 	}
 

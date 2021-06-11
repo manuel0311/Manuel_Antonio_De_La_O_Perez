@@ -28,7 +28,7 @@ echo '<!DOCTYPE html>
 <strong>Teléfono:</strong>  615 182 168<br>
 <strong>Correo Electrónico:</strong> contacto@higea-dental.com<br>
 <strong>Contacto:</strong> María Teresa Barril Fernández<br>
-<strong>Nombre del dominio:</strong> web<br>
+<strong>Nombre del dominio:</strong> http://localhost/Higea/src<br>
 
 
   <h3>Finalidades – ¿con qué finalidades tratamos tus datos?</h3>
@@ -57,20 +57,6 @@ echo '<!DOCTYPE html>
   </ul>
 
 
-
-
-
-<h3>Legitimación – ¿cuál es la legitimación para el tratamiento de tus datos?</h3>
-
-<p class="ng-binding">El tratamiento de datos cuyo fin es el envío de boletines periódicos (newslettering) sobre servicios, eventos y noticias relacionadas con nuestra actividad profesional se basa en el consentimiento del interesado, solicitado expresamente para llevar a cabo dichos tratamientos, de acuerdo con la normativa vigente.<br>
-Además, la legitimación para el tratamiento de los datos relacionados con ofertas  o colaboraciones se basan en el consentimiento del usuario que remite sus datos, que puede retirar en cualquier momento, si bien ello puede afectar a la posible comunicación de forma fluida y obstrucción de procesos que desea realizar.<br>
-Por último, los datos se podrán utilizar para dar cumplimiento a las obligaciones legales aplicables a Clínica Higea Dental S.L.
-</p>
-
-
-
-
-
 <h3>Plazo de Conservación de los Datos – ¿Por cuánto tiempo conservaremos tus datos?</h3>
 
 <p class="ng-binding">Clínica Higea Dental S.L.  conservará los datos personales de los usuarios únicamente durante el tiempo necesario para la realización de las finalidades para las que fueron recogidos, mientras no revoque los consentimientos otorgados. Posteriormente, en caso de ser necesario, mantendrá la información bloqueada durante los plazos legalmente establecidos.</p>
@@ -80,8 +66,6 @@ Por último, los datos se podrán utilizar para dar cumplimiento a las obligacio
 <p class="ng-binding">Tus datos podrán ser accedidos por aquellos proveedores que prestan servicios a Clínica Higea Dental S.L., tales como servicios de alojamiento, herramientas de marketing  y  sistemas  de contenido u otros profesionales, cuando dicha comunicación sea necesaria normativamente, o para la ejecución de los servicios contratados.<br><br>
 Clínica Higea Dental S.L., ha suscrito los correspondientes contratos de encargo de tratamiento con cada uno de los proveedores que prestan servicios a Clínica Higea Dental S.L., con el objetivo de garantizar que dichos proveedores tratarán tus datos de conformidad con lo establecido en la legislación vigente.<br><br>
 También podrán ser cedidos a las Fuerzas y Cuerpos de Seguridad del Estado en los casos que exista una obligación legal.<br><br>
-Bancos y entidades financieras, para el cobro de los servicios.<br>
-Administraciones públicas con competencia en los sectores de actividad, cuando así lo establezca la normativa vigente.
 </p>
 
 <h3>

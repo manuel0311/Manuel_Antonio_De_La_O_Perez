@@ -169,6 +169,12 @@ class M_Instalacion extends CI_Model
 				'type' => 'BIT',
 				'default' => 0
 			),
+			'confirmado' => array(
+				'type' => 'BIT',
+				'default' => Null,
+				'null' => TRUE
+
+			),
 			'archivado' => array(
 				'type' => 'BIT',
 				'default' => 0

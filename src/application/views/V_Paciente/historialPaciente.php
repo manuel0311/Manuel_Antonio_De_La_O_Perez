@@ -22,9 +22,13 @@ foreach ($Historial as $valor){
 	echo'
    <tr>
       <th scope="row">'.$valor['nombreTratamiento'].'</th>
-      <td>'.$valor['numPiezaDental'].'</td>
-      <td>'.$valor['fechaRealizado'].'</td>
-    </tr>';
+      <td>'.$valor['numPiezaDental'].'</td>';
+	if($valor['fechaRealizado']==  NULL){
+	 echo'<td>Pendiente</td>';
+	}else{
+		echo'<td>'.$valor['fechaRealizado'].'</td>';
+	}
+	echo'  </tr>';
 }
 echo'   
   </tbody>

@@ -25,11 +25,12 @@ foreach ($historial as $valor){
       <td>'.$valor['numPiezaDental'].'</td>';
 	if(empty($valor['fechaRealizado'])){
 		echo'<td>Pediente <input type="date" name="fecha" step="1"  min="2019-01-01" value="'.date("Y-m-d").'"></td>';
-	}else{
-		echo '<td>'.$valor['fechaRealizado'].' '.'<input type="date" name="fecha" step="1"  min="2019-01-01" value="'.date("Y-m-d").'"></td>';
+	}else {
+		echo '<td>' . $valor['fechaRealizado'] . '</td>
+	</tr>';
 	}
-	echo'</tr>';
 }
+
 echo' </tbody>
 </table>
   <div class="form-group row">

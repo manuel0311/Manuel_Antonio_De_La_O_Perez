@@ -20,6 +20,7 @@ echo'
       <th scope="col">Nombre Presupuesto</th>
       <th scope="col">Precio Total</th>
       <th scope="col">Estado</th>
+      <th scope="col">Confirmado</th>
     </tr>
   </thead>
   <tbody>';
@@ -33,8 +34,18 @@ echo'
 	  }else{
 		  echo'<td>Activado</td>';
 	  }
-  echo'</tr>';
-}
+
+
+		if($valor['confirmado']==Null){
+			echo'<td>Pendiente</td>';
+		}else if ($valor['confirmado']==0){
+			echo'<td>Rechazado</td>';
+		}else if ($valor['confirmado']==1){
+			echo'<td>Aceptado</td>';
+		}
+		echo'</tr>';
+  }
+
  echo' </tbody>
 </table>
   <div class="form-group row">

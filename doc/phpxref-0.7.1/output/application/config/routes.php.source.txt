@@ -142,8 +142,37 @@ $route['verHistorial']='C_Users/historialPaciente';
 $route['misPresupuestos']='C_Users/listadoPresupuestosPaciente';
 /*Lista los presupuesto disponibles para Descargar*/
 $route['opcionesPresupuesto']='C_Users/opcionesPresupuestoPaciente';
-
+/*Lista los presupuestos pendientes*/
+$route['presupuestosPendientes']='C_Users/listadoPresupuestosPendientes';
+/*opciones aceptar o rechazar presupuestos pendientes*/
+$route['confirmar']='C_Users/aceptarRechazarPresupuesto';
+/*Desarchivar presupuestos paciente*/
 $route['desarchivar']='C_Users/desarchivarPaciente';
+/*Lista los presupuestos archivados*/
 $route['archivados']='C_Users/listadoPresupuestosPacienteArchivados';
 /*Muestra el historial del paciente */
 $route['Historial']='C_Users/Historial';
+/*Muestra los Tratamientos*/
+$route['Tratamiento']='C_Users/tratamientos';
+/*LLeva a la opción elegida por el usaurio*/
+$route['panelTratamiento']='C_Users/opcionesTratamiento';
+/*Modifica los datos del tratamiento*/
+$route['modificarTratamiento']='C_Users/ModificarTratamientos';
+/*Elimina el tratamiento*/
+$route['eliminarTratamiento']='C_Users/EliminarTratamiento';
+/*Muestra las pruebas*/
+$route['Prueba']='C_Users/prueba';
+/*LLeva a la opción elegida por el usaurio*/
+$route['panelPrueba']='C_Users/opcionesPrueba';
+/*Modifica los datos de la Prueba*/
+$route['modificarPrueba']='C_Users/ModificarPrueba';
+/*Elimina la prueba*/
+$route['eliminarPrueba']='C_Users/EliminarPrueba';
+/*Muestra los empleados registrados en la clínica dental*/
+$route['listadoEmpleado']='C_Users/buscarEmpleado';
+/*Muesta los datos del empleado seleccionado*/
+$route['empleadoDatos']='C_Users/empleadoDatos';
+/*Actualzia los datos del Empleado*/
+$route['actualizado']='C_Users/actualizarDato';
+
+$route['cambiarPsw']='C_Users/cambioContrasenia';

@@ -26,7 +26,6 @@ class C_Users extends CI_Controller
 		$this->load->helper('url');
 
 
-
 	}
 
 	/*Opciones Administrador*/
@@ -52,7 +51,7 @@ class C_Users extends CI_Controller
 			} else {
 				redirect("principal");
 			}
-		}else{
+		} else {
 			redirect("principal");
 		}
 	}
@@ -60,23 +59,75 @@ class C_Users extends CI_Controller
 	/**
 	 * Formulario Para Enviar y buscar Empleado
 	 */
-	public function buscarEmpleado(){
-		/*if (isset($_SESSION["tipo"])) {
-			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {*/
+	public function buscarEmpleado()
+	{
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+				$empleado=array('datos'=>$this->m_usuarios->listadoEmpleados());
 				//carga el menu
 				$this->load->view('V_Admin/menuAdmin');
-				//Carga la vista index
-				$this->load->view("V_Admin/BuscarTrabajadores");
+				//Carga la vista
+				$this->load->view("V_Admin/Empleados",$empleado);
 				//Carga Footer
 				$this->load->view("footer");
 
-		/*	} else {
+			} else {
 				redirect("principal");
 			}
-		}else{
+		} else {
 			redirect("principal");
 		}
-	}*/
+	}
+
+	/**
+	 * Muestra la vista con un formalio con los datos del empleado
+	 */
+	public function empleadoDatos(){
+
+		if (isset($_SESSION["tipo"]))
+		{
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea')
+			{
+				if(!isset($_POST['empleado']))
+				{
+					$this->buscarEmpleado();
+				}else if(isset($_POST['modificar'])){
+					$this->session->unset_userdata('modificado');
+					$datos=array('datoEmpleado'=>$this->m_usuarios->dataEmpleado());
+					//carga el menu
+					$this->load->view('V_Admin/menuAdmin');
+					//Carga la vista
+					$this->load->view("V_Admin/InformacionEmpleado",$datos);
+					//Carga Footer
+					$this->load->view("footer");
+				}else if(isset($_POST['eliminar'])){
+
+					$this->m_usuarios->eliminarDatosEmpleado();
+					$this->buscarEmpleado();
+				}
+
+			} else {
+				redirect("principal");
+			}
+		} else {
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Modifica los datos del paciente
+	 */
+	public function actualizarDato(){
+		if(isset($_SESSION['tipo']))
+		{
+
+			$this->session->set_userdata('modificado', 'Actualizado con éxito!');
+			if ($this->m_usuarios->actualiarDatosEmpleado()> 0) {
+				$this->empleadoDatos();
+			} else {
+				redirect("principal");
+			}
+		}
 	}
 
 	/**
@@ -141,13 +192,176 @@ class C_Users extends CI_Controller
 	}
 
 	/**
+	 * Muestra el panel con los tratamientos registrados
+	 * y sus opciones
+	 */
+	public function Tratamientos(){
+		/**
+		 * Si existe la sesión comprueba que el usuario es de tipo Administrador (a) o EmpleadoAdministrador(ea)
+		 * en caso contrario redirige al usuario a la pantalla principal.
+		 */
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+					$datos=array('tratamiento'=>$this->m_usuarios->listaTratamiento());
+					//carga el menu
+					$this->load->view('V_Admin/menuAdmin');
+					//Carga la vista index
+					$this->load->view("V_Admin/Tratamientos",$datos);
+					//Carga Footer
+					$this->load->view("footer");
+				}
+
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Comprueba el botón que selecciono el usuario
+	 * y ejecuta la funcion deseada
+	 */
+	public function opcionesTratamiento()
+{
+	if (!isset($_POST['tratamiento'])) {
+		$this->Tratamientos();
+	} else if (isset($_POST['modificar'])) {
+		$this->datosTratamiento();
+
+	}else if (isset($_POST['eliminar'])){
+		$this->EliminarTratamiento();
+	}
+}
+
+	/**
+	 * Modifica los datos del tratamiento
+	 */
+	public function ModificarTratamientos(){
+
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+				$datos=array('tratamiento'=>$this->m_usuarios->actualizarTratamiento());
+				$this->Tratamientos();
+			}
+
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Muesta los datos del tratamiento
+	 */
+	public function datosTratamiento(){
+	$this->session->set_userdata('tratamiento', $_POST['tratamiento']);
+	$tratamiento = array('datos' => $this->m_usuarios->datosTratamiento());
+	//carga el menu
+	$this->load->view('V_Admin/menuAdmin');
+	//Carga la vista index
+	$this->load->view("V_Admin/ModificarTratamiento", $tratamiento);
+	//Carga Footer
+	$this->load->view("footer");
+}
+
+	/**
+	 * Elimina el tratamiento
+	 */
+	public function EliminarTratamiento(){
+		if(!isset($_POST['tratamiento'])){
+			//$this->Tratamientos();
+		}else{
+            $this->m_usuarios->eliminarTratamiento();
+			$this->Tratamientos();
+		}
+	}
+
+	/**
+	 * Muestra el panel con las pruebas registradas
+	 * y sus opciones
+	 */
+	public function Prueba(){
+
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+				$datos=array('prueba'=>$this->m_usuarios->listaPrueba());
+				//carga el menu
+				$this->load->view('V_Admin/menuAdmin');
+				//Carga la vista index
+				$this->load->view("V_Admin/prueba",$datos);
+				//Carga Footer
+				$this->load->view("footer");
+			}
+
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Comprueba el botón que selecciono el usuario
+	 * y ejecuta la funcion deseada
+	 */
+	public function opcionesPrueba()
+	{
+		if (!isset($_POST['prueba'])) {
+			$this->Prueba();
+		} else if (isset($_POST['modificar'])) {
+			$this->datosPrueba();
+
+		}else if (isset($_POST['eliminar'])){
+			$this->EliminarPrueba();
+		}
+	}
+
+	/**
+	 * Modifica los datos de la prueba seleccionada
+	 */
+	public function ModificarPrueba(){
+
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'a' || $_SESSION["tipo"] == 'ea') {
+				$datos=array('prueba'=>$this->m_usuarios->actualizarPrueba());
+				$this->Prueba();
+			}
+
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Obtiene los datos de la prueba seleccionada
+	 */
+	public function datosPrueba(){
+		$this->session->set_userdata('prueba', $_POST['prueba']);
+		$prueba = array('datos' => $this->m_usuarios->datosPrueba());
+		//carga el menu
+		$this->load->view('V_Admin/menuAdmin');
+		//Carga la vista index
+		$this->load->view("V_Admin/ModificarPrueba", $prueba);
+		//Carga Footer
+		$this->load->view("footer");
+	}
+
+	/**
+	 * Elimina los datos de la prueba seleccionada
+	 */
+	public function EliminarPrueba(){
+		if(!isset($_POST['prueba'])){
+			//$this->Tratamientos();
+		}else{
+			$this->m_usuarios->eliminarPrueba();
+			$this->Prueba();
+		}
+	}
+
+	/**
 	 * Añade el nuevo IVA a la BBDD
 	 */
 	public function addNuevoIVA(){
 
 		if($this->m_usuarios->actualizarIVA()>0)
 		{
-			$mensaje=array('texto'=>"Cambio realizado con exito");
+			$mensaje=array('texto'=>"Cambio realizado con éxito");
 			//carga el menu
 			$this->load->view('V_Admin/menuAdmin');
 			//Carga la vista index
@@ -160,7 +374,7 @@ class C_Users extends CI_Controller
 	}
 
 	/**
-	 *Registra el servicio a la BBDD y muestra el mensaje de añadido con exito
+	 *Registra el servicio a la BBDD y muestra el mensaje de añadido con éxito
 	 */
 	public function addServicios(){
 
@@ -211,7 +425,7 @@ class C_Users extends CI_Controller
 	{
 		if(isset($_SESSION['tipo']))
 		{
-			$this->session->set_userdata('DatosModificados', 'Actualizado con exito!');
+			$this->session->set_userdata('DatosModificados', 'Actualizado con éxito!');
 			if ($this->m_usuarios->actualiarDatos() > 0) {
 				$this->mostrarDatos();
 			} else {
@@ -255,6 +469,7 @@ class C_Users extends CI_Controller
 		//Carga Footer
 		$this->load->view("footer");
 	}
+
 
 	/*Opciones Empleado*/
 
@@ -668,7 +883,23 @@ class C_Users extends CI_Controller
 		if(isset($_SESSION['tipo']))
 		{
 
-			$this->session->set_userdata('modificado', 'Actualizado con exito!');
+			$this->session->set_userdata('modificado', 'Actualizado con éxito!');
+			if ($this->m_usuarios->actualiarDatosPaciente()> 0) {
+				$this->opcionesPacientes();
+			} else {
+				redirect("principal");
+			}
+		}
+	}
+
+	/**
+	 * Actualiza los datos del Empleado
+	 */
+	public function actualizarEmpleado(){
+		if(isset($_SESSION['tipo']))
+		{
+
+			$this->session->set_userdata('modificado', 'Actualizado con éxito!');
 			if ($this->m_usuarios->actualiarDatosPaciente()> 0) {
 				$this->opcionesPacientes();
 			} else {
@@ -799,7 +1030,7 @@ class C_Users extends CI_Controller
 	public function listadoPresupuestosPacienteArchivados(){
 		if (isset($_SESSION["tipo"])) {
 			if ($_SESSION["tipo"] == 'p') {
-				$datos=array('listado'=> $this->m_usuarios->listarPresupuestosPacienteDesactivados());
+				$datos=array('listado'=> $this->m_usuarios->listarPresupuestosPacienteArchivados());
 				//carga el menu
 				$this->load->view('V_Paciente/menuPaciente');
 				//Carga la vista index
@@ -838,24 +1069,77 @@ class C_Users extends CI_Controller
 	}
 
 	/**
-	 * LLeva al usuario a la funcion que seleccione en el panel
-	 * puede ser consultar, archivar o descargar presupuesto
+	 * Lista los presupuestos pendientes de aceptar o rechazar
+	 */
+	public function listadoPresupuestosPendientes(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+
+				$datos=array('listado'=> $this->m_usuarios->listarPresupuestosPendientes());
+				//carga el menu
+				$this->load->view('V_Paciente/menuPaciente');
+				//Carga la vista index
+				$this->load->view('V_Paciente/presupuestosPediente',$datos);
+				//Carga Footer
+				$this->load->view("footer");
+
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+	}
+
+	/**
+	 * Acepta o Rechaza los presupuesto y actualiza los datos.
+	 */
+	public function aceptarRechazarPresupuesto(){
+		if (isset($_SESSION["tipo"])) {
+			if ($_SESSION["tipo"] == 'p') {
+				if(!isset($_POST['presupuesto'])){
+					$this->listadoPresupuestosPendientes();
+				}else if(isset($_POST['consultar'])){
+
+					$this->listadoPresupuestosPendientes();
+
+				}else if(isset($_POST['aceptar'])) {
+
+					$this->m_usuarios->aceptarPresupuesto();
+					$this->listadoPresupuestosPendientes();
+				} else if(isset($_POST['rechazar'])){
+
+					$this->m_usuarios->rechazarYDesactivarPresupuesto();
+					$this->listadoPresupuestosPendientes();
+
+				}
+			} else {
+				redirect("principal");
+			}
+		}else{
+			redirect("principal");
+		}
+
+}
+
+	/**
+	 * Comprueba a opcion que selecciono el paciente
+	 * y ejecuta la función correspondiente
 	 */
 	public function opcionesPresupuestoPaciente()
 	{
 		if (isset($_SESSION["tipo"])) {
 			if ($_SESSION["tipo"] == 'p') {
 				if(!isset($_POST['presupuesto'])){
-					$this->session->set_userdata('mensaje','Seleccine un presupuesto');
 					$this->listadoPresupuestosPaciente();
 				}else if(isset($_POST['consultar'])){
-					$this->session->unset_userdata('mensaje');
+
 					$this->vistaFactura();
 				}else if(isset($_POST['archivar'])) {
-					$this->session->unset_userdata('mensaje');
+
 					$this->archivarPaciente();
 				} else if(isset($_POST['descargar'])){
-					$this->session->unset_userdata('mensaje');
+
 					$this->facturaPDF();
 					$this->listadoPresupuestosPaciente();
 				}
@@ -888,17 +1172,31 @@ class C_Users extends CI_Controller
 
 	}
 
+	/**
+	 * Archiva el presupuesto selecionnado
+	 * y muestra los disponibles para archivar
+	 */
 	public function archivarPaciente(){
 		$this->m_usuarios->archivarPresupuesto();
 		$this->listadoPresupuestosPaciente();
 
 	}
 
+	/**
+	 * Desarchiva el presupuesto seleccionado
+	 * y muestra los disponibles para desarchivar
+	 */
 	public function desarchivarPaciente(){
-		$this->m_usuarios->desarchivarPresupuesto();
-		$this->listadoPresupuestosPacienteArchivados();
+		if(!isset($_POST['presupuesto'])){
+			$this->listadoPresupuestosPacienteArchivados();
+		}else{
+			$this->m_usuarios->desarchivarPresupuesto();
+			$this->listadoPresupuestosPacienteArchivados();
+		}
+
 
 	}
+
 	/**
 	 * Genera un pdf con el presupuesto y los datos del paciente
 	 * @throws \Mpdf\MpdfException
@@ -977,6 +1275,17 @@ class C_Users extends CI_Controller
 		}
    }
 
+	public function cambioContrasenia(){
+		if (isset($_SESSION["tipo"])) {
+			$this>$this->selecionarMenu();
+			//Carga la vista index
+			$this->load->view('cambioPSW');
+			//Carga Footer
+			$this->load->view("footer");
+		}else{
+			redirect("principal");
+		}
 
+	}
 }
 

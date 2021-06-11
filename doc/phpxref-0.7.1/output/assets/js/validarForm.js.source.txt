@@ -112,6 +112,21 @@ function actualizarDatosUsuario()
 		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
 	}
 }
+/**
+ * Actualiza los datos del servicio actual si los datos son correcto
+ */
+function actualizarServicio()
+{
+
+	if (actualizar>0) {
+
+		document.getElementById("updateServicio").submit();
+
+	} else {
+
+		alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+	}
+}
 
 /**
  * valida los datos para añadir un servicio a la bbdd
@@ -120,7 +135,7 @@ function actualizarDatosUsuario()
 function addNuevoServicio()
 {
 	if(!document.querySelector('input[name="tipoServicio"]:checked')) {
-		alert('Selecione el tipo de Servicio');
+		alert('Seleccione el tipo de Servicio');
 
 	}else{
 		tipoServicio=true;
@@ -130,7 +145,7 @@ function addNuevoServicio()
 
 		} else {
 
-			alert("Compruebe que  todos los campos esten correctamente rellenados y pulse enviar ");
+			alert("Compruebe que  todos los campos estén correctamente rellenados y pulse enviar ");
 		}
 	}
 }

@@ -43,7 +43,7 @@ echo'
  
   <div class="form-group row">
     <div class="col-sm-10">
-      <input type="button" name="enviar" value="finalizar" class="btn btn-primary " onclick="nuevoAddPorcentaje()">
+      <input type="button" name="enviar" value="Actualziar" class="btn btn-primary " onclick="nuevoAddPorcentaje()">
    
     </div>
   </div>

@@ -120,6 +120,9 @@ echo '
     <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="51822528-cbe7-4685-b4a4-2732f4e7bde1" data-blockingmode="auto" type="text/javascript"></script>
+ <script id="CookieDeclaration" src="https://consent.cookiebot.com/51822528-cbe7-4685-b4a4-2732f4e7bde1/cd.js" type="text/javascript" async></script>
+
  	<script src="'.base_url("assets/js/Login.js").'"></script>
 </body>
 

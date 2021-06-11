@@ -45,7 +45,7 @@ echo '<!DOCTYPE html>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="verDatos">Consultar/Modificar Datos</a>
-         <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+         <a class="dropdown-item" href="cambiarPsw">Cambiar Contraseña</a>
       
       </li>
         <a class="nav-link" href="logout"  role="button"  aria-haspopup="true" aria-expanded="false">

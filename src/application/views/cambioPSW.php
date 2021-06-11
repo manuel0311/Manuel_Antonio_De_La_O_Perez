@@ -3,12 +3,7 @@ echo '
 <!doctype html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Administración</title>
-	   <!--Estilos -->	
+
     <link rel="stylesheet" href="'.base_url("assets/css/cssLoginAdministador.css").'"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
@@ -17,24 +12,19 @@ echo '
 <div class="wrapper fadeInDown">
   <div id="formContent">
    
-
-    
-    <div class="fadeIn first">
-      <img class="" src="'.base_url("assets/Media/img/logo-clinica.png").'"/>
-    </div>
-
     <!-- Formulario Login Administrador -->
     <form action="loginAdmin" id="formLogin" method="post">';
-			if(isset($texto)) {
-				echo '<div class="alert alert-danger" role="alert">' . $texto . '</div>';
-			}
 
     echo'
-      <input type="email" name="mail"  id="mail" placeholder="Introduce tu email" onblur="correovalidoLogin()" required>
-      <p id="errorMail"></p>
+	   <p>Contraseña Antigua</p>	
+	  <input type="password" id="psw" class="fadeIn third" name="psw" placeholder="Contraseña" onblur="contraseniaVacia()" required>
+ 	 <p id="errorPSW"></p>
+ 	 <p>Nueva Contraseña</p>
       <input type="password" id="psw" class="fadeIn third" name="psw" placeholder="Contraseña" onblur="contraseniaVacia()" required>
  	 <p id="errorPSW"></p>
-      <input type="button" class="fadeIn fourth" value="Entrar" onclick="datosLogin()">
+      <input type="password" id="psw" class="fadeIn third" name="psw" placeholder="Contraseña" onblur="contraseniaVacia()" required>
+ 	 <p id="errorPSW"></p>
+      <input type="button" class="fadeIn fourth" value="Cambiar" >
     </form>
 
   </div>

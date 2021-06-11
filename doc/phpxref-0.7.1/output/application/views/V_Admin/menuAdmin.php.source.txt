@@ -11,6 +11,7 @@ echo '<!DOCTYPE html>
     <!--Estilos -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="'.base_url("assets/css/estilo.css").'"/>
+    <link rel="stylesheet" href="'.base_url("assets/css/estiloTratamientosPrueba.css").'"/>
 </head>
 
 <!-- Menú-->
@@ -28,12 +29,9 @@ echo '<!DOCTYPE html>
         	</a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 			  <a class="dropdown-item" href="registroEmpleado">Registrar Trabajador</a>
-			  <a class="dropdown-item" href="#">Consultar Trabajador</a>
-			  <a class="dropdown-item" href="#">Eliminar Trabajador</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Asignar Nuevo Administrador</a>
-          <a class="dropdown-item" href="#">Eliminar Administrador</a>
-          <a class="dropdown-item" href="#">Eliminar Cuenta</a>
+			  <a class="dropdown-item" href="listadoEmpleado">Consultar Trabajador</a>
+		<!-- <a class="dropdown-item" href="#">Asignar Nuevo Administrador</a>-->
+       <!--  <a class="dropdown-item" href="#">Eliminar Administrador</a>-->
         </div>
       </li>
      <li class="nav-item dropdown">
@@ -43,11 +41,11 @@ echo '<!DOCTYPE html>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="nuevoServicio">Registrar Tratamiento/Prueba</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Consultar Tratamientos</a>
-          <a class="dropdown-item" href="#">Eliminar Tratamiento</a>
+          <a class="dropdown-item" href="Tratamiento">Consultar Tratamientos</a>
+        <!--  <a class="dropdown-item" href="#">Eliminar Tratamiento</a>-->
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Consultar Pruebas</a>
-          <a class="dropdown-item" href="#">Eliminar Prueba</a>
+          <a class="dropdown-item" href="Prueba">Consultar Pruebas</a>
+  <!--        <a class="dropdown-item" href="#">Eliminar Prueba</a>-->
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="modificarIVA">Modificar IVA</a>
         </div>
@@ -58,7 +56,7 @@ echo '<!DOCTYPE html>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="verDatos">Consultar/Modificar Datos</a>
-          <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+          <a class="dropdown-item" href="cambiarPsw">Cambiar Contraseña</a>
 
           
       </li>

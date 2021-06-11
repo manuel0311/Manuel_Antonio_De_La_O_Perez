@@ -13,7 +13,7 @@ if(isset($texto)){
 echo'
 <!--Formulario-->
 <form action="consultarPresupuesto" method="post" id="seleccionarUsuario">
-<label>Introuce DNI:</label>
+<label>Introduce DNI:</label>
 <input type="text" placeholder="DNI del paciente" name="DNI" id="DNI" onblur="validarYComprobarDNI()" required >
 <p id="errorDNI"></p>
 <input type="button" value="Buscar Paciente" onclick="localizarIDPaciente()">
