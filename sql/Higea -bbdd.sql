@@ -1,6 +1,7 @@
 /*Crear BBDD*/
 CREATE DATABASE IF NOT EXISTS higea;
 
+
 /*Selecciona La BBDD*/
 USE higea;
 
