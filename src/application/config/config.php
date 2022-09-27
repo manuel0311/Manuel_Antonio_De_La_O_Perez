@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'C:\xampp\htdocs\Higea\Manuel_Antonio_De_La_O_Perez\src';
+$config['base_url'] = 'C:/xampp/htdocs/Higea/Manuel_Antonio_De_La_O_Perez/src/';
 
 /*
 |--------------------------------------------------------------------------
